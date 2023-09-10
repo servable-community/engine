@@ -1,0 +1,32 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+# https://www.youtube.com/watch?v=7pBcuT7j_A0
+
+name: Release & Publish to NPM
+
+on: workflow_dispatch
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v3
+    - name: Install the dependencies
+      run: npm ci
+
+    - name: Initialize Git user
+      run: |
+        git config --global user.email "yelounak@gmail.com"
+        git config --global user.name "Release Workflow"
+
+    - name: Initialise the NPM config
+      run: npm config set //registry.pmjs.org/:_authToken $NPM_TOKEN
+      env:
+        NPM-TOKEN: ${{secrets.NPM_TOKEN}}
+
+    - name: Run release
+      run: npm run release --ci
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NPM-TOKEN: ${{secrets.NPM_TOKEN}}
