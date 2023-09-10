@@ -7,6 +7,8 @@
 Servable engine is the core component of the Servable eco-system.
 It orchestrates the server deployment, the protocols registration and execution and more.
 
+Servable engine needs the Servable
+
 ## Install
 ```bash
 yarn add servable-engine
