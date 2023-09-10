@@ -16,5 +16,8 @@
       "yarn test"
     ],
     "after:bump": "npx auto-changelog -p"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org" //https://github.com/release-it/release-it/blob/main/docs/npm.md
   }
 }
