@@ -31,7 +31,7 @@ jobs:
         git config --global user.name "Release Workflow"
 
     - name: Initialise the NPM config
-      run: npm config set //registry.pmjs.org/:_authToken $NPM_TOKEN
+      run: npm config set //registry.pmjs.org/:_authToken $NPM-TOKEN
       env:
         NPM-TOKEN: ${{secrets.NPM_TOKEN}}
 
