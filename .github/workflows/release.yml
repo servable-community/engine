@@ -35,6 +35,12 @@ jobs:
       env:
         NPM_TOKEN: ${{secrets.NPM_TOKEN}}
 
+    - name: NPM Login
+      run: npm login
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+
     - name: Run release
       run: npm run release --ci
       env:
