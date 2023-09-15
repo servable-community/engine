@@ -28,7 +28,7 @@ jobs:
     - uses: mskelton/setup-yarn@v1
     - name: Install dependencies
       run: yarn --frozen-lockfile
-    # - run: npm test
+    # - run: yarn test
 
   publish:
     runs-on: ubuntu-latest

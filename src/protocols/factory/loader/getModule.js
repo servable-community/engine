@@ -5,33 +5,35 @@ const DEFAULT_LOADER = local_v0_1_0
 
 
 export default async (props) => {
-    const { path, version } = props
+  const { path, version } = props
 
-    if (version) {
-        return loaderForVersion(version)
-    }
+  if (version) {
+    return loaderForVersion(version)
+  }
 
-    if (!path) {
-        return null
-    }
+  if (!path) {
+    return null
+  }
 
-    let modulePath = `${path}/manifest.json`
+  let modulePath = `${path}/manifest.json`
+  if (!(await checkFileExists(modulePath))) {
+    modulePath = `${path}/module.json`
     if (!(await checkFileExists(modulePath))) {
-        modulePath = `${path}/module.json`
-        if (!(await checkFileExists(modulePath))) {
-            return DEFAULT_LOADER
-        }
+      return DEFAULT_LOADER
     }
+  }
 
-    const module = (await import(modulePath, {
-        assert: { type: "json" },
-    }))
-    const { version: moduleVersion } = module.default
-    return loaderForVersion(moduleVersion)
+  const module = (await import(modulePath, {
+    assert: { type: "json" },
+  }))
+  // const module = (await import(modulePath) with { type: "json" })
+
+  const { version: moduleVersion } = module.default
+  return loaderForVersion(moduleVersion)
 }
 
 const loaderForVersion = (version) => {
-    switch (version) {
-        default: return DEFAULT_LOADER
-    }
+  switch (version) {
+    default: return DEFAULT_LOADER
+  }
 }

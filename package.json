@@ -3,17 +3,30 @@
   "version": "0.0.0-development",
   "type": "module",
   "description": "Servable engine for Parse.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "module": "dist/index.modern.js",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test_": "echo \"Error: no test specified\" && exit 1",
     "semantic-release": "semantic-release",
     "acp": "git add . && npm run commit && git push",
     "commit": "git-cz",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "prepare": "run-s build",
+    "test": "run-s test:unit test:lint test:build",
+    "test:build": "run-s build",
+    "test:lint": "eslint .",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom"
   },
   "repository": {
     "type": "git",
@@ -29,7 +42,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "module": "dist/index.esm.js",
   "size-limit": [
     {
       "path": "dist/index.cjs.production.min.js",
@@ -71,10 +83,14 @@
     "yaml": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-unicode-property-regex": "^7.18.6",
+    "@babel/plugin-syntax-import-attributes": "^7.22.5",
     "@size-limit/preset-small-lib": "^4.10.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^6.0.0",
     "javascript-obfuscator": "^4.0.0",
+    "microbundle-crl": "^0.13.11",
+    "npm-run-all": "^4.1.5",
     "semantic-release": "^21.1.1",
     "size-limit": "^4.10.2"
   },
