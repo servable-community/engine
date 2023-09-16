@@ -7,6 +7,10 @@
   "version": "0.0.0-development",
   "description": "Servable engine for Parse.",
   "author": "Aboubacar Doucoure",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yelounak/servable-engine/issues"
