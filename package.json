@@ -1,5 +1,5 @@
 {
-  "name": "@yelounak/servable-engine",
+  "name": "servable-engine",
   "type": "module",
   "source": "src/index.js",
   "main": "dist/index.cjs",
