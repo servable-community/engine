@@ -13,7 +13,7 @@
 Servable engine is the core component of the Servable eco-system.
 It orchestrates the server deployment, the protocols registration and execution and more.
 
-Servable engine needs the Servable
+Servable engine is used by the Servable CLI to generate new projects.
 
 ## Install
 ```bash
