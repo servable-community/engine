@@ -1,7 +1,5 @@
 name: "Size limit"
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches:
       - main
