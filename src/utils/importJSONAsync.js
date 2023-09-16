@@ -1,5 +1,5 @@
 import fs from "fs"
-import checkFileExists from "./checkFileExists"
+import checkFileExists from "./checkFileExists.js"
 
 export default async _url => {
   if (!(await checkFileExists(_url))) {
