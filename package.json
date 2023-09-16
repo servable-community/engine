@@ -2,15 +2,34 @@
   "name": "servable-engine",
   "type": "module",
   "source": "src/index.js",
-  "main": "dist/index.js",
+  "main": "dist/index.modern.js",
   "module": "dist/index.modern.js",
   "version": "0.0.0-development",
   "description": "Servable engine for Parse.",
+  "author": "Aboubacar Doucoure",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yelounak/servable-engine/issues"
+  },
+  "homepage": "https://github.com/yelounak/servable-engine#readme",
   "files": [
     "dist"
   ],
   "engines": {
     "node": ">=10"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
@@ -110,24 +129,5 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "prettier": "^2.0.4"
-  },
-  "author": "Aboubacar Doucoure",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yelounak/servable-engine/issues"
-  },
-  "homepage": "https://github.com/yelounak/servable-engine#readme",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ]
   }
 }
