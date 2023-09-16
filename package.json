@@ -16,7 +16,7 @@
     "build": "microbundle-crl --no-compress --format modern,cjs,umd",
     "dev": "microbundle watch",
     "test_": "echo \"Error: no test specified\" && exit 1",
-    "semantic-release": "semantic-release",
+    "semantic-release": "semantic-release --branches main",
     "acp": "git add . && npm run commit && git push",
     "commit": "git-cz",
     "size": "size-limit",
