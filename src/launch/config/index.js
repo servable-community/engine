@@ -1,19 +1,15 @@
-import handleProtocol from "./handleProtocol"
-import bootstrapIfNeeded from "./handleProtocol/utils/bootstrapIfNeeded"
+import handleProtocol from './handleProtocol'
+import Bluebird from "bluebird"
+import candidates from '../../lib/config/candidates/index.js'
 
 export default async (props) => {
     const { schema } = props
-    const {
-        protocols
-    } = schema
+    const items = await candidates({ schema })
 
-    await bootstrapIfNeeded()
-
-    await Promise.all(protocols.map(async item => {
-        await handleProtocol({
-            ...props,
-            item,
-            allProtocols: protocols
+    const cache = {}
+    await Bluebird.Promise.mapSeries(
+        items,
+        async candidate => {
+            return handleProtocol({ ...props, operationProps: props, items, candidate, cache })
         })
-    }))
 }

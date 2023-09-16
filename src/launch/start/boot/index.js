@@ -1,13 +1,13 @@
 import launchWithNoMigration from '../launchers/launchWithNoMigration'
 import migrate from '../migrate'
 import quit from './quit'
-import qualifyStaging from './configurations/staging'
-import qualifyProduction from './configurations/production'
+import qualifyStaging from './payload/staging'
+import qualifyProduction from './payload/production'
 import didConsumeValidation from '../launchers/auxiliary/didConsumeValidation'
 import tearDownDecoydatabase from "../migrate/configuration/utils/decoyDatabase/tearDown"
 
 export default async (props) => {
-  const { servableConfig, app, schema } = props
+  const { servableEngineConfig, app, schema } = props
 
   const {
     stateItem: stagingStateItem,
@@ -30,7 +30,6 @@ export default async (props) => {
     migrations: productionMigrations
   } = await qualifyProduction({ ...props, schema, stagingStateItem })
 
-
   const hasBeenInitialized = productionStateItem.lastMigrationEndedAt
   let result
 
@@ -50,7 +49,7 @@ export default async (props) => {
       hasBeenInitialized,
       schema,
       migrationPayload: stagingMigrations,
-      servableConfig,
+      servableEngineConfig,
       configuration: stagingConfiguration,
     })
 
@@ -107,7 +106,7 @@ export default async (props) => {
       hasBeenInitialized,
       schema,
       migrationPayload: productionMigrations,
-      servableConfig,
+      servableEngineConfig,
       configuration: productionConfiguration,
     })
 
@@ -142,4 +141,3 @@ export default async (props) => {
 
   /* #endregion */
 }
-

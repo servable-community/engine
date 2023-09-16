@@ -11,7 +11,7 @@ export default class ServableAgenda {
       }
     })
     // this._httpServer = httpServer
-    // this._servableConfig = servableConfig
+    // this._servableEngineConfig = servableEngineConfig
   }
 
   get instance() { return this._instance }

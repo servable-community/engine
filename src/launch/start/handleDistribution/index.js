@@ -1,11 +1,11 @@
-import pingPeriodically from '../../../utils/utilsDatabase/parseServerInstance/functions/pingPeriodically'
+import pingPeriodically from '../../../utils/utilsDatabase/classes/parseServerInstance/functions/pingPeriodically'
 import watchServer from './watch'
 
 
 export default async (props) => {
-  const { launchedServer, servableConfig } = props
+  const { launchedServer, servableEngineConfig } = props
   const { configuration } = launchedServer
-  const { distribution } = servableConfig
+  const { distribution } = servableEngineConfig
   if (!distribution || !distribution.enabled) {
     return
   }

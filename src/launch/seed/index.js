@@ -1,5 +1,5 @@
-import handleProtocol from "./handleProtocol"
-import performItem from './performItem'
+import protocolCandidates from "./protocolCandidates"
+import handleProtocol from './handleProtocol'
 import Bluebird from "bluebird"
 import _ from 'underscore'
 
@@ -10,7 +10,7 @@ export default async (props) => {
     } = schema
 
     const items = _.flatten(await Promise.all(protocols.map(async item =>
-        handleProtocol({
+        protocolCandidates({
             item,
             allProtocols: protocols
         })
@@ -20,6 +20,6 @@ export default async (props) => {
     await Bluebird.Promise.mapSeries(
         items,
         async item => {
-            return performItem({ operationProps: props, items, item, cache })
+            return handleProtocol({ ...props, operationProps: props, items, item, cache })
         })
 }

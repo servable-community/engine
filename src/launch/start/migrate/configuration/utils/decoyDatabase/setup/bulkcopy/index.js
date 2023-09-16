@@ -1,4 +1,4 @@
-import duplicate from "../../../../../../utils/mongo/duplicate"
+import duplicate from "../../../../../../utils/configuration/mongo/duplicate"
 import tearDown from "../../tearDown"
 
 export default async (props) => {

@@ -3,7 +3,7 @@ import setConfigurations from "./setConfigurations"
 
 
 export default (props) => {
-    // const { servableConfig, live = false } = props
+    // const { servableEngineConfig, live = false } = props
     basic(props)
     setConfigurations(props)
 }

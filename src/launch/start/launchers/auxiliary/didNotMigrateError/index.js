@@ -1,5 +1,5 @@
-import getStateForConfiguration from "../../../../../utils/utilsDatabase/parseServerState/functions/getStateForConfiguration"
-import MigrationStateEnum from "../../../../../utils/utilsDatabase/parseServerState/enums/migrationState"
+import getStateForConfiguration from "../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration"
+import MigrationStateEnum from "../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState"
 
 
 export default async (props) => {

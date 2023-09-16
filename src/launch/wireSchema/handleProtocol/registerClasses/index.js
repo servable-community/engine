@@ -18,14 +18,10 @@ export default async (props) => {
             // : `${protocol.id}${capitalizeFirstLetter(className)}`
             : `${protocol.id}`
 
-        const cloudCodeFiles = await protocol.loader.getClassCloudCode({ className })
-        await registerCloudCode({ files: cloudCodeFiles, prefix })
+        const functions = await protocol.loader.classFunctions({ className })
+        await registerCloudCode({ files: functions, prefix })
 
-        const jobFiles = await protocol.loader.getClassJobs({ className })
+        const jobFiles = await protocol.loader.classJobs({ className })
         await registerJobs({ files: jobFiles, prefix })
     }))
-}
-
-const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1)
 }

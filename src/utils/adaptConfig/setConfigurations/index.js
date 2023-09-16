@@ -3,10 +3,10 @@ import production from "./production"
 import staging from "./staging"
 
 export default (props) => {
-    const { servableConfig, payload } = props
-    const { configurations = [{}] } = servableConfig
+    const { servableEngineConfig, payload } = props
+    const { configurations = [{}] } = servableEngineConfig
 
-    servableConfig.configurations = configurations.map(configuration => {
+    servableEngineConfig.configurations = configurations.map(configuration => {
         switch (configuration.key) {
             case 'staging': {
                 return staging({ ...props, configuration })
@@ -18,5 +18,5 @@ export default (props) => {
         }
     })
 
-    return servableConfig
+    return servableEngineConfig
 }

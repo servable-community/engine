@@ -3,16 +3,16 @@ export default class Messaging {
   _sender = null
   _app = null
   _httpServer = null
-  _servableConfig = null
+  _servableEngineConfig = null
 
   get sender() { return this._sender }
   set sender(value) { this._sender = value }
 
   constructor(props) {
-    const { app, httpServer, servableConfig } = props
+    const { app, httpServer, servableEngineConfig } = props
     // this._app = app
     // this._httpServer = httpServer
-    // this._servableConfig = servableConfig
+    // this._servableEngineConfig = servableEngineConfig
   }
 
   toString() {

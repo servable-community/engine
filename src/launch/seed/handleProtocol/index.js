@@ -1,37 +1,42 @@
+import Bluebird from "bluebird"
+import doPerform from './doSeed.js'
 
-export default async (props) => {
-    const { classes: { own }, } = props.item.schema
-    const id = props.item.id
-
-    let items = []
-
-    let protocolFile = await props.item.loader.seed()
-    if (protocolFile) {
-        let protocolMetadata = await props.item.loader.seedMetadata()
-        const _i = {
-            id,
-            type: 'protocol',
-            file: protocolFile,
-            metadata: protocolMetadata
-        }
-
-        items.push(_i)
+const perform = async (props) => {
+    const { item, items, cache, } = props
+    const { metadata, } = item
+    if (cache[item.id]) {
+        return
     }
 
-    await Promise.all(own.map(async item => {
-        const { className } = item
-        let file = await props.item.loader.getClassSeed({ className })
+    if (!metadata || !metadata.dependencies || !metadata.dependencies.length) {
+        await doPerform(props)
+        cache[item.id] = true
+        return
+    }
 
-        if (file) {
-            let metadata = await props.item.loader.getClassSeedMetadata({ className })
-            items.push({
-                id: className,
-                type: 'class',
-                file,
-                metadata
+    const { dependencies = [] } = metadata
+    await Bluebird.Promise.mapSeries(
+        dependencies,
+        async dependency => {
+            const { id } = dependency
+
+            if (cache[id]) {
+                return
+            }
+
+            const candidates = items.filter(a => a.id === id)
+            if (!candidates || !candidates.length) {
+                return
+            }
+            const candidate = candidates[0]
+            await perform({
+                ...props,
+                item: candidate
             })
-        }
-    }))
+        })
 
-    return items.filter(a => a)
+    await doPerform(props)
+    cache[item.id] = true
 }
+
+export default perform

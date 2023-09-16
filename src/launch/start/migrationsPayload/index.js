@@ -26,6 +26,7 @@ export default async (props) => {
       protocol
     })
   }))
+
   items = items.filter(a => a)
   return items
 }

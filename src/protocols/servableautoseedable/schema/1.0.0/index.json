@@ -1,0 +1,14 @@
+{
+    "own": {
+        "classes": []
+    },
+    "target": {
+        "classLevelPermissions": {
+            "protectedFields": {
+                "*": []
+            }
+        },
+        "fields": {},
+        "indexes": {}
+    }
+}

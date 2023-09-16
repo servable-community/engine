@@ -1,0 +1,18 @@
+{
+    "own": {
+        "classes": []
+    },
+    "target": {
+        "classLevelPermissions": {
+            "protectedFields": {
+                "*": []
+            }
+        },
+        "fields": {
+            "uniqueRef": {
+                "type": "String"
+            }
+        },
+        "indexes": {}
+    }
+}

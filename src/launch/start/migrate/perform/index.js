@@ -1,11 +1,11 @@
 import didMigrateStepSuccessfully from '../../launchers/auxiliary/didMigrateStepSuccessfully'
 import launchWithMigration from '../../launchers/launchWithMigration'
-import extractSchema from '../../../../schema/compute'
+import extractSchema from '../../../../lib/schema/compute'
 import Bluebird from 'bluebird'
 import handleTask from './handleTask'
 
 export default async (props) => {
-  const { servableConfig, migrationPayload, configuration, app } = props
+  const { servableEngineConfig, migrationPayload, configuration, app } = props
 
   let schema = props.schema
   let i = 0
@@ -28,9 +28,9 @@ export default async (props) => {
         }
       })
 
-      let _servableConfig = { ...servableConfig, versions: {} }
-      _servableConfig.versions[protocol.id] = operation.version
-      schema = await extractSchema({ servableConfig: _servableConfig })
+      let _servableEngineConfig = { ...servableEngineConfig, versions: {} }
+      _servableEngineConfig.versions[protocol.id] = operation.version
+      schema = await extractSchema({ servableEngineConfig: _servableEngineConfig })
       if (!schema) {
         return null
       }

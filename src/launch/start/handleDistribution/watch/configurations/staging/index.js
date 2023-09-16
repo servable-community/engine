@@ -1,4 +1,4 @@
-import ValidationStateEnum from "../../../../../../utils/utilsDatabase/parseServerState/enums/validationState"
+import ValidationStateEnum from "../../../../../../utils/utilsDatabase/classes/parseServerState/enums/validationState"
 import quit from "../../../../boot/quit"
 import perform from "../../../../boot"
 

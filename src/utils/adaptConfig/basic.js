@@ -1,55 +1,63 @@
 
 import path from 'path'
 // import callerPath from 'caller-path'
-// import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
-export default ({ servableConfig }) => {
-    if (servableConfig.adaptedBasic) {
+
+export default ({ servableEngineConfig }) => {
+    if (servableEngineConfig.adaptedBasic) {
         return
     }
     // const __filename = callerPath({ depth: 1 })
     // let __dirname = dirname(__filename)
     // __dirname = __dirname.split('file://')[1]
 
-    // if (!servableConfig.nodeModulesPath) {
-    //     servableConfig.nodeModulesPath = path.resolve(__dirname, `../node_modules`)
+    // if (!servableEngineConfig.nodeModulesPath) {
+    //     servableEngineConfig.nodeModulesPath = path.resolve(__dirname, `../node_modules`)
     // }
 
-    if (!servableConfig.distribution) {
-        servableConfig.distribution = {
+    if (!servableEngineConfig.distribution) {
+        servableEngineConfig.distribution = {
             enabled: false,
         }
     }
 
-    if (!servableConfig.distribution.databaseURI) {
-        servableConfig.distribution.databaseURI = process.env.SERVABLE_UTILS_DATABASE_URI
+    if (!servableEngineConfig.distribution.databaseURI) {
+        servableEngineConfig.distribution.databaseURI = process.env.SERVABLE_UTILS_DATABASE_URI
     }
 
 
-    if (!servableConfig.system) {
-        servableConfig.system = {}
+    if (!servableEngineConfig.system) {
+        servableEngineConfig.system = {}
     }
 
-    if (!servableConfig.system.docker) {
-        servableConfig.system.docker = {
+    if (!servableEngineConfig.system.docker) {
+        servableEngineConfig.system.docker = {
             enabled: true,
             environments: ['development']
         }
     }
 
-    if (!servableConfig.protocols) {
-        servableConfig.protocols = {}
+    if (!servableEngineConfig.protocols) {
+        servableEngineConfig.protocols = {}
     }
 
-    if (!servableConfig.protocols.local || !servableConfig.protocols.local.length) {
-        servableConfig.protocols.local = [
+    if (!servableEngineConfig.protocols.local || !servableEngineConfig.protocols.local.length) {
+        servableEngineConfig.protocols.local = [
             path.resolve('', 'lib/protocols')
-            // path.resolve(__dirname, `./protocols`)
         ]
     }
 
-    if (!servableConfig.rootProtocolPayload) {
-        servableConfig.rootProtocolPayload = {
+    servableEngineConfig.protocols.local = [
+        path.resolve(__dirname, `../../protocols`),
+        ...servableEngineConfig.protocols.local,
+    ]
+
+    if (!servableEngineConfig.rootProtocolPayload) {
+        servableEngineConfig.rootProtocolPayload = {
             type: 'app',
             id: 'app',
             // path: path.resolve(__dirname, "./app")
@@ -57,21 +65,21 @@ export default ({ servableConfig }) => {
         }
     }
 
-    if (!servableConfig.rootProtocolPayload.path) {
-        servableConfig.rootProtocolPayload = {
-            ...servableConfig.rootProtocolPayload,
+    if (!servableEngineConfig.rootProtocolPayload.path) {
+        servableEngineConfig.rootProtocolPayload = {
+            ...servableEngineConfig.rootProtocolPayload,
             path: path.resolve('', 'lib/app')
             // path: path.resolve(__dirname, "./app")
         }
     }
 
-    if (!servableConfig.rootProtocolPayload.id || !servableConfig.rootProtocolPayload.type) {
-        servableConfig.rootProtocolPayload = {
-            ...servableConfig.rootProtocolPayload,
+    if (!servableEngineConfig.rootProtocolPayload.id || !servableEngineConfig.rootProtocolPayload.type) {
+        servableEngineConfig.rootProtocolPayload = {
+            ...servableEngineConfig.rootProtocolPayload,
             id: 'app',
             type: 'app',
         }
     }
 
-    servableConfig.adaptedBasic = true
+    servableEngineConfig.adaptedBasic = true
 }

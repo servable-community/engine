@@ -1,4 +1,4 @@
-import parseServerStateWatcher from "../../../../utils/utilsDatabase/parseServerState/functions/watch"
+import parseServerStateWatcher from "../../../../utils/utilsDatabase/classes/parseServerState/functions/watch"
 import staging from "./configurations/staging"
 import production from "./configurations/production"
 

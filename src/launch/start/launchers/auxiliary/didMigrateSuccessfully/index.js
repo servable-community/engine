@@ -1,14 +1,14 @@
-import getStateForConfiguration from "../../../../../utils/utilsDatabase/parseServerState/functions/getStateForConfiguration"
+import getStateForConfiguration from "../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration"
 import adaptProtocols from "../../../utils/adaptProtocols"
 // import adaptAppConfigBeforeSave from "../../../utils/adaptAppConfigBeforeSave"
-import MigrationStateEnum from "../../../../../utils/utilsDatabase/parseServerState/enums/migrationState"
+import MigrationStateEnum from "../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState"
 
 export default async (props) => {
   const item = await getStateForConfiguration(props)
 
   const { schema, configuration } = props
   // const { config: appConfig } = configuration
-  const protocols = adaptProtocols({ protocols: schema.protocols })
+  const protocols = await adaptProtocols({ protocols: schema.protocols })
 
   item.classes = JSON.stringify(schema.appProtocol.schema.classes.all)
 

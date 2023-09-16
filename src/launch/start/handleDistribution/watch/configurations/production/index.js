@@ -1,4 +1,4 @@
-import MigrationStateEnum from "../../../../../../utils/utilsDatabase/parseServerState/enums/migrationState"
+import MigrationStateEnum from "../../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState"
 import quit from "../../../../boot/quit"
 
 export default async (props) => {

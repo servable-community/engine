@@ -3,24 +3,25 @@ import createHttpServer from "./httpServer"
 import expressApp from "./express"
 import seed from "./seed"
 import liveServer from "./liveServer"
-import registerClasses from "./registerClasses"
+import registerClasses from "./registerParseSubClasses"
 import wireSchema from "./wireSchema"
 import afterInit from "./afterInit"
 import beforeInit from "./beforeInit"
 import start from "./start"
 import adaptConfig from "../utils/adaptConfig/index.js"
 import printEnd from './_messages/end'
-import launchSystem from "./launchSystem/index.js"
-import { compute } from "../schema"
+import launchSystem from "./system/index.js"
+import { compute } from "../lib/schema"
+import config from "./config"
 
 export default async props => {
-  const { servableConfig } = props
-  adaptConfig({ servableConfig, })
+  const { servableEngineConfig } = props
+  adaptConfig({ servableEngineConfig, })
 
   global.Servable = new ServableClass(props)
 
-  const _schema = await compute({ servableConfig })
-  await launchSystem({ schema: _schema, servableConfig })
+  const _schema = await compute({ servableEngineConfig })
+  await launchSystem({ schema: _schema, servableEngineConfig })
 
 
   // return
@@ -32,7 +33,7 @@ export default async props => {
     const httpServer = await createHttpServer({ app })
     Servable.httpServer = httpServer
 
-    const serverStruct = await start({ app, servableConfig, schema: _schema })
+    const serverStruct = await start({ app, servableEngineConfig, schema: _schema })
     if (!serverStruct) {
       console.log("Could not create a server")
       return
@@ -48,15 +49,18 @@ export default async props => {
 
     /////////////////////////////
 
-    await beforeInit({ app, schema, configuration, server, servableConfig })
+    await beforeInit({ app, schema, configuration, server, servableEngineConfig })
     await registerClasses({ app, schema })
     await wireSchema({ app, schema })
-    await liveServer({ app, httpServer, servableConfig })
-    await seed({ server, schema, app, httpServer })
-    await afterInit({ app, schema, configuration, server, servableConfig })
+    await liveServer({ app, httpServer, servableEngineConfig })
+    await seed({ server, schema, app, httpServer, configuration })
+    await config({ server, schema, app, httpServer, configuration })
+    await afterInit({ app, schema, configuration, server, servableEngineConfig })
     /////////////////////////////
 
-
+    const i = await Servable.Config.get('defaultLocale', { locale: "en_US" })
+    const a = await Servable.Config.get('defaultLocale', { locale: "en_US", object: null, protocol: { id: 'countryable' } })
+    console.log('--------Config:', i)
     printEnd()
   } catch (e) {
     console.error(e)

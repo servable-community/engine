@@ -6,6 +6,6 @@ export default ({ payload }) => {
   }
 
   // Const redisOptions = { url: process.env.SERVABLE_REDIS_URL, db: process.env.SERVABLE_REDIS_DB }
-  const redisOptions = { url: payload.redisCacheUri };
-  return new ParseServer.RedisCacheAdapter(redisOptions);
+  const redisOptions = { url: payload.redisCacheUri }
+  return new ParseServer.RedisCacheAdapter(redisOptions)
 }

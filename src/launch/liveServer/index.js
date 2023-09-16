@@ -1,7 +1,7 @@
 import { ParseServer } from "parse-server"
 
-export default async ({ httpServer, servableConfig }) => {
-  // if (!servableConfig.liveQuery || !servableConfig.liveQuery.enabled) {
+export default async ({ httpServer, servableEngineConfig }) => {
+  // if (!servableEngineConfig.liveQuery || !servableEngineConfig.liveQuery.enabled) {
   //   return
   // }
 

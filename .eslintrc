@@ -15,6 +15,13 @@
     "ecmaFeatures": {
       "legacyDecorators": true,
       "jsx": true
+    },
+    "babelOptions": {
+      "parserOpts": {
+        "plugins": [
+          "importAssertions"
+        ]
+      }
     }
   },
   "settings": {

@@ -10,11 +10,11 @@ export default async (props) => {
     const { classes: { own }, } = item.schema
     const prefix = item.id === 'app' ? null : item.id
 
-    const cloudCodeFiles = await item.loader.cloudCodeFiles()
-    await registerCloudCode({ files: cloudCodeFiles, prefix })
+    const functions = await item.loader.functions()
+    await registerCloudCode({ files: functions, prefix })
 
-    const jobFiles = await item.loader.jobFiles()
-    await registerJobs({ files: jobFiles, prefix })
+    const jobs = await item.loader.jobFiles()
+    await registerJobs({ files: jobs, prefix })
 
     await registerClasses({
         ...props,

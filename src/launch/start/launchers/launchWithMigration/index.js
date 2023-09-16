@@ -39,6 +39,7 @@ export default async (props) => {
     config,
     app
   })
+
   Servable.schema = schema
   return { config, server }
 }
