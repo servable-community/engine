@@ -1,1 +1,2 @@
-export { default as compute } from './compute/index.js'
+import compute from './compute/index.js'
+export { compute }

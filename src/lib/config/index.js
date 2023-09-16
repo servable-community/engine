@@ -1,1 +1,2 @@
-export { default as validate } from './validate/index.js'
+import validate from './validate/index.js'
+export { validate }
