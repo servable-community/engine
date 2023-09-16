@@ -33,7 +33,7 @@
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
-    "dev": "microbundle watch",
+    "dev": "microbundle-crl watch",
     "test_": "echo \"Error: no test specified\" && exit 1",
     "semantic-release": "semantic-release",
     "acp": "git add . && npm run commit && git push",
@@ -64,12 +64,16 @@
   },
   "size-limit": [
     {
-      "path": "dist/index.cjs.production.min.js",
-      "limit": "10 KB"
+      "path": "dist/index.js",
+      "limit": "600 KB"
     },
     {
-      "path": "dist/index.esm.js",
-      "limit": "10 KB"
+      "path": "dist/index.modern.js",
+      "limit": "600 KB"
+    },
+    {
+      "path": "dist/index.umd.js",
+      "limit": "600 KB"
     }
   ],
   "dependencies": {
