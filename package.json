@@ -2,7 +2,7 @@
   "name": "servable-engine",
   "type": "module",
   "source": "src/index.js",
-  "main": "dist/index.modern.js",
+  "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "version": "0.0.0-development",
   "description": "Servable engine for Parse.",
