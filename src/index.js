@@ -6,7 +6,7 @@ import launchServable from './launch/index.js'
 import computeSchema from './lib/schema/compute/index.js'
 import cleanProtocols from './utils/cleanProtocols.js'
 
-export default {
+export {
   launchServable,
   computeSchema,
   cleanProtocols
