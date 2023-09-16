@@ -4,6 +4,10 @@
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
   "version": "0.0.0-development",
   "description": "Servable engine for Parse.",
   "author": "Aboubacar Doucoure",
@@ -32,7 +36,7 @@
     ]
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs,umd",
+    "build": "microbundle-crl --no-compress --format modern,cjs",
     "dev": "microbundle-crl watch",
     "test_": "echo \"Error: no test specified\" && exit 1",
     "semantic-release": "semantic-release",
