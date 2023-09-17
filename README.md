@@ -6,7 +6,7 @@
 ![logo](/static/img/polar-bear-4.png)
 
 [![npm Package](https://img.shields.io/npm/v/servable-engine.svg?style=flat-square)](https://www.npmjs.org/package/servable-engine)
-[![NPM Downloads](https://img.shields.io/npm/dm/generator-servable.svg)](https://npmjs.org/package/servable-engine)
+[![NPM Downloads](https://img.shields.io/npm/dm/servable-engine.svg)](https://npmjs.org/package/servable-engine)
 [![Build Status](https://github.com/yelounak/servable-engine/actions/workflows/release.yml/badge.svg)](https://github.com/yelounak/servable-engine/actions/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -41,7 +41,8 @@ The Servable object acts as a central orchestrator. It holds references to objec
 At @yelounak we created the protocols in our Node JS + Parse server project. What was an experience to ease the backend development quickly became a good practice that helped us keep a clean codebase. They worked so well we decided to streamline their integration with the code base for future projects. We were inspired by the powerful ways NextJs improved the React experience by providing an efficient template on top of it. Yet we did not want to hide the Parse Server framework behind ours as we truly love Parse. Servable allows to tap into all the existing and upcoming Parse features and yet it dramatically simplifies the development process. A well designed Servable project will comprise almost nothing more than the actual classes and business logic of the platform, other repetitive functions and logics will use existing protocols implemented by the community or entreprise-private protocols.
 
 ## Should you use Servable?
-Servable is likely a good fit for you if
+Servable is likely a good fit for you if...
+
 - You want to group the development of your server by capacity
 - You want to reuse a capacity (protocol) over different models without copying it over and over
 - You want to make that capacity available throughout your organization or publish it on the web
@@ -53,14 +54,11 @@ Servable is likely a good fit for you if
 - keeps the number of followers up to date on the followed object
 - creates and maintains join tables with the status of the follow relationship
 
-[Read more](../protocolsLibrary/followable/)
-
 ### Emailable
 - Gives a ServableApp the capacity to use transactional emails via a simple API that is registered via the Servable.Mailing object
 - Keeps a list of email templates
 - Can be used with Sendgrid as of now
 
-[Read more](../protocolsLibrary/emailable/)
 
 **...you love Parse Server**
 There is no reason not to use Servable if you have previously used a Parse Server.
