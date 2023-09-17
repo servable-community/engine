@@ -1,5 +1,10 @@
 # Servable Engine
 
+[![npm Package](https://img.shields.io/npm/v/servable-code.svg?style=flat-square)](https://www.npmjs.org/package/servable-engine)
+[![NPM Downloads](https://img.shields.io/npm/dm/generator-code.svg)](https://npmjs.org/package/servable-engine)
+[![Build Status](https://github.com/anak/servable-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/anak/servable-engine/actions/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 > [!WARNING]
 > Servable is still experimental and its api may change in the future.
 
