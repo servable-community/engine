@@ -5,8 +5,6 @@
 
 ![logo](/static/img/polar-bear-4.png)
 
-Servable engine for Parse.
-
 [![npm Package](https://img.shields.io/npm/v/servable-engine.svg?style=flat-square)](https://www.npmjs.org/package/servable-engine)
 [![NPM Downloads](https://img.shields.io/npm/dm/generator-servable.svg)](https://npmjs.org/package/servable-engine)
 [![Build Status](https://github.com/yelounak/servable-engine/actions/workflows/release.yml/badge.svg)](https://github.com/yelounak/servable-engine/actions/tests.yml)
@@ -15,15 +13,13 @@ Servable engine for Parse.
 
 Servable engine is the core component of the Servable eco-system.
 It orchestrates the server deployment, the protocols registration and execution and more.
-
 Servable engine is used by the Servable CLI to generate new projects.
+
 
 ## Install
 ```bash
 yarn add servable-engine
 ```
-
-
 
 **Servable** is a Node JS framework built on top of Express JS and Parse Server and tailored for protocols. It provides a concise, easy to use and scalable template to get the best of Parse Server and protocols.
 
