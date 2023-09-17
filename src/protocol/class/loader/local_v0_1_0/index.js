@@ -57,11 +57,16 @@ export default class ProtocolLoaderLocal extends Base {
       if (!(await checkFileExists(externalClassesPath))) {
         return null
       }
-      const data = (await import(externalClassesPath)).default
-      if (!data) {
+      try {
+        const data = (await import(externalClassesPath)).default
+        if (!data) {
+          return null
+        }
+        return data[className]
+      } catch (e) {
+        console.error(e)
         return null
       }
-      return data[className]
     }
 
     return this._importJSDefault({ path, })

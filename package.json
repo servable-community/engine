@@ -2,12 +2,13 @@
   "name": "servable-engine",
   "type": "module",
   "source": "src/index.js",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "main_dist": "dist/index.js",
+  "main": "src/index.js",
+  "module_dist": "dist/index.modern.js",
   "version": "0.0.0-development",
   "description": "Servable engine for Parse.",
   "author": "Aboubacar Doucoure",
-  "exports": {
+  "exports_dist": {
     "require": "./dist/index.cjs",
     "default": "./dist/index.modern.js"
   },
@@ -36,8 +37,8 @@
     ]
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "dev": "microbundle-crl watch",
+    "build_dist": "microbundle-crl --no-compress --format modern,cjs",
+    "dev_dist": "microbundle-crl watch",
     "test_": "echo \"Error: no test specified\" && exit 1",
     "semantic-release": "semantic-release",
     "acp": "git add . && npm run commit && git push",
@@ -108,10 +109,6 @@
     "winston": "^3.7.2",
     "yaml": "^2.3.0",
     "js-sha256": "^0.9.0"
-  },
-  "obsolete": {
-    "minio": "^7.0.28",
-    "query-string-parse": "*"
   },
   "devDependencies": {
     "@babel/plugin-proposal-unicode-property-regex": "^7.18.6",
