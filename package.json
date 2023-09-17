@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/yelounak/servable-engine#readme",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "engines": {
     "node": ">=10"
