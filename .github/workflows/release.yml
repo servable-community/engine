@@ -1,11 +1,8 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Release
 
 on:
   push:
-    branches: [ main, next, next-major, beta, alpha ]
+    branches: [ main, next, next-major, beta, alpha, 'release-[0-9]+.x.x', release ]
   pull_request:
     branches: '*'
 
