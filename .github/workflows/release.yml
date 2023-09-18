@@ -29,17 +29,26 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    # if: ${{ github.ref == 'refs/heads/main' }}
     needs: [quality]
     permissions:
-      contents: write
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - uses: mskelton/setup-yarn@v1
+      with:
+        fetch-depth: 0
+    - name: Setup yarn
+      uses: mskelton/setup-yarn@v1
     - name: Install dependencies
       run: yarn --frozen-lockfile
-    - run: yarn semantic-release
+    - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+      run: npm audit signatures
+    - name: Release
+      run: yarn semantic-release
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
