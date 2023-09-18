@@ -26,11 +26,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "scripts": {
     "test_": "echo \"Error: no test specified\" && exit 1",
     "semantic-release": "semantic-release",
