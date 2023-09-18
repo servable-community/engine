@@ -3,6 +3,9 @@
 > [!WARNING]
 > Servable is still experimental and its api may change in the future.
 
+> [!WARNING]
+> Beta version
+
 ![logo](/static/img/polar-bear-4.png)
 
 [![npm Package](https://img.shields.io/npm/v/servable-engine.svg?style=flat-square)](https://www.npmjs.org/package/servable-engine)
