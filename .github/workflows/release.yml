@@ -46,6 +46,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - uses: mskelton/setup-yarn@v1
+    - name: Check JS Lockfile
+      uses: ChromaticHQ/javascript-lockfile-check-action@v1.1.0
+      with:
+        package-manager: yarn
+        # working-directory: web/themes/custom/my-custom-theme
     - name: Install dependencies
       run: yarn --frozen-lockfile
     # - run: yarn test
