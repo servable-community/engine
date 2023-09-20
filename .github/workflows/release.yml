@@ -32,6 +32,19 @@ jobs:
         source-root: src
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+
+  check-lock-file-version:
+    name: Check Yarn Lock File Version
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check JS Lockfile
+        uses: ChromaticHQ/javascript-lockfile-check-action@v1.1.0
+        with:
+          package-manager: yarn
+          # working-directory: web/themes/custom/my-custom-theme
+
   quality:
     name: Quality 🐳
     runs-on: ${{ matrix.os }}
@@ -46,11 +59,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - uses: mskelton/setup-yarn@v1
-    - name: Check JS Lockfile
-      uses: ChromaticHQ/javascript-lockfile-check-action@v1.1.0
-      with:
-        package-manager: yarn
-        # working-directory: web/themes/custom/my-custom-theme
     - name: Install dependencies
       run: yarn --frozen-lockfile
     # - run: yarn test
