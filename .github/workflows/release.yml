@@ -5,8 +5,31 @@ on:
     branches: [ main, next, next-major, beta, alpha, 'release-[0-9]+.x.x', release ]
   pull_request:
     branches: '*'
+    paths-ignore:
+      - '**/**.md'
 
 jobs:
+  check-code-analysis:
+    name: Code Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        source-root: src
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
   quality:
     runs-on: ${{ matrix.os }}
     strategy:
