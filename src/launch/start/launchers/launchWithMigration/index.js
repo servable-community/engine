@@ -1,5 +1,5 @@
 
-import doLaunch from "../doLaunch"
+import doLaunch from "../doLaunch/index.js"
 
 export default async (props) => {
   const { schema, configuration, app } = props
