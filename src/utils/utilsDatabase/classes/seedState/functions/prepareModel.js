@@ -1,5 +1,5 @@
 import client from "../../../db/client.js"
-import schema from "../schema.js"
+import schema from "../schema/index.js"
 import mongoose from 'mongoose'
 
 export default async (props) => {
