@@ -1,6 +1,6 @@
 import importJSONAsync from '../../../utils/importJSONAsync.js'
-import local_v0_1_0 from '../../protocol/loader/local_v0_1_0'
-import checkFileExists from '../../utils/checkFileExists'
+import local_v0_1_0 from '../../../protocol/class/loader/local_v0_1_0/index.js'
+import checkFileExists from '../../../utils/checkFileExists.js'
 
 const DEFAULT_LOADER = local_v0_1_0
 

@@ -1,4 +1,4 @@
-import schema from "../schema"
+import schema from "../schema.js"
 import mongoose from 'mongoose'
 // import get from "../crud/get"
 

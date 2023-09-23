@@ -1,4 +1,4 @@
-import ParseServer from "parse-server";
+import ParseServer from "parse-server"
 
 export default ({ payload }) => {
   if (!payload.redisCacheUri) {

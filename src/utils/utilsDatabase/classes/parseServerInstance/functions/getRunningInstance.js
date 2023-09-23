@@ -1,4 +1,4 @@
-import prepareModel from "./prepareModel"
+import prepareModel from "./prepareModel.js"
 
 export default async (props) => {
   const { configuration } = props

@@ -1,4 +1,4 @@
-import ping from "./ping"
+import ping from "./ping.js"
 
 export default async (props) => {
   const { delay = 5000 } = props

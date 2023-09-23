@@ -1,4 +1,4 @@
-import getStateForConfiguration from "./getStateForConfiguration"
+import getStateForConfiguration from "./getStateForConfiguration.js"
 
 export default async (props) => {
   try {

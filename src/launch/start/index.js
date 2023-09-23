@@ -1,4 +1,4 @@
-import boot from './boot'
+import boot from './boot/index.js'
 import handleDistribution from './handleDistribution/index.js'
 
 export default async (props) => {

@@ -1,6 +1,6 @@
 import schema from "../schema"
 import mongoose from 'mongoose'
-import getById from "../crud/getById"
+import getById from "../crud/getById.js"
 
 export default async (props) => {
   const { onChange, } = props

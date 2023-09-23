@@ -1,22 +1,22 @@
 
-import production from "./production"
-import staging from "./staging"
+import production from "./production/index.js"
+import staging from "./staging/index.js"
 
 export default (props) => {
-    const { servableEngineConfig, payload } = props
-    const { configurations = [{}] } = servableEngineConfig
+  const { servableEngineConfig, payload } = props
+  const { configurations = [{}] } = servableEngineConfig
 
-    servableEngineConfig.configurations = configurations.map(configuration => {
-        switch (configuration.key) {
-            case 'staging': {
-                return staging({ ...props, configuration })
-            }
-            default:
-            case 'production': {
-                return production({ ...props, configuration })
-            }
-        }
-    })
+  servableEngineConfig.configurations = configurations.map(configuration => {
+    switch (configuration.key) {
+      case 'staging': {
+        return staging({ ...props, configuration })
+      }
+      default:
+      case 'production': {
+        return production({ ...props, configuration })
+      }
+    }
+  })
 
-    return servableEngineConfig
+  return servableEngineConfig
 }
