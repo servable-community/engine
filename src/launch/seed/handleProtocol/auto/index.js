@@ -2,7 +2,7 @@ import stateIfNeeded from "../../../../utils/utilsDatabase/classes/seedState/fun
 import SeedStateEnum from "../../../../utils/utilsDatabase/classes/seedState/enums/seedState.js"
 import { sha256, } from 'js-sha256'
 // import files from "./files"
-import seedEntry from "./seedEntry"
+import seedEntry from "./seedEntry/index.js"
 
 
 export default async (props) => {
