@@ -1,5 +1,5 @@
-import protocolsSubclass from "./protocolsSubclass"
-import adaptProtocolPayload from "../../utils/adaptProtocolPayload"
+import protocolsSubclass from "./protocolsSubclass/index.js"
+import adaptProtocolPayload from "../../utils/adaptProtocolPayload.js"
 
 export default async ({
   item,

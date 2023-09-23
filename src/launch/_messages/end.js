@@ -1,4 +1,4 @@
-import quotePlain from "../../utils/quotePlain"
+import quotePlain from "../../utils/quotePlain.js"
 
 export default () => {
   console.log(``)

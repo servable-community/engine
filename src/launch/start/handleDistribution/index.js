@@ -1,5 +1,5 @@
-import pingPeriodically from '../../../utils/utilsDatabase/classes/parseServerInstance/functions/pingPeriodically'
-import watchServer from './watch'
+import pingPeriodically from '../../../utils/utilsDatabase/classes/parseServerInstance/functions/pingPeriodically.js'
+import watchServer from './watch/index.js'
 
 
 export default async (props) => {

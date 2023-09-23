@@ -1,6 +1,6 @@
-import ValidationStateEnum from "../../../../../../utils/utilsDatabase/classes/parseServerState/enums/validationState"
-import quit from "../../../../boot/quit"
-import perform from "../../../../boot"
+import ValidationStateEnum from "../../../../../../utils/utilsDatabase/classes/parseServerState/enums/validationState.js"
+import quit from "../../../../boot/quit.js"
+import perform from "../../../../boot/index.js"
 
 export default async (props) => {
   const { configuration, item, data } = props

@@ -1,13 +1,13 @@
-import Base from '../base'
-import checkFileExists from '../../../utils/checkFileExists'
+import Base from '../base/index.js'
+import checkFileExists from '../../../utils/checkFileExists.js'
 import fs from 'fs'
-import directoryFilesRecursive from '../../../utils/directoryFilesRecursive'
-import directories from '../../../utils/directories'
-import cleanProtocols from '../../../../utils/cleanProtocols'
-import mergeClassProtocols from './utils/mergeClassProtocols'
-import importJSDefault from './utils/importJSDefault'
-import importJSONDefault from './utils/importJSONDefault'
-import importJSONAsync from '../../../../utils/importJSONAsync'
+import directoryFilesRecursive from '../../../utils/directoryFilesRecursive.js'
+import directories from '../../../utils/directories.js'
+import cleanProtocols from '../../../../utils/cleanProtocols.js'
+import mergeClassProtocols from './utils/mergeClassProtocols.js'
+import importJSDefault from './utils/importJSDefault.js'
+import importJSONDefault from './utils/importJSONDefault.js'
+import importJSONAsync from '../../../../utils/importJSONAsync.js'
 
 export default class ProtocolLoaderLocal extends Base {
   _path = null

@@ -1,5 +1,5 @@
 import { MongoTransferer, MongoDBDuplexConnector } from 'mongodb-snapshot'
-import generateSourceFromUri from './generateSourceFromUri'
+import generateSourceFromUri from './generateSourceFromUri.js'
 
 export default async (props) => {
   const { sourceUri, targetUri, progress } = props

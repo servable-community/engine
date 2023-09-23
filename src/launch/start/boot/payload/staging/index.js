@@ -1,10 +1,10 @@
-import stateForConfiguration from '../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration'
+import stateForConfiguration from '../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration.js'
 import _ from 'underscore'
-import _migrations from '../../migrations'
-import adaptConfiguration from './adaptConfiguration'
-import MigrationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState'
-import ValidationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/validationState'
-import ParseServerInstanceGetRunningInstance from '../../../../../utils/utilsDatabase/classes/parseServerInstance/functions/getRunningInstance'
+import _migrations from '../../migrations.js'
+import adaptConfiguration from './adaptConfiguration/index.js'
+import MigrationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState.js'
+import ValidationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/validationState.js'
+import ParseServerInstanceGetRunningInstance from '../../../../../utils/utilsDatabase/classes/parseServerInstance/functions/getRunningInstance.js'
 
 const MAX_ATTEMPTS = 15
 //const MAX_DURATION = 60 * 60 //in second

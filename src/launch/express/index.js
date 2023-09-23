@@ -1,6 +1,6 @@
-import express from "express";
+import express from "express"
 
 export default () => {
-  const app = express();
-  return app;
-};
+  const app = express()
+  return app
+}

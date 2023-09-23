@@ -1,7 +1,7 @@
-import getStateForConfiguration from "../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration"
-import adaptProtocols from "../../../utils/adaptProtocols"
+import getStateForConfiguration from "../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration.js"
+import adaptProtocols from "../../../utils/adaptProtocols.js"
 // import adaptAppConfigBeforeSave from "../../../utils/adaptAppConfigBeforeSave"
-import MigrationStateEnum from "../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState"
+import MigrationStateEnum from "../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState.js"
 
 export default async (props) => {
   const item = await getStateForConfiguration(props)

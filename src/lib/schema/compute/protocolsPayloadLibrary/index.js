@@ -1,6 +1,5 @@
-import _ from 'underscore'
 
-import protocolPath from './protocolPath'
+import protocolPath from './protocolPath.js'
 
 export default async (props) => {
   const path = await protocolPath(props)

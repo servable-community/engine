@@ -1,4 +1,4 @@
-import cacheFn from './cache'
+import cacheFn from './cache/index.js'
 
 export default class ServableExpress {
   _app = null

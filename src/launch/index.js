@@ -1,18 +1,18 @@
-import ServableClass from "../servable"
-import createHttpServer from "./httpServer"
-import expressApp from "./express"
-import seed from "./seed"
-import liveServer from "./liveServer"
-import registerClasses from "./registerParseSubClasses"
-import wireSchema from "./wireSchema"
-import afterInit from "./afterInit"
-import beforeInit from "./beforeInit"
-import start from "./start"
+import ServableClass from "../servable/index.js"
+import createHttpServer from "./httpServer/index.js"
+import expressApp from "./express/index.js"
+import seed from "./seed/index.js"
+import liveServer from "./liveServer/index.js"
+import registerClasses from "./registerParseSubClasses/index.js"
+import wireSchema from "./wireSchema/index.js"
+import afterInit from "./afterInit/index.js"
+import beforeInit from "./beforeInit/index.js"
+import start from "./start/index.js"
 import adaptConfig from "../utils/adaptConfig/index.js"
-import printEnd from './_messages/end'
+import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
-import { compute } from "../lib/schema"
-import config from "./config"
+import { compute } from "../lib/schema/index.js"
+import config from "./config/index.js"
 
 export default async props => {
   const { servableEngineConfig } = props

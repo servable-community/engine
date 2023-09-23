@@ -1,7 +1,6 @@
-import getMigrationsPayload from "../migrationsPayload"
-import adaptProtocols from "../utils/adaptProtocols"
+import getMigrationsPayload from "../migrationsPayload/index.js"
+import adaptProtocols from "../utils/adaptProtocols.js"
 // Import { sha256, } from 'js-sha256'
-import { diff } from 'json-diff'
 
 export default async ({ schema, stateItem }) => {
   const storedProtocolsStruct = stateItem.protocols

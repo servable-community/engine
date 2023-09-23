@@ -1,6 +1,6 @@
-import tearDown from "../../tearDown"
-import uriComps from "./uriComps"
-import copyCollection from './copyCollection'
+import tearDown from "../../tearDown/index.js"
+import uriComps from "./uriComps.js"
+import copyCollection from './copyCollection.js'
 
 export default async (props) => {
   const {

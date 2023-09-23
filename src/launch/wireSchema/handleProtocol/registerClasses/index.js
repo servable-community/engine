@@ -1,27 +1,27 @@
-import registerTriggers from './registerTriggers'
-import registerCloudCode from '../registerCloudCode'
-import registerJobs from '../registerJobs'
+import registerTriggers from './registerTriggers/index.js'
+import registerCloudCode from '../registerCloudCode/index.js'
+import registerJobs from '../registerJobs/index.js'
 
 export default async (props) => {
-    const {
-        items,
-        protocol
-    } = props
+  const {
+    items,
+    protocol
+  } = props
 
-    return Promise.all(items.map(async item => {
-        await registerTriggers({ ...props, item })
+  return Promise.all(items.map(async item => {
+    await registerTriggers({ ...props, item })
 
-        const { className } = item
+    const { className } = item
 
-        const prefix = protocol.id === 'app'
-            ? null
-            // : `${protocol.id}${capitalizeFirstLetter(className)}`
-            : `${protocol.id}`
+    const prefix = protocol.id === 'app'
+      ? null
+      // : `${protocol.id}${capitalizeFirstLetter(className)}`
+      : `${protocol.id}`
 
-        const functions = await protocol.loader.classFunctions({ className })
-        await registerCloudCode({ files: functions, prefix })
+    const functions = await protocol.loader.classFunctions({ className })
+    await registerCloudCode({ files: functions, prefix })
 
-        const jobFiles = await protocol.loader.classJobs({ className })
-        await registerJobs({ files: jobFiles, prefix })
-    }))
+    const jobFiles = await protocol.loader.classJobs({ className })
+    await registerJobs({ files: jobFiles, prefix })
+  }))
 }

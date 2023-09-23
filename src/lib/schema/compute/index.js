@@ -1,7 +1,7 @@
-import _protocolsPayloadLibrary from "./protocolsPayloadLibrary"
-import * as ProtocolsFactory from "../../../protocol/factory"
-import getProtocolsLiveClasses from "./getProtocolsLiveClasses"
-import generateAllSchemas from "./generateAllSchemas"
+import _protocolsPayloadLibrary from "./protocolsPayloadLibrary/index.js"
+import * as ProtocolsFactory from "../../../protocol/factory/index.js"
+import getProtocolsLiveClasses from "./getProtocolsLiveClasses.js"
+import generateAllSchemas from "./generateAllSchemas/index.js"
 import adaptConfig from "../../../utils/adaptConfig/index.js"
 
 export default async ({ servableEngineConfig }) => {

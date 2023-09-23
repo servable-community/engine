@@ -1,7 +1,7 @@
-import Messaging from "./messaging"
-import _parse from './parse'
+import Messaging from "./messaging/index.js"
+import _parse from './parse/index.js'
 import Agenda from "agenda"
-import Express from './express'
+import Express from './express/index.js'
 
 export default class Servable {
   _express = null

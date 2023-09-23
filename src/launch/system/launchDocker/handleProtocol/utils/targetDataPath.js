@@ -1,5 +1,5 @@
-import targetDockerPath from './targetDockerPath'
+import targetDockerPath from './targetDockerPath.js'
 
 export default (props) => {
-    return `${targetDockerPath(props)}/data`
+  return `${targetDockerPath(props)}/data`
 }

@@ -1,4 +1,4 @@
-import doLaunch from "../doLaunch"
+import doLaunch from "../doLaunch/index.js"
 
 export default async ({ schema, configuration, app }) => {
 

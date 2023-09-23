@@ -1,5 +1,5 @@
-import perform from '../../perform'
-import doLaunch from '../../../launchers/doLaunch'
+import perform from '../../perform/index.js'
+import doLaunch from '../../../launchers/doLaunch/index.js'
 
 export default async (props) => {
   const {

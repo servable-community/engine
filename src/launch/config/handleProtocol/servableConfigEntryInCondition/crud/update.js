@@ -1,5 +1,5 @@
-import fill from "./fill"
+import fill from "./fill.js"
 
 export default async (props) => {
-    fill({ ...props, })
+  fill({ ...props, })
 }

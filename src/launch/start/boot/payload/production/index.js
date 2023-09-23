@@ -1,12 +1,12 @@
-import stateForConfiguration from '../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration'
+import stateForConfiguration from '../../../../../utils/utilsDatabase/classes/parseServerState/functions/stateForConfiguration.js'
 import _ from 'underscore'
-import _migrations from '../../migrations'
+import _migrations from '../../migrations.js'
 
 const MAX_ATTEMPTS = 5
 const MAX_DURATION = 10 //in second
 
-import MigrationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState'
-import ValidationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/validationState'
+import MigrationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState.js'
+import ValidationStateEnum from '../../../../../utils/utilsDatabase/classes/parseServerState/enums/validationState.js'
 
 
 export default async (props) => {

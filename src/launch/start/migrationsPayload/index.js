@@ -1,6 +1,6 @@
-import buildDryPayload from './buildDryPayload'
+import buildDryPayload from './buildDryPayload.js'
 import _ from 'underscore'
-import computeOperations from './computeOperations'
+import computeOperations from './computeOperations.js'
 
 export default async (props) => {
   const { a, b } = props

@@ -1,5 +1,5 @@
 import semver from 'semver'
-import hydrateItem from './hydrateItem'
+import hydrateItem from './hydrateItem.js'
 
 export default async ({ payload, protocol }) => {
   const { from, to, direction } = payload

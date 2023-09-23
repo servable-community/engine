@@ -1,10 +1,10 @@
-import launchWithNoMigration from '../launchers/launchWithNoMigration'
-import migrate from '../migrate'
-import quit from './quit'
-import qualifyStaging from './payload/staging'
-import qualifyProduction from './payload/production'
-import didConsumeValidation from '../launchers/auxiliary/didConsumeValidation'
-import tearDownDecoydatabase from "../migrate/configuration/utils/decoyDatabase/tearDown"
+import launchWithNoMigration from '../launchers/launchWithNoMigration/index.js'
+import migrate from '../migrate/index.js'
+import quit from './quit.js'
+import qualifyStaging from './payload/staging/index.js'
+import qualifyProduction from './payload/production/index.js'
+import didConsumeValidation from '../launchers/auxiliary/didConsumeValidation/index.js'
+import tearDownDecoydatabase from "../migrate/configuration/utils/decoyDatabase/tearDown/index.js"
 
 export default async (props) => {
   const { servableEngineConfig, app, schema } = props

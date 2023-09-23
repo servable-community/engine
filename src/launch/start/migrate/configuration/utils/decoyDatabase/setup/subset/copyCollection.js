@@ -1,5 +1,5 @@
 import moment from 'moment'
-import firstEntryInCollection from './firstEntryInCollection'
+import firstEntryInCollection from './firstEntryInCollection.js'
 
 export default async ({
   sourceComps,

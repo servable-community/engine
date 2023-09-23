@@ -1,4 +1,4 @@
-import getModuleDir from '../../../../launch/utils/getModuleDir'
+import getModuleDir from '../../../../launch/utils/getModuleDir.js'
 
 export default (item) => {
   const protocolPath = getModuleDir(item)

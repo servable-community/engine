@@ -1,9 +1,9 @@
-import perform from '../../perform'
-import setupDecoydatabase from '../utils/decoyDatabase/setup/subset'
+import perform from '../../perform/index.js'
+import setupDecoydatabase from '../utils/decoyDatabase/setup/subset/index.js'
 // import tearDownDecoydatabase from '../utils/decoyDatabase/tearDown'
-import doLaunch from '../../../launchers/doLaunch'
+import doLaunch from '../../../launchers/doLaunch/index.js'
 // import adaptConfigToConfiguration from './adaptConfigToConfiguration'
-import launchWithMigration from '../../../launchers/launchWithMigration'
+import launchWithMigration from '../../../launchers/launchWithMigration/index.js'
 
 export default async (props) => {
   const {

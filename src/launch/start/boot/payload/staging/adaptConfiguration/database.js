@@ -1,4 +1,4 @@
-import generateSourcesFromUri from "../generateSourcesFromUri"
+import generateSourcesFromUri from "../generateSourcesFromUri.js"
 
 export default async (props) => {
   const { configuration } = props

@@ -1,5 +1,5 @@
 import boot from './boot'
-import handleDistribution from './handleDistribution'
+import handleDistribution from './handleDistribution/index.js'
 
 export default async (props) => {
   const { servableEngineConfig } = props

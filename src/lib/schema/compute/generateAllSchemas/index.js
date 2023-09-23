@@ -1,6 +1,6 @@
-import extractProtocol from './extractProtocol'
-import updateProtocolsExcerpt from './updateProtocolsExcerpt'
-import proxyProtocolsLibrary from './proxyProtocolsPayloadLibrary'
+import extractProtocol from './extractProtocol/index.js'
+import updateProtocolsExcerpt from './updateProtocolsExcerpt.js'
+import proxyProtocolsLibrary from './proxyProtocolsPayloadLibrary.js'
 
 /**
 * @description Generate schema for a given protocol.

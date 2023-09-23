@@ -1,5 +1,6 @@
-import duplicate from "../../../../../../utils/configuration/mongo/duplicate"
-import tearDown from "../../tearDown"
+//#TODO
+import duplicate from "../../../../../../utils/mongo/duplicate.js"
+import tearDown from "../../tearDown/index.js"
 
 export default async (props) => {
   const {

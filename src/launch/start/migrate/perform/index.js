@@ -1,8 +1,8 @@
-import didMigrateStepSuccessfully from '../../launchers/auxiliary/didMigrateStepSuccessfully'
-import launchWithMigration from '../../launchers/launchWithMigration'
-import extractSchema from '../../../../lib/schema/compute'
+import didMigrateStepSuccessfully from '../../launchers/auxiliary/didMigrateStepSuccessfully/index.js'
+import launchWithMigration from '../../launchers/launchWithMigration/index.js'
+import extractSchema from '../../../../lib/schema/compute/index.js'
 import Bluebird from 'bluebird'
-import handleTask from './handleTask'
+import handleTask from './handleTask.js'
 
 export default async (props) => {
   const { servableEngineConfig, migrationPayload, configuration, app } = props

@@ -1,4 +1,4 @@
-import * as ProtocolsFactory from '../../../../protocol/factory'
+import * as ProtocolsFactory from '../../../../protocol/factory/index.js'
 
 export default async ({ protocolsPayloadLibrary, protocolPayload, options }) => {
   // const { id } = protocolPayload

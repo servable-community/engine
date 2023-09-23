@@ -1,5 +1,5 @@
-import MigrationStateEnum from "../../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState"
-import quit from "../../../../boot/quit"
+import MigrationStateEnum from "../../../../../../utils/utilsDatabase/classes/parseServerState/enums/migrationState.js"
+import quit from "../../../../boot/quit.js"
 
 export default async (props) => {
   const { item } = props
