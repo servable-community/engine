@@ -1,6 +1,6 @@
-import get from "../crud/get"
-import create from "../crud/create"
-import prepareModel from "./prepareModel"
+import get from "../crud/get.js"
+import create from "../crud/create.js"
+import prepareModel from "./prepareModel.js"
 
 export default async (props) => {
   const { entityId, type } = props
