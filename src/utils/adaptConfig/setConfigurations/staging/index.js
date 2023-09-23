@@ -1,4 +1,4 @@
-import production from "../production.js"
+import production from "../production/index.js"
 
 export default (props) => {
   const configuration = production(props)
