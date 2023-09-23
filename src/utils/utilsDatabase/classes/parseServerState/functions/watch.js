@@ -1,4 +1,4 @@
-import schema from "../schema"
+import schema from "../schema/index.js"
 import mongoose from 'mongoose'
 import getById from "../crud/getById.js"
 
