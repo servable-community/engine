@@ -2,18 +2,21 @@
   "name": "servable-engine",
   "type": "module",
   "source": "src/index.js",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "version": "0.0.0-development",
   "description": "Servable engine for Parse.",
   "author": "Aboubacar Doucoure",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yelounak/servable-engine/issues"
   },
   "homepage": "https://github.com/yelounak/servable-engine#readme",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
@@ -27,6 +30,8 @@
     "access": "public"
   },
   "scripts": {
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "dev": "microbundle-crl watch",
     "test_": "echo \"Error: no test specified\" && exit 1",
     "semantic-release": "semantic-release",
     "acp": "git add . && npm run commit && git push",
@@ -99,6 +104,7 @@
     "yaml": "^2.3.0"
   },
   "devDependencies": {
+    "microbundle-crl": "^0.13.11",
     "@size-limit/preset-small-lib": "^4.10.2",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^6.8.0",
