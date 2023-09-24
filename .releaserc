@@ -4,7 +4,6 @@
     "main",
     "next",
     "next-major",
-    "dist",
     {
       "name": "beta",
       "prerelease": true
