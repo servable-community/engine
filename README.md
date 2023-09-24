@@ -4,7 +4,7 @@
 > Servable is still experimental and its api may change in the future.
 
 > [!WARNING]
-> @next version
+> dist version
 
 ![logo](/static/img/polar-bear-4.png)
 
