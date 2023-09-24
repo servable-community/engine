@@ -3,9 +3,6 @@
 > [!WARNING]
 > Servable is still experimental and its api may change in the future.
 
-> [!WARNING]
-> dist version
-
 ![logo](/static/img/polar-bear-4.png)
 
 [![npm Package](https://img.shields.io/npm/v/servable-engine.svg?style=flat-square)](https://www.npmjs.org/package/servable-engine)
@@ -23,6 +20,26 @@ Servable engine is used by the Servable CLI to generate new projects.
 ```bash
 yarn add servable-engine
 ```
+
+
+## Quickstart
+
+
+To make use of servable-engine you need [generator-servable](https://github.com/yelounak/generator-servable)
+
+The Yeoman generator will walk you through the steps required to create your app or protocol prompting for the required information.
+
+```bash
+yarn global add yo
+yarn global add generator-servable
+```
+
+To launch the generator simply type:
+
+```bash
+yo servable
+```
+
 
 **Servable** is a Node JS framework built on top of Express JS and Parse Server and tailored for protocols. It provides a concise, easy to use and scalable template to get the best of Parse Server and protocols.
 

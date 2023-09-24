@@ -4,7 +4,7 @@
   "source": "src/index.js",
   "main": "src/index.js",
   "version": "0.0.0-development",
-  "description": "Servable engine for Parse.",
+  "description": "Servable engine",
   "author": "Aboubacar Doucoure",
   "license": "ISC",
   "bugs": {
