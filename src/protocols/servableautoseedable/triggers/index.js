@@ -10,7 +10,7 @@ export const afterDelete = async ({ request }) => {
 export const beforeSave = async ({ request }) => {
   const { object, context, user, } = request
   const { seedFillMode } = context
-  // console.log('seed', seedFillMode)
+  // console.log("[Servable]", 'seed', seedFillMode)
   // switch (seedFillMode) {
   //     case 'auto': break
   //     default: {

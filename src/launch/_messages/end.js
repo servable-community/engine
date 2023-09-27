@@ -1,32 +1,32 @@
 import quotePlain from "../../utils/quotePlain.js"
 
 export default () => {
-  console.log(``)
-  console.log(``)
-  console.log(
+  console.log("[Servable]", ``)
+  console.log("[Servable]", ``)
+  console.log("[Servable]",
     `⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯`
   )
-  console.log(
+  console.log("[Servable]",
     `⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯`
   )
-  console.log(`Finished launching Servable endpoint 🚀`)
-  console.log(`--------`)
-  // console.log(`“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.”
+  console.log("[Servable]", `Finished launching Servable endpoint 🚀`)
+  console.log("[Servable]", `--------`)
+  // console.log("[Servable]", `“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.”
   //   ― Albert Einstein`);
-  console.log(quotePlain())
+  console.log("[Servable]", quotePlain())
 
-  console.log(
+  console.log("[Servable]",
     `⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯`
   )
-  console.log(
+  console.log("[Servable]",
     `⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯`
   )
-  console.log(`🚀 … 🚀 … 🚀 … 🚀 … 🚀 … 🚀 … 🚀 … 🚀 …`)
-  console.log(
+  console.log("[Servable]", `🚀 … 🚀 … 🚀 … 🚀 … 🚀 … 🚀 … 🚀 … 🚀 …`)
+  console.log("[Servable]",
     `⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯`
   )
-  // Console.log(`🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀`)
-  // console.log(`Oh, my love, my darling
+  // console.log("[Servable]", `🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀`)
+  // console.log("[Servable]", `Oh, my love, my darling
   //   I've hungered for your touch
   //   A long, lonely time
   //   Time goes by so slowly

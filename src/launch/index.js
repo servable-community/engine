@@ -33,13 +33,13 @@ export default async props => {
 
     const serverStruct = await start({ app, servableEngineConfig, schema: _schema })
     if (!serverStruct) {
-      console.log("Could not create a server")
+      console.log("[Servable]", "Could not create a server")
       return
     }
 
     const { schema, server, configuration } = serverStruct
     if (configuration.params.skipWiring) {
-      console.log("Finished launching a configuration that doesnt require wiring")
+      console.log("[Servable]", "Finished launching a configuration that doesnt require wiring")
       return
     }
 
@@ -58,7 +58,7 @@ export default async props => {
 
     const i = await Servable.Config.get('defaultLocale', { locale: "en_US" })
     const a = await Servable.Config.get('defaultLocale', { locale: "en_US", object: null, protocol: { id: 'countryable' } })
-    console.log('--------Config:', i)
+    console.log("[Servable]", '--------Config:', i)
     printEnd()
   } catch (e) {
     console.error(e)

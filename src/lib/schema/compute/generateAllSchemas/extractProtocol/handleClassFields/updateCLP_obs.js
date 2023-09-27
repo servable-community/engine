@@ -4,7 +4,7 @@ export default async ({ items }) => {
 
 const updateClassCLP = async (item) => {
     try {
-        console.log('------------------------ updating CLP', item.className)
+        console.log("[Servable]", '------------------------ updating CLP', item.className)
         const object = new Servable.App.Schema(item.className)
         const { classLevelPermissions } = item
         object.setCLP(classLevelPermissions)

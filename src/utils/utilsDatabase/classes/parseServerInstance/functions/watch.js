@@ -6,7 +6,7 @@ export default async (props) => {
   const { onShouldQuit, } = props
   const model = mongoose.model('ParseServerState', schema)
   model.watch().on('change', async data => {
-    //   console.log('ParseServerState changed:', data)
+    //   console.log("[Servable]", 'ParseServerState changed:', data)
     //   let item = await get({ model })
     //   if (!item) {
     //     return

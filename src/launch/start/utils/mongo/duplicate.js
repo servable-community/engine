@@ -22,7 +22,7 @@ export default async (props) => {
     })
     console.time('copyDB')
     for await (const { total, write } of transferer) {
-      console.log(`remaining bytes to write: ${total - write}`)
+      console.log("[Servable]", `remaining bytes to write: ${total - write}`)
       progress && progress({ total, write })
     }
     console.timeEnd('copyDB')

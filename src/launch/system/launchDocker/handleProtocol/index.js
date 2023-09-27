@@ -57,7 +57,7 @@ export default async (props) => {
         // ['--remove-orphans']
       ],
       callback: chunk => {
-        console.log(`Docker compose up job in progres for ${item.id}: `, chunk.toString())
+        console.log("[Servable]", `Docker compose up job in progres for ${item.id}: `, chunk.toString())
       }
     })
 

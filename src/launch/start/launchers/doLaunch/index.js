@@ -32,7 +32,7 @@ export default async ({ config, serverCloseComplete, app }) => {
         parseConfig.schema.beforeMigration()
       }
 
-      console.log("\n")
+      console.log("[Servable]", "\n")
       if (parseConfig.schema && parseConfig.schema.definitions) {
         console.debug(
           `---------------- 🧨 ${parseConfig.schema.definitions.length
@@ -42,22 +42,22 @@ export default async ({ config, serverCloseComplete, app }) => {
         )
       }
 
-      console.log("\n")
+      console.log("[Servable]", "\n")
       parseConfig.liveClasses &&
         console.debug(
           `---------------- ⚡️ ${parseConfig.liveClasses.length
           } live classes ⚡️:\n ${liveClasses.map(a => ` ${a}`)}`
         )
-      console.log("\n")
-      console.log("---------------- 🧐 launching migration 😰😰")
-      console.log("\n")
+      console.log("[Servable]", "\n")
+      console.log("[Servable]", "---------------- 🧐 launching migration 😰😰")
+      console.log("[Servable]", "\n")
     },
     afterMigration: async () => {
       if (parseConfig.schema && parseConfig.schema.afterMigration) {
         parseConfig.schema.afterMigration()
       }
 
-      console.log("---------------- 🥰 afterMigration 😍😍")
+      console.log("[Servable]", "---------------- 🥰 afterMigration 😍😍")
     }
   }
 
@@ -83,7 +83,7 @@ export default async ({ config, serverCloseComplete, app }) => {
     const server = new ParseServer({
       ...options,
       serverCloseComplete: async () => {
-        console.log("serverCloseComplete")
+        console.log("[Servable]", "serverCloseComplete")
         serverCloseComplete && serverCloseComplete()
       },
       serverStartComplete: async error => {
@@ -95,7 +95,7 @@ export default async ({ config, serverCloseComplete, app }) => {
           return
         }
 
-        console.log(
+        console.log("[Servable]",
           "---------------- 😍😍 serverStartComplete, resolving 😍😍"
         )
         resolve(server)
