@@ -65,7 +65,6 @@ export default async (props) => {
   object.set('uniqueRef', uniqueRef)
   const context = { manualableMode: 'auto' }
 
-  // console.log(object)
   await object.save(null, { useMasterKey: true, ...context })
   return object
 }

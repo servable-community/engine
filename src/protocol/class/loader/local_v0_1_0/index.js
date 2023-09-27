@@ -200,7 +200,7 @@ export default class ProtocolLoaderLocal extends Base {
     _path = `${path}/transformer.js`
     if ((await checkFileExists(_path))) {
       result.transformer = (await import(_path)).default
-      console.log(result.transformer)
+      // console.log(result.transformer)
     }
 
     _path = `${path}/validator.js`

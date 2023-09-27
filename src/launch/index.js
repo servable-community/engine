@@ -23,8 +23,6 @@ export default async props => {
   const _schema = await compute({ servableEngineConfig })
   await launchSystem({ schema: _schema, servableEngineConfig })
 
-
-  // return
   try {
 
     const app = expressApp()
