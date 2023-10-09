@@ -5,12 +5,12 @@
   "main": "src/index.js",
   "version": "0.0.0-development",
   "description": "Servable engine",
-  "author": "Aboubacar Doucoure",
+  "author": "Servable Community",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yelounak/servable-engine/issues"
+    "url": "https://github.com/servable-community/servable-engine/issues"
   },
-  "homepage": "https://github.com/yelounak/servable-engine#readme",
+  "homepage": "https://github.com/servable-community/servable-engine#readme",
   "files": [
     "dist",
     "src"
@@ -44,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yelounak/servable-engine.git"
+    "url": "https://github.com/servable-community/servable-engine.git"
   },
   "keywords": [
     "parse",

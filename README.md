@@ -7,7 +7,7 @@
 
 [![npm Package](https://img.shields.io/npm/v/servable-engine.svg?style=flat-square)](https://www.npmjs.org/package/servable-engine)
 [![NPM Downloads](https://img.shields.io/npm/dm/servable-engine.svg)](https://npmjs.org/package/servable-engine)
-[![Build Status](https://github.com/yelounak/servable-engine/actions/workflows/release.yml/badge.svg)](https://github.com/yelounak/servable-engine/actions/tests.yml)
+[![Build Status](https://github.com/servable-community/servable-engine/actions/workflows/release.yml/badge.svg)](https://github.com/servable-community/servable-engine/actions/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -27,7 +27,7 @@ yarn add servable-engine
 ## Quickstart
 
 
-To make use of servable-engine you need [generator-servable](https://github.com/yelounak/generator-servable)
+To make use of servable-engine you need [generator-servable](https://github.com/servable-community/generator-servable)
 
 The Yeoman generator will walk you through the steps required to create your app or protocol prompting for the required information.
 
@@ -60,7 +60,7 @@ Just like a docker image is made to be platform agnostic, a protocol is designed
 The Servable object acts as a central orchestrator. It holds references to objects every protocol can access (for example the current express app, the Parse Server instance, etc). It can also be used to register special methods provided by protocols and that might be used by other protocols, without knowing the source protocol of the method. For example, an emailable protocol if declared in a ServableApp object will register its implementation of a **sendWithTemplate** method in Servable.Emailing. This API will be used by other protocols to send emails by following its specific specification.
 
 ## Why Servable?
-At @yelounak we created the protocols in our Node JS + Parse server project. What was an experience to ease the backend development quickly became a good practice that helped us keep a clean codebase. They worked so well we decided to streamline their integration with the code base for future projects. We were inspired by the powerful ways NextJs improved the React experience by providing an efficient template on top of it. Yet we did not want to hide the Parse Server framework behind ours as we truly love Parse. Servable allows to tap into all the existing and upcoming Parse features and yet it dramatically simplifies the development process. A well designed Servable project will comprise almost nothing more than the actual classes and business logic of the platform, other repetitive functions and logics will use existing protocols implemented by the community or entreprise-private protocols.
+At @servable-community we created the protocols in our Node JS + Parse server project. What was an experience to ease the backend development quickly became a good practice that helped us keep a clean codebase. They worked so well we decided to streamline their integration with the code base for future projects. We were inspired by the powerful ways NextJs improved the React experience by providing an efficient template on top of it. Yet we did not want to hide the Parse Server framework behind ours as we truly love Parse. Servable allows to tap into all the existing and upcoming Parse features and yet it dramatically simplifies the development process. A well designed Servable project will comprise almost nothing more than the actual classes and business logic of the platform, other repetitive functions and logics will use existing protocols implemented by the community or entreprise-private protocols.
 
 ## Should you use Servable?
 Servable is likely a good fit for you if...
@@ -94,4 +94,4 @@ Servable comes bundled with Parse Server that sets up a working set of tables th
 
 ## License
 
-MIT © [yelounak](https://github.com/yelounak)
+MIT © [servable-community](https://github.com/servable-community)
