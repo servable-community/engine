@@ -56,9 +56,9 @@ export default async props => {
     await afterInit({ app, schema, configuration, server, servableEngineConfig })
     /////////////////////////////
 
-    const i = await Servable.Config.get('defaultLocale', { locale: "en_US" })
-    const a = await Servable.Config.get('defaultLocale', { locale: "en_US", object: null, protocol: { id: 'countryable' } })
-    console.log("[Servable]", '--------Config:', i)
+    // const i = await Servable.Config.get('defaultLocale', { locale: "en_US" })
+    // const a = await Servable.Config.get('defaultLocale', { locale: "en_US", object: null, protocol: { id: 'countryable' } })
+    // console.log("[Servable]", '--------Config:', i)
     printEnd()
   } catch (e) {
     console.error(e)
