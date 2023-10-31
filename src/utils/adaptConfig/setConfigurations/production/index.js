@@ -52,7 +52,7 @@ export default (props) => {
         liveQuery: {
           ...(payload.liveQueryServiceUri
             ? {
-              redisURL: payload.liveQueryServiceUri
+              redisURL: payload.liveQueryServiceUri ? payload.liveQueryServiceUri : process.env.SERVABLE_REDIS_LIVESERVER_DB_URI
             }
             : {})
         },
@@ -74,7 +74,7 @@ export default (props) => {
           secretKey: process.env.SERVABLE_OBJECTSTORAGE_ROOT_PASSWORD,
           bucket: process.env.SERVABLE_OBJECTSTORAGE_BUCKET_NAME,
           direct: false,
-          endPoint: payload.filesAdapterEndPoint
+          endPoint: payload.filesAdapterEndPoint ? payload.filesAdapterEndPoint : process.env.SERVABLE_OBJECTSTORAGE_ENDPOINT
         }
       },
       cacheAdapter: configuration.config.parse.cacheAdapter
