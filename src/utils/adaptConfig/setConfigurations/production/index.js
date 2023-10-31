@@ -12,7 +12,7 @@ export default (props) => {
     lock: {
       enabled: true,
       ...(props.configuration.lock ? props.configuration.lock : {}),
-      databaseURI: payload.utilsDatabaseURI,
+      databaseURI: payload.utilsDatabaseURI ? payload.utilsDatabaseURI : process.env.SERVABLE_UTILS_DATABASE_URI,
     },
     config: {
       ...(props.configuration.config ? props.configuration.config : {}),
@@ -59,7 +59,7 @@ export default (props) => {
         schema: {},
         mountPath: process.env.SERVABLE_MOUNT || "/parse",
         ...((props.configuration.config && props.configuration.config.parse) ? props.configuration.config.parse : {}),
-        databaseURI: payload.databaseURI,
+        databaseURI: payload.databaseURI ? payload.databaseURI : process.env.SERVABLE_DATABASE_URI,
       },
     },
   }
