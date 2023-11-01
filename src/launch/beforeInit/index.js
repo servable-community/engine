@@ -5,7 +5,7 @@ export default async (props) => {
   const {
     protocols
   } = schema
-
+  console.log("[Servable]", `Launch > Before init > Start`)
   await Promise.all(protocols.map(async item => {
     await handleProtocol({
       ...props,
@@ -13,4 +13,5 @@ export default async (props) => {
       allProtocols: protocols
     })
   }))
+  console.log("[Servable]", `Launch > Before init > Success`)
 }

@@ -25,17 +25,22 @@ export default async props => {
 
   try {
 
+    console.log("[Servable]", `Launch > Start`)
     const app = expressApp()
     Servable.Express.app = app
-
+    console.log("[Servable]", `Launch > created an expres app`)
     const httpServer = await createHttpServer({ app })
     Servable.httpServer = httpServer
+    console.log("[Servable]", `Launch > created a http server`)
 
+    console.log("[Servable]", `Launch > starting the parse server`)
     const serverStruct = await start({ app, servableEngineConfig, schema: _schema })
     if (!serverStruct) {
-      console.log("[Servable]", "Could not create a server")
+      console.log("[Servable]", `Launch > failed creating the parse server`)
       return
     }
+
+    console.log("[Servable]", `Launch > started the parse server`)
 
     const { schema, server, configuration } = serverStruct
     if (configuration.params.skipWiring) {
@@ -44,7 +49,7 @@ export default async props => {
     }
 
     Servable.publicUrl = configuration.config.parse.publicServerURL
-
+    console.log("[Servable]", `Launch > set public server url`, Servable.publicServerURL)
     /////////////////////////////
 
     await beforeInit({ app, schema, configuration, server, servableEngineConfig })

@@ -35,8 +35,8 @@ export default async ({ config, serverCloseComplete, app }) => {
       console.log("[Servable]", "\n")
       if (parseConfig.schema && parseConfig.schema.definitions) {
         console.debug(
-          `---------------- 🧨 ${parseConfig.schema.definitions.length
-          } classes 🧨:\n ${parseConfig.schema.definitions.map(
+          `---------------- 🍯 ${parseConfig.schema.definitions.length
+          } classes 🍯:\n ${parseConfig.schema.definitions.map(
             a => ` ${a.className}`
           )}`
         )

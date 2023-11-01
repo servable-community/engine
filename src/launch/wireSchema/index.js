@@ -11,5 +11,5 @@ export default async ({ schema }) => {
       allProtocols: protocols
     })
   }))
-  console.log("[Servable]", `Launch > Live query > Success`)
+  console.log("[Servable]", `Launch > Wire schema > Success`)
 }

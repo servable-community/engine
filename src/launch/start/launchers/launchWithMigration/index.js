@@ -12,7 +12,7 @@ export default async (props) => {
 
   const migrationSchema = {
     beforeMigration: () => {
-      console.debug(`---------------- 💊 ${schema.protocols.length} protocols 💊:\n ${schema.protocols.map(a => ` ${a.id}${(a.type === 'app') ? ' (app)' : ''}`)}`)
+      console.debug(`---------------- 🐝 ${schema.protocols.length} protocols 🐝:\n ${schema.protocols.map(a => ` ${a.id}${(a.type === 'app') ? ' (app)' : ''}`)}`)
       state = 1
     },
     afterMigration: async () => {
