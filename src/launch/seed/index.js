@@ -9,7 +9,7 @@ export default async (props) => {
     protocols
   } = schema
   try {
-    console.log("[Servable]", `Launch > Seed > Start`)
+    console.log("[Servable]", `Launch > Seed > Start >`)
     const items = _.flatten(await Promise.all(protocols.map(async item =>
       protocolCandidates({
         item,
