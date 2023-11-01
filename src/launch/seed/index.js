@@ -8,7 +8,7 @@ export default async (props) => {
   const {
     protocols
   } = schema
-
+  console.log("[Servable]", `Launch > Seed > Start`)
   const items = _.flatten(await Promise.all(protocols.map(async item =>
     protocolCandidates({
       item,
@@ -22,4 +22,5 @@ export default async (props) => {
     async item => {
       return handleProtocol({ ...props, operationProps: props, items, item, cache })
     })
+  console.log("[Servable]", `Launch > Seed > End`)
 }
