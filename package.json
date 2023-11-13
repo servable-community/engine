@@ -48,7 +48,8 @@
   },
   "keywords": [
     "parse",
-    "server"
+    "server",
+    "servable"
   ],
   "prettier": {
     "printWidth": 80,
