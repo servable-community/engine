@@ -7,6 +7,10 @@ export default async ({
   try {
     const { className } = item
 
+    if (className === "_Session") {
+      return
+    }
+
     const classTriggers = await protocol.loader.classTriggers({ className })
     if (!classTriggers) {
       // return
