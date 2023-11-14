@@ -47,6 +47,24 @@ export default async ({
         console.error(`[Class ${className}] ⚠️ afterDelete`, e.message)
       }
     })
+
+    // Servable.App.Cloud.beforeFind(className, async (request) => {
+    //   try {
+    //     await ProtocolTriggers.beforeFind({ request, protocol, allProtocols })
+    //     classTriggers && classTriggers.beforeFind && await classTriggers.beforeFind({ request, protocol })
+    //   } catch (e) {
+    //     console.error(`[Class ${className}] ⚠️ beforeFind`, e.message)
+    //   }
+    // })
+
+    // Servable.App.Cloud.afterFind(className, async (request) => {
+    //   try {
+    //     await ProtocolTriggers.afterFind({ request, protocol, allProtocols })
+    //     classTriggers && classTriggers.afterFind && await classTriggers.afterFind({ request, protocol })
+    //   } catch (e) {
+    //     console.error(`[Class ${className}] ⚠️ afterFind`, e.message)
+    //   }
+    // })
   }
   catch (e) {
     if (e.code !== 'ERR_MODULE_NOT_FOUND') {

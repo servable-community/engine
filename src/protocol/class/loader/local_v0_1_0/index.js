@@ -9,6 +9,15 @@ import importJSDefault from './utils/importJSDefault.js'
 import importJSONDefault from './utils/importJSONDefault.js'
 import importJSONAsync from '../../../../utils/importJSONAsync.js'
 
+const triggerItems = [
+  'beforeFind',
+  'afterFind',
+  'beforeDelete',
+  'afterDelete',
+  'beforeSave',
+  'afterSave'
+]
+
 export default class ProtocolLoaderLocal extends Base {
   _path = null
   _protocol = null
@@ -92,6 +101,38 @@ export default class ProtocolLoaderLocal extends Base {
   }
 
   async classTriggers({ className }) {
+    const cacheKey = 'classTriggers'
+    if (this._valueInCache(cacheKey)) {
+      return this._valueInCache(cacheKey)
+    }
+
+    const prefix = `${this.path}/classes/${className}/triggers`
+
+
+    const data = {}
+    for (var i = 0; i < triggerItems.length; i++) {
+      const item = triggerItems[i]
+      const path = `${prefix}/${item}.js`
+      if (!(await checkFileExists(path))) {
+        continue
+      }
+
+      const itemData = (await import(path))
+      if (!itemData || !itemData.default) {
+        continue
+      }
+
+      data[item] = itemData.default
+    }
+
+    if (Object.keys(data).length > 0) {
+      return data
+    }
+
+    return this.classTriggersMerged({ className })
+  }
+
+  async classTriggersMerged({ className }) {
     const cacheKey = 'classTriggers'
     if (this._valueInCache(cacheKey)) {
       return this._valueInCache(cacheKey)
@@ -363,7 +404,53 @@ export default class ProtocolLoaderLocal extends Base {
     return data
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   async triggers() {
+    const cacheKey = 'triggers'
+    if (this._valueInCache(cacheKey)) {
+      return this._valueInCache(cacheKey)
+    }
+
+    const prefix = `${this.path}/triggers`
+
+    const data = {}
+    for (var i = 0; i < triggerItems.length; i++) {
+      const item = triggerItems[i]
+      const path = `${prefix}/${item}.js`
+      if (!(await checkFileExists(path))) {
+        continue
+      }
+
+      const itemData = (await import(path))
+      if (!itemData || !itemData.default) {
+        continue
+      }
+
+      data[item] = itemData.default
+    }
+
+    if (Object.keys(data).length > 0) {
+      return data
+    }
+
+    return this.triggersMerged()
+  }
+
+  async triggersMerged() {
     const cacheKey = 'triggers'
     if (this._valueInCache(cacheKey)) {
       return this._valueInCache(cacheKey)

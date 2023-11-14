@@ -10,11 +10,16 @@ export default async (props) => {
   //     console.log("[Servable]", dd)
   // }
 
-  const className = object.className
-  let items = await protocol.loader.classProtocols({ className })
-  if (!items) {
-    items = []
+  if (!object) {
+    return
   }
+
+  const { className } = object
+  let items = await protocol.loader.classProtocols({ className })
+  if (!items || !items.length) {
+    return
+  }
+
   items = items.map(adaptProtocolPayload)
 
   // const items = object.constructor.protocols

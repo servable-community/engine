@@ -40,3 +40,22 @@ export const afterDelete = async ({ request, allProtocols, protocol, }) => {
     operationName: 'afterDelete'
   })
 }
+
+export const beforeFind = async ({ request, allProtocols, protocol, }) => {
+  await execute({
+    allProtocols,
+    protocol,
+    request,
+    operationName: 'beforeFind'
+  })
+}
+
+
+export const afterFind = async ({ request, allProtocols, protocol, }) => {
+  await execute({
+    allProtocols,
+    protocol,
+    request,
+    operationName: 'afterFind'
+  })
+}
