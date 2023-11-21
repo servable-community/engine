@@ -1,4 +1,4 @@
-import registerItem from "./registerItem"
+import registerItem from "./registerItem.js"
 
 export default async ({ file, prefix }) => {
   try {
