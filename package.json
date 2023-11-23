@@ -91,6 +91,7 @@
     "mongoose": "^6.8.1",
     "mydockerjs": "^2.14.2",
     "parse": "^3.5.1",
+    "parse-comments": "^1.0.0",
     "parse-server": "^5.4.0",
     "parse-server-s3like-adapter": "^2.0.1",
     "parse-server-sendgrid-adapter": "^1.0.0",

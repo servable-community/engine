@@ -1,11 +1,11 @@
-import checkFileExists from './checkFileExists.js'
+import checkFileExists from '../protocol/utils/checkFileExists.js'
 import fs from 'fs'
 import _path from 'path'
 import _ from 'underscore'
 //https://www.npmjs.com/package/directory-import
 
 
-const perform = async ({ path }) => {
+const perform = async ({ path, includeMeta = false }) => {
   try {
     if (!(await checkFileExists(path))) {
       return null
@@ -38,7 +38,14 @@ const perform = async ({ path }) => {
         return null
       }
 
-      return [(await import(__path))]
+      if (includeMeta) {
+        return [{
+          module: (await import(__path)),
+          path: __path
+        }]
+      } else {
+        return [(await import(__path))]
+      }
     }))).filter(a => a)
 
     results = _.flatten(results)
