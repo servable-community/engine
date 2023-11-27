@@ -13,7 +13,6 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-// import performItem from "../protocol/utils/tree/index.js"
 
 export default async props => {
   const { servableEngineConfig } = props
@@ -40,11 +39,6 @@ export default async props => {
       console.log("[Servable]", `Launch > failed creating the parse server`)
       return
     }
-
-    // await Promise.all(_schema.protocols.map(async schema =>
-    //   performItem({
-    //     path: schema.loader.path
-    //   })))
 
     console.log("[Servable]", `Launch > started the parse server`)
 

@@ -1,14 +1,25 @@
 export default {
-  id: 'manifest',
-  name: 'Manifest',
-  description: 'Manifest',
+  id: 'root',
+  name: 'protocol',
+  description: 'protocol',
   routes: [
     {
-      type: 'file',
-      path: 'manifest.json',
-      extensionType: 'json',
+      type: 'folder',
+      path: '',
       priority: 0,
       children: [
+        {
+          id: 'manifest',
+          name: 'Manifest',
+          description: 'Manifest',
+          routes: [
+            {
+              type: 'file',
+              path: 'manifest.json',
+              extensionType: 'json'
+            },
+          ]
+        },
         {
           id: 'liveClasses',
           name: 'Live classes',
@@ -35,13 +46,33 @@ export default {
             }
           ]
         },
+        // {
+        //   id: 'lib',
+        //   routes: [
+        //     {
+        //       type: 'filesCollection',
+        //       path: 'lib',
+        //       priority: 0,
+        //     }
+        //   ]
+        // },
         {
           id: 'classes',
           routes: [
             {
               type: 'templateCollection',
-              templateId: 'classes',
+              templateId: 'class',
               path: 'classes',
+            }
+          ]
+        },
+        {
+          id: 'schema',
+          routes: [
+            {
+              type: 'templateCollection',
+              templateId: 'schema',
+              path: 'schema',
             }
           ]
         },
@@ -71,6 +102,46 @@ export default {
                       type: 'file',
                       extensionType: 'js',
                       path: 'afterSave.js',
+                    }
+                  ]
+                },
+                {
+                  id: 'beforeFind',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionType: 'js',
+                      path: 'beforeFind.js',
+                    }
+                  ]
+                },
+                {
+                  id: 'afterFind',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionType: 'js',
+                      path: 'afterFind.js',
+                    }
+                  ]
+                },
+                {
+                  id: 'beforeDelete',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionType: 'js',
+                      path: 'beforeDelete.js',
+                    }
+                  ]
+                },
+                {
+                  id: 'afterDelete',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionType: 'js',
+                      path: 'afterDelete.js',
                     }
                   ]
                 }
