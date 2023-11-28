@@ -4,7 +4,7 @@ import markdown from 'markdown-builder'
 // import append from "../utils/builder/append.js"
 import access from '../../../tree/access/index.js'
 import extractAst from '../../utils/extractAst.js'
-import documentClass from '../build/class/index.js'
+import documentClass from '../class/index.js'
 
 export default async props => {
   const { path } = props

@@ -488,11 +488,14 @@ export default class ProtocolLoaderLocal extends Base {
       return this._valueInCache(cacheKey)
     }
 
-    let path = `${this.path}/manifest.json`
+    let path = `${this.path}/index.json`
     if (!(await checkFileExists(path))) {
-      path = `${this.path}/module.json`
+      path = `${this.path}/manifest.json`
       if (!(await checkFileExists(path))) {
-        return null
+        path = `${this.path}/module.json`
+        if (!(await checkFileExists(path))) {
+          return null
+        }
       }
     }
 
