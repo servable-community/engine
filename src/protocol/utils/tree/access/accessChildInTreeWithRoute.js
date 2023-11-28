@@ -7,6 +7,10 @@ export default ({ item, tree, }) => {
     if (tree.id !== 'root') {
       return null
     }
+    if (!tree.children) {
+      return null
+    }
+
     let candidates = tree.children.filter(a => (a.id === item.id))
     if (candidates && candidates.length) {
       return candidates[0]

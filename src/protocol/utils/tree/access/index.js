@@ -6,7 +6,8 @@ export default async ({
   path,
   extraction,
   item,
-  type
+  type,
+  formatData = true
 }) => {
 
   if (!extraction && path) {
@@ -21,6 +22,18 @@ export default async ({
   const result = accessChildInTreeWithRoute({ item, tree })
   if (!result) {
     return null
+  }
+
+  if (formatData && result.data) {
+    switch (result.type) {
+      default: break
+      case 'file': {
+        if (!result.data.length) {
+          break
+        }
+        result.data = result.data[0]
+      } break
+    }
   }
 
   return result

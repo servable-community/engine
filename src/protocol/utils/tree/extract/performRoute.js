@@ -18,6 +18,8 @@ export default async (props) => {
   let files = null
   const result = {
     ...route,
+    type,
+    extensionType,
     fullPath,
     leafPath: parentLeafPath
   }

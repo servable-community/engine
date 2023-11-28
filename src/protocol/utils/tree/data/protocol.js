@@ -21,6 +21,39 @@ export default {
           ]
         },
         {
+          id: 'class',
+          routes: [
+            {
+              type: 'folder',
+              path: 'class',
+              priority: 0,
+              isDeprecated: false,
+              children: [
+                {
+                  id: 'index',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionType: 'js',
+                      path: 'index.js',
+                    }
+                  ]
+                },
+                {
+                  id: 'protocols',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionType: 'js',
+                      path: 'protocols.js',
+                    }
+                  ]
+                },
+              ]
+            }
+          ],
+        },
+        {
           id: 'liveClasses',
           name: 'Live classes',
           description: 'Live classes',
