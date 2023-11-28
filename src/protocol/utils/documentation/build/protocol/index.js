@@ -17,7 +17,7 @@ export default async props => {
     item: ProtocolEnum.Manifest,
     path
   })
-  if (manifest && manifest.data) {
+  if (manifest && manifest.data && manifest.data.module) {
     const { name, description, id, version } = manifest.data.module
     builder.append(markdown.headers.h1(name))
     builder.append(markdown.headers.h2(`#${id}`))
