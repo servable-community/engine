@@ -1,5 +1,4 @@
 import sanitizePath from 'path-sanitizer'
-// import fs from 'fs'
 import fse from 'fs-extra'
 
 export default async ({ payload, path }) => {
@@ -13,6 +12,4 @@ export default async ({ payload, path }) => {
     const classPath = `/${rootPath}/classes/${index}/index.md`
     await fse.outputFile(classPath, _class)
   }))
-
-  // await fs.promises.writeFile(protocolPath, protocol)
 }

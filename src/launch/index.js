@@ -43,10 +43,13 @@ export default async props => {
     const ccs = []
     // await Promise.all([_schema.protocols[0]].map(async schema => {
     await Promise.all(_schema.protocols.map(async (schema, index) => {
-      if (index === 17) {
-        const dic = await documentProtocol({ path: schema.loader.path })
-        console.log(dic)
-      }
+      // if (index === 17) {
+      const dic = await documentProtocol({
+        path: schema.loader.path,
+        write: false
+      })
+      console.log(dic)
+      // }
     }))
 
     console.log("[Servable]", `Launch > started the parse server`)
