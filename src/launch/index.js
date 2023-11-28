@@ -19,7 +19,8 @@ export default async props => {
   const { servableEngineConfig } = props
   adaptConfig({ servableEngineConfig, })
 
-  global.Servable = new ServableClass(props)
+  global.Servable = new ServableClass()
+  global.Servable.hydrate(props)
 
   const _schema = await compute({ servableEngineConfig })
   await launchSystem({ schema: _schema, servableEngineConfig })

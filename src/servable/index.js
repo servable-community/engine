@@ -26,7 +26,14 @@ export default class Servable {
   get Config() { return this._config }
   set Config(value) { this._config = value }
 
-  constructor(props) {
+  constructor() {
+    this.App = {
+      ...Parse,
+      ..._parse
+    }
+  }
+
+  hydrate(props) {
     const { app, httpServer, servableEngineConfig } = props
     this._express = app
     this._httpServer = httpServer
@@ -34,10 +41,6 @@ export default class Servable {
     this._messaging = new Messaging(props)
     this._agenda = new Agenda(props)
     this._express = new Express(props)
-    this.App = {
-      ...Parse,
-      ..._parse
-    }
   }
 
   toString() {
