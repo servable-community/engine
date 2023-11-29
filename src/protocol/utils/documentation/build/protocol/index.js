@@ -12,9 +12,10 @@ export default async props => {
   if (!builder) {
     builder = new MarkdownWizard()
   }
-
+  let extraction = null
   let manifest = await access({
     item: ProtocolEnum.Manifest,
+    extraction,
     path
   })
   if (manifest && manifest.data && manifest.data.module) {

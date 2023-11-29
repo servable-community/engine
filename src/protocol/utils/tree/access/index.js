@@ -4,27 +4,28 @@ import sanitizePath from 'path-sanitizer'
 
 import ServableClass from "../../../../servable/index.js"
 
-export default async ({
-  path,
-  extraction,
-  item,
-  type,
-  formatData = true
-}) => {
+export default async (props) => {
+  const {
+    path,
+    extraction,
+    item,
+    type,
+    formatData = true
+  } = props
 
   if (!global.Servable) {
     global.Servable = new ServableClass()
   }
 
-  if (!extraction && path) {
-    extraction = await extract({ path: `/${sanitizePath(path)}`, dataTemplateType: type })
+  if (!props.extraction && path) {
+    props.extraction = await extract({ path: `/${sanitizePath(path)}`, dataTemplateType: type })
   }
 
-  if (!extraction) {
+  if (!props.extraction) {
     return null
   }
 
-  const { reference, tree } = extraction
+  const { reference, tree } = props.extraction
   const result = accessChildInTreeWithRoute({ item, tree })
   if (!result) {
     return null

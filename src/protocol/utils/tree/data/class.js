@@ -15,8 +15,13 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'manifest.json',
-              extensionType: 'json'
+              path: 'index',
+              extensionTypes: ['json']
+            },
+            {
+              type: 'file',
+              path: 'manifest',
+              extensionTypes: ['json']
             },
           ]
         },
@@ -50,8 +55,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'index.js',
+                      extensionTypes: ['js'],
+                      path: 'index',
                     }
                   ]
                 },
@@ -60,8 +65,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'protocols.js',
+                      extensionTypes: ['js'],
+                      path: 'protocols',
                     }
                   ]
                 },
@@ -83,8 +88,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'index.js',
+                      extensionTypes: ['js'],
+                      path: 'index',
                     }
                   ]
                 },
@@ -93,8 +98,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'ref.js',
+                      extensionTypes: ['js'],
+                      path: 'ref',
                     }
                   ]
                 },
@@ -103,8 +108,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'transformer.js',
+                      extensionTypes: ['js'],
+                      path: 'transformer',
                     }
                   ]
                 },
@@ -113,8 +118,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'json',
-                      path: 'executor.json',
+                      extensionTypes: ['json'],
+                      path: 'executor',
                     }
                   ]
                 },
@@ -123,8 +128,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'json',
-                      path: 'data.json',
+                      extensionTypes: ['json'],
+                      path: 'data',
                     }
                   ]
                 },
@@ -133,8 +138,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'validator.js',
+                      extensionTypes: ['js'],
+                      path: 'validator',
                     }
                   ]
                 },
@@ -156,8 +161,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'beforeSave.js',
+                      extensionTypes: ['js'],
+                      path: 'beforeSave',
                     }
                   ]
                 },
@@ -166,8 +171,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'afterSave.js',
+                      extensionTypes: ['js'],
+                      path: 'afterSave',
                     }
                   ]
                 }

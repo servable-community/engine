@@ -4,11 +4,13 @@ import directoryFilesRecursive from '../../../../utils/directoryFilesRecursive.j
 import formatFile from './formatFile.js'
 import foldersInFolder from '../../../../utils/foldersInFolder.js'
 import sanitizePath from 'path-sanitizer'
+import fs from "fs"
+
 
 export default async (props) => {
   const { item, route, parentLeafPath } = props
   const { type,
-    extensionType,
+    extensionTypes,
     // path,
     priority,
     children }
@@ -19,7 +21,7 @@ export default async (props) => {
   const result = {
     ...route,
     type,
-    extensionType,
+    extensionTypes,
     fullPath,
     leafPath: parentLeafPath
   }
@@ -47,36 +49,57 @@ export default async (props) => {
           break
         }
 
-        files = await directoryFilesRecursive({ path: fullPath, includeMeta: true })
+        files = await directoryFilesRecursive({
+          path: fullPath,
+          includeMeta: true
+        })
+
         if (files && files.length) {
           files = files.map(file => ({
             path: file.path,
             module: file.module
           }))
         }
+
       } break
       case 'file': {
-        if (!(await checkFileExists(fullPath))) {
+        for (var i = 0; i < extensionTypes.length; i++) {
+          const extensionType = extensionTypes[0]
+          const md = `/${sanitizePath(`${fullPath}.md`)}`
+          const _fullPath = `/${sanitizePath(`${fullPath}.${extensionType}`)}`
+
+          if (!(await checkFileExists(_fullPath))) {
+            continue
+          }
+
+          let documentation = null
+          if (await checkFileExists(md)) {
+            documentation = await fs.promises.readFile(md, 'utf8')
+            console.log(documentation)
+          }
+
+          switch (extensionType) {
+            default:
+            case 'js': {
+              files = [{
+                path: _fullPath,
+                module: await import(_fullPath),
+                documentation
+              }]
+              break
+            }
+            case 'json': {
+              files = [{
+                path: _fullPath,
+                module: await importJSONAsync(_fullPath),
+                documentation
+              }]
+              break
+            }
+          }
           break
         }
 
-        switch (extensionType) {
-          default:
-          case 'js': {
-            files = [{
-              path: fullPath,
-              module: await import(fullPath)
-            }]
-            break
-          }
-          case 'json': {
-            files = [{
-              path: fullPath,
-              module: await importJSONAsync(fullPath)
-            }]
-            break
-          }
-        }
       } break
       default: break
     }

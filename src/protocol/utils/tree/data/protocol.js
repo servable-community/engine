@@ -15,8 +15,13 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'manifest.json',
-              extensionType: 'json'
+              path: 'index',
+              extensionTypes: ['json']
+            },
+            {
+              type: 'file',
+              path: 'manifest',
+              extensionTypes: ['json']
             },
           ]
         },
@@ -34,8 +39,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'index.js',
+                      extensionTypes: ['js'],
+                      path: 'index',
                     }
                   ]
                 },
@@ -44,8 +49,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'protocols.js',
+                      extensionTypes: ['js'],
+                      path: 'protocols',
                     }
                   ]
                 },
@@ -60,7 +65,8 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'liveClasses.js',
+              path: 'liveClasses',
+              extensionTypes: ['js'],
             },
           ]
         },
@@ -123,8 +129,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'beforeSave.js',
+                      extensionTypes: ['js'],
+                      path: 'beforeSave',
                     }
                   ]
                 },
@@ -133,8 +139,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'afterSave.js',
+                      extensionTypes: ['js'],
+                      path: 'afterSave',
                     }
                   ]
                 },
@@ -143,8 +149,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'beforeFind.js',
+                      extensionTypes: ['js'],
+                      path: 'beforeFind',
                     }
                   ]
                 },
@@ -153,8 +159,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'afterFind.js',
+                      extensionTypes: ['js'],
+                      path: 'afterFind',
                     }
                   ]
                 },
@@ -163,8 +169,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'beforeDelete.js',
+                      extensionTypes: ['js'],
+                      path: 'beforeDelete',
                     }
                   ]
                 },
@@ -173,8 +179,8 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionType: 'js',
-                      path: 'afterDelete.js',
+                      extensionTypes: ['js'],
+                      path: 'afterDelete',
                     }
                   ]
                 }

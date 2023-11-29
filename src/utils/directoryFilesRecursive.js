@@ -5,7 +5,11 @@ import _ from 'underscore'
 //https://www.npmjs.com/package/directory-import
 
 
-const perform = async ({ path, includeMeta = false }) => {
+const perform = async ({ path,
+  includeMeta = false,
+  excludes = ['spec.js'],
+  includeExtensions = ['.js', '.ts', '.json']
+}) => {
   try {
     if (!(await checkFileExists(path))) {
       return null
@@ -18,9 +22,7 @@ const perform = async ({ path, includeMeta = false }) => {
     }
 
     let results = (await Promise.all(items.map(async item => {
-      if (item.includes('spec.js')) {
-        return null
-      }
+
 
       const __path = _path.join(path, item)
 
@@ -38,10 +40,27 @@ const perform = async ({ path, includeMeta = false }) => {
         return null
       }
 
+      if (item.includes('spec.js')) {
+        return null
+      }
+      const extension = getExtension(item)
+      if (!includeExtensions.includes(extension)) {
+        return null
+      }
+
       if (includeMeta) {
+        const racine = getFileRaw(__path)
+        const _module = await import(__path)
+        const md = `${racine}.md`
+        let documentation = null
+        if ((await checkFileExists(md))) {
+          documentation = await fs.promises.readFile(md, 'utf8')
+        }
+
         return [{
-          module: (await import(__path)),
-          path: __path
+          module: _module,
+          path: __path,
+          documentation
         }]
       } else {
         return [(await import(__path))]
@@ -56,6 +75,9 @@ const perform = async ({ path, includeMeta = false }) => {
     return null
   }
 }
+
+const getExtension = str => str.slice(str.lastIndexOf("."))
+const getFileRaw = str => str.split('.').slice(0, -1).join('.')
 
 
 export default perform

@@ -13,14 +13,14 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'index.json',
-              extensionType: 'json',
+              path: 'index',
+              extensionTypes: ['json'],
               priority: 0,
             },
             {
               type: 'file',
-              path: 'index.js',
-              extensionType: 'js',
+              path: 'index',
+              extensionTypes: 'js',
               priority: 0,
             },
           ]
@@ -30,8 +30,8 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'classes.json',
-              extensionType: 'json',
+              path: 'classes',
+              extensionTypes: ['json'],
               priority: 0,
             }
           ]
@@ -41,8 +41,8 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'classLevelPermission.json',
-              extensionType: 'json',
+              path: 'classLevelPermission',
+              extensionTypes: ['json'],
               priority: 0,
             }
           ]
@@ -52,8 +52,8 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'fields.json',
-              extensionType: 'json',
+              path: 'fields',
+              extensionTypes: ['json'],
               priority: 0,
             }
           ]
@@ -63,8 +63,8 @@ export default {
           routes: [
             {
               type: 'file',
-              path: 'indexes.json',
-              extensionType: 'json',
+              path: 'indexes',
+              extensionTypes: ['json'],
               priority: 0,
             }
           ]
@@ -89,7 +89,8 @@ export default {
                           routes: [
                             {
                               type: 'file',
-                              path: 'index.js',
+                              path: 'index',
+                              extensionTypes: 'js',
                             }
                           ]
                         },
@@ -109,7 +110,8 @@ export default {
                           routes: [
                             {
                               type: 'file',
-                              path: 'index.js',
+                              path: 'index',
+                              extensionTypes: 'js',
                             }
                           ]
                         },
