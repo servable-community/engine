@@ -2,6 +2,17 @@ export const ProtocolEnum = {
   Index: {
     id: 'index'
   },
+  Assets: {
+    id: 'assets',
+    Icon: {
+      id: 'icon',
+      parents: ['assets'],
+    },
+    Thumbnail: {
+      id: 'thumbnail',
+      parents: ['assets'],
+    },
+  },
   LiveClasses: {
     id: 'liveClasses'
   },
@@ -74,7 +85,34 @@ export const ProtocolEnum = {
       id: 'index',
       parents: ['seed']
     },
-  }
+  },
+  Triggers: {
+    id: 'triggers',
+    beforeSave: {
+      id: 'beforeSave',
+      parents: ['triggers']
+    },
+    afterSave: {
+      id: 'afterSave',
+      parents: ['triggers']
+    },
+    beforeDelete: {
+      id: 'beforeDelete',
+      parents: ['triggers']
+    },
+    afterDelete: {
+      id: 'afterDelete',
+      parents: ['triggers']
+    },
+    beforeFind: {
+      id: 'beforeFind',
+      parents: ['triggers']
+    },
+    afterFind: {
+      id: 'afterFind',
+      parents: ['triggers']
+    }
+  },
 }
 
 export const ClassEnum = {
@@ -121,8 +159,34 @@ export const ClassEnum = {
   Functions: {
     id: 'functions'
   },
+  Triggers: {
+    id: 'triggers',
+    beforeSave: {
+      id: 'beforeSave',
+      parents: ['triggers']
+    },
+    afterSave: {
+      id: 'afterSave',
+      parents: ['triggers']
+    },
+    beforeDelete: {
+      id: 'beforeDelete',
+      parents: ['triggers']
+    },
+    afterDelete: {
+      id: 'afterDelete',
+      parents: ['triggers']
+    },
+    beforeFind: {
+      id: 'beforeFind',
+      parents: ['triggers']
+    },
+    afterFind: {
+      id: 'afterFind',
+      parents: ['triggers']
+    }
+  }
 }
-
 export const SchemaEnum = {
   Index: {
     id: 'index'

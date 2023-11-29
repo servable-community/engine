@@ -2,7 +2,7 @@ import { ProtocolEnum } from "../../../../tree/enums.js"
 import access from '../../../../tree/access/index.js'
 
 export default async props => {
-  const { path, extraction, includeAuxiliary = true } = props
+  const { path, extraction } = props
   const payload = []
 
   const target = await access({
@@ -16,5 +16,5 @@ export default async props => {
     }
   }
 
-  return { payload, name: 'Seed', id: 'seed' }
+  return { payload, name: 'Protocol class', id: 'class' }
 }

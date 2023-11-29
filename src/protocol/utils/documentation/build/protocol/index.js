@@ -1,18 +1,23 @@
 import { ProtocolEnum } from "../../../tree/enums.js"
-import MarkdownWizard from '../../utils/builder/index.js'
-import markdown from 'markdown-builder'
 // import append from "../utils/builder/append.js"
 import access from '../../../tree/access/index.js'
+import buildSeed from './chunks/seed.js'
+import buildProtocolClass from './chunks/class.js'
+import buildConfig from './chunks/config.js'
+import buildLiveClasses from './chunks/liveClasses.js'
+import buildAfterInit from './chunks/afterInit.js'
+import buildBeforeInit from './chunks/beforeInit.js'
+import buildFunctions from './chunks/functions.js'
+import buildSchema from './chunks/schema.js'
+import buildSystem from './chunks/system.js'
+import buildLib from './chunks/lib.js'
+import buildTriggers from './chunks/triggers.js'
 import documentClass from '../class/index.js'
 
 export default async props => {
-  const { path } = props
-  const result = {}
+  const { path, includeChunksInMain = true } = props
+  let payload = []
 
-  let builder = props.builder
-  if (!builder) {
-    builder = new MarkdownWizard()
-  }
   let extraction = null
   let index = await access({
     item: ProtocolEnum.Index,
@@ -21,140 +26,76 @@ export default async props => {
   })
   if (index && index.data && index.data.module) {
     const { name, description, id, version } = index.data.module
-    builder.append(markdown.headers.h1(name))
-    builder.append(markdown.headers.h2(`#${id}`))
-    builder.append(`#${version}`)
-    builder.append(description)
-    builder.append(markdown.misc.hr())
+    payload.push({ h1: name })
+    payload.push({ h2: `#${id}` })
+    payload.push({ p: `#${version}` })
+    payload.push({ p: description })
+    payload.push({ hr: "" })
   }
+  const chunks = {}
 
-  builder.append(markdown.headers.h2('Protocol class'))
-  let classIndex = await access({
-    item: ProtocolEnum.Class.Index,
-    path
-  })
-  if (classIndex && classIndex.data) {
-    const { astAdapted } = classIndex.data
-    if (astAdapted) {
-      const { tags, params, description } = astAdapted
-      if (astAdapted['servable-description']) {
-        builder.append(markdown.headers.h1(astAdapted['servable-description'].description))
-      }
-      if (astAdapted['servable-how-to']) {
-        builder.append(markdown.headers.h1(astAdapted['servable-how-to'].description))
-      }
-    }
-  }
+  chunks.seed = await buildSeed({ path })
+  payload.push({ h2: chunks.seed.name })
+  payload.concat(chunks.seed.payload)
 
-  builder.append(markdown.headers.h2('Live classes'))
-  const liveClasses = await access({
-    item: ProtocolEnum.LiveClasses,
-    path
-  })
-  if (liveClasses && liveClasses.data) {
+  chunks.protocolClass = await buildProtocolClass({ path })
+  payload.push({ h2: chunks.protocolClass.name })
+  payload.concat(chunks.protocolClass.payload)
 
-  }
+  chunks.beforeInit = await buildBeforeInit({ path })
+  payload.push({ h2: chunks.beforeInit.name })
+  payload.concat(chunks.beforeInit.payload)
 
-  builder.append(markdown.headers.h2('Schema'))
-  const schema = await access({
-    item: ProtocolEnum.Schema,
-    path
-  })
-  if (schema && schema.data) {
+  chunks.afterInit = await buildAfterInit({ path })
+  payload.push({ h2: chunks.afterInit.name })
+  payload.concat(chunks.afterInit.payload)
 
-  }
+  chunks.config = await buildConfig({ path })
+  payload.push({ h2: chunks.config.name })
+  payload.concat(chunks.config.payload)
 
-  builder.append(markdown.headers.h2('Seed'))
-  const seed = await access({
-    item: ProtocolEnum.Seed.Index,
-    path
-  })
-  if (seed && seed.data) {
-    const { astAdapted } = seed.data
-    if (astAdapted) {
-    }
-  }
+  chunks.functions = await buildFunctions({ path })
+  payload.push({ h2: chunks.functions.name })
+  payload.concat(chunks.functions.payload)
 
-  builder.append(markdown.headers.h2('Before init'))
-  const beforeInit = await access({
-    item: ProtocolEnum.Config,
-    path
-  })
-  if (beforeInit && beforeInit.data) {
-    const { astAdapted } = beforeInit.data
-    if (astAdapted) {
-    }
-  }
+  chunks.liveClasses = await buildLiveClasses({ path })
+  payload.push({ h2: chunks.liveClasses.name })
+  payload.concat(chunks.liveClasses.payload)
 
-  builder.append(markdown.headers.h2('After init'))
-  const afterInit = await access({
-    item: ProtocolEnum.Config,
-    path
-  })
-  if (afterInit && afterInit.data) {
-    const { astAdapted } = afterInit.data
-    if (astAdapted) {
-    }
-  }
+  chunks.schema = await buildSchema({ path })
+  payload.push({ h2: chunks.schema.name })
+  payload.concat(chunks.schema.payload)
 
-  builder.append(markdown.headers.h2('Functions'))
-  const functions = await access({
-    item: ProtocolEnum.Config,
-    path
-  })
-  if (functions && functions.data) {
-    const { astAdapted } = functions.data
-    if (astAdapted) {
-    }
-  }
+  chunks.system = await buildSystem({ path })
+  payload.push({ h2: chunks.system.name })
+  payload.concat(chunks.system.payload)
 
-  builder.append(markdown.headers.h2('Config'))
-  const config = await access({
-    item: ProtocolEnum.Config,
-    path
-  })
-  if (config && config.data) {
-    const { astAdapted } = config.data
-    if (astAdapted) {
-    }
-  }
+  chunks.lib = await buildLib({ path })
+  payload.push({ h2: chunks.lib.name })
+  payload.concat(chunks.lib.payload)
 
-  builder.append(markdown.headers.h2('System'))
-  const system = await access({
-    item: ProtocolEnum.System,
-    path
-  })
-  if (system && system.data) {
-    const { astAdapted } = system.data
-    if (astAdapted) {
-    }
-  }
+  chunks.triggers = await buildTriggers({ path })
+  payload.push({ h2: chunks.triggers.name })
+  payload.concat(chunks.triggers.payload)
 
-  builder.append(markdown.headers.h2('Classes'))
+  payload = payload.filter(a => a)
+
+
+
+  let classes = null
   const _classes = await access({
     item: ProtocolEnum.Classes,
     path
   })
-
-  let classes = null
   if (_classes && _classes.children) {
     classes = await Promise.all(_classes.children.map(async _class => documentClass({
       path: _class.fullPath
     })))
   }
 
-  const protocol = builder.getMarkdown()
   return {
-    protocol,
+    payload,
+    chunks,
     classes
   }
-
-  // const liveClasses = await access({
-  //   item: ProtocolEnum.LiveClasses,
-  //   path: schema.loader.path
-  // })
-
-
-
-
 }

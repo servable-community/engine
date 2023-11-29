@@ -1,64 +1,64 @@
 import { ClassEnum, DataTemplateType } from "../../../tree/enums.js"
-import MarkdownWizard from '../../utils/builder/index.js'
-import markdown from 'markdown-builder'
 // import append from "../utils/builder/append.js"
 import access from '../../../tree/access/index.js'
-import extractAst from '../../utils/extractAst.js'
+import buildSeed from './chunks/seed.js'
+import buildClass from './chunks/class.js'
+import buildFunctions from './chunks/functions.js'
+import buildLib from './chunks/lib.js'
+import buildTriggers from './chunks/triggers.js'
 
 export default async props => {
-  const { path } = props
-  let builder = props.builder
-  if (!builder) {
-    builder = new MarkdownWizard()
-  }
+  const { path, includeChunksInMain = true } = props
+  let payload = []
 
-  // const classAClass = await access({
-  //   item: ClassEnum.Class,
-  //   path: classA.fullPath,
-  //   type: DataTemplateType.Class
-  // })
-  const classIndex = await access({
-    item: ClassEnum.Class.Index,
+  let name, id = null
+  let extraction = null
+  let index = await access({
+    item: ClassEnum.Index,
+    type: DataTemplateType.Class,
     path,
-    type: DataTemplateType.Class
+    extraction
   })
-
-  if (classIndex && classIndex.data) {
-    const { ast } = classIndex.data
-    const extractedAst = extractAst({ ast })
-
-    if (extractedAst) {
-      const { tags, params, description } = extractedAst
-      // if (extractedAst['servable-description']) {
-      builder.append(markdown.headers.h1('Class'))
-      builder.append(description)
-      // }
-      if (extractedAst['servable-how-to']) {
-        builder.append(markdown.headers.h1(extractedAst['servable-how-to'].description))
-      }
-    }
+  if (index && index.data && index.data.module) {
+    const { description = '' } = index.data.module
+    name = index.data.module.id
+    id = index.data.module.id
+    payload.push({ h1: name })
+    payload.push({ h2: `#${id}` })
+    payload.push({ p: description })
+    payload.push({ hr: "" })
   }
+  else {
+    payload.push({ h1: 'No name' })
+  }
+  const chunks = {}
 
-  const result = builder.getMarkdown()
-  return result
+  chunks.class = await buildClass({ path })
+  payload.push({ h2: chunks.class.name })
+  payload.concat(chunks.class.payload)
 
-  // const classASeedExecutor = await access({
-  //   item: ClassEnum.Seed.Executor,
-  //   path: classA.fullPath,
-  //   type: DataTemplateType.Class
-  // })
+  chunks.seed = await buildSeed({ path })
+  payload.push({ h2: chunks.seed.name })
+  payload.concat(chunks.seed.payload)
 
-  // const classASeedRef = await access({
-  //   item: ClassEnum.Seed.Ref,
-  //   path: classA.fullPath,
-  //   type: DataTemplateType.Class
-  // })
+  chunks.functions = await buildFunctions({ path })
+  payload.push({ h2: chunks.functions.name })
+  payload.concat(chunks.functions.payload)
 
-  // const classAClassIndex = await access({
-  //   item: ClassEnum.,
-  //   path: classA.fullPath,
-  //   type: DataTemplateType.Class
-  // })
-  // console.log('classA', classA, 'classAClassIndex', classAClassIndex, 'classASeedRef', classASeedRef)
+  chunks.lib = await buildLib({ path })
+  payload.push({ h2: chunks.lib.name })
+  payload.concat(chunks.lib.payload)
 
+  chunks.triggers = await buildTriggers({ path })
+  payload.push({ h2: chunks.triggers.name })
+  payload.concat(chunks.triggers.payload)
+
+  payload = payload.filter(a => a)
+
+  return {
+    payload,
+    chunks,
+    name,
+    id
+  }
 }

@@ -26,6 +26,37 @@ export default {
           ]
         },
         {
+          id: 'assets',
+          routes: [
+            {
+              type: 'folder',
+              path: 'assets',
+              children: [
+                {
+                  id: 'icon',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['svg', 'png', 'jpeg'],
+                      path: 'icon',
+                    }
+                  ]
+                },
+                {
+                  id: 'thumbnail',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['svg', 'png', 'jpeg'],
+                      path: 'thumbnail',
+                    }
+                  ]
+                },
+              ]
+            }
+          ],
+        },
+        {
           id: 'class',
           routes: [
             {

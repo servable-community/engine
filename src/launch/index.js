@@ -47,7 +47,7 @@ export default async props => {
       if (index === 17) {
         const dic = await documentProtocol({
           path: schema.loader.path,
-          write: false
+          write: true
         })
         console.log(dic)
       }

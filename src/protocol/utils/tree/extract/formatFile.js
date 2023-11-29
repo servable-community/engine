@@ -1,6 +1,6 @@
 import commentsParser from 'parse-comments'
 import importFileAsText from "../../../../utils/importFileAsText.js"
-import extractAst from '../../documentation/utils/extractAst.js'
+import extractAst from './extractAst.js'
 
 export default async ({ file }) => {
   try {

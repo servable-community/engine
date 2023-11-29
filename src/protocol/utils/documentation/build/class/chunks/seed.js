@@ -1,4 +1,4 @@
-import { ProtocolEnum } from "../../../../tree/enums.js"
+import { ProtocolEnum, DataTemplateType } from "../../../../tree/enums.js"
 import access from '../../../../tree/access/index.js'
 
 export default async props => {
@@ -7,6 +7,7 @@ export default async props => {
 
   const target = await access({
     item: ProtocolEnum.Class.Index,
+    type: DataTemplateType.Class,
     path,
     extraction
   })
