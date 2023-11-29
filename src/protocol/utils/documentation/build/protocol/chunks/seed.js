@@ -13,56 +13,6 @@ export default async props => {
   if (!builder) {
     builder = new MarkdownWizard()
   }
-  let extraction = null
-  let index = await access({
-    item: ProtocolEnum.Index,
-    extraction,
-    path
-  })
-  if (index && index.data && index.data.module) {
-    const { name, description, id, version } = index.data.module
-    builder.append(markdown.headers.h1(name))
-    builder.append(markdown.headers.h2(`#${id}`))
-    builder.append(`#${version}`)
-    builder.append(description)
-    builder.append(markdown.misc.hr())
-  }
-
-  builder.append(markdown.headers.h2('Protocol class'))
-  let classIndex = await access({
-    item: ProtocolEnum.Class.Index,
-    path
-  })
-  if (classIndex && classIndex.data) {
-    const { astAdapted } = classIndex.data
-    if (astAdapted) {
-      const { tags, params, description } = astAdapted
-      if (astAdapted['servable-description']) {
-        builder.append(markdown.headers.h1(astAdapted['servable-description'].description))
-      }
-      if (astAdapted['servable-how-to']) {
-        builder.append(markdown.headers.h1(astAdapted['servable-how-to'].description))
-      }
-    }
-  }
-
-  builder.append(markdown.headers.h2('Live classes'))
-  const liveClasses = await access({
-    item: ProtocolEnum.LiveClasses,
-    path
-  })
-  if (liveClasses && liveClasses.data) {
-
-  }
-
-  builder.append(markdown.headers.h2('Schema'))
-  const schema = await access({
-    item: ProtocolEnum.Schema,
-    path
-  })
-  if (schema && schema.data) {
-
-  }
 
   builder.append(markdown.headers.h2('Seed'))
   const seed = await access({

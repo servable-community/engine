@@ -1,16 +1,18 @@
 import commentsParser from 'parse-comments'
 import importFileAsText from "../../../../utils/importFileAsText.js"
-
+import extractAst from '../../documentation/utils/extractAst.js'
 
 export default async ({ file }) => {
   try {
     const { path } = file
     const text = await importFileAsText(path)
     const ast = commentsParser.parse(text)
+    const astAdapted = extractAst({ ast })
 
     return {
       ...file,
-      ast
+      ast,
+      astAdapted
     }
   } catch (e) {
     console.error(e)
