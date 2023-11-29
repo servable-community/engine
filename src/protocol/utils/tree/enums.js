@@ -1,7 +1,13 @@
 export const ProtocolEnum = {
-  Manifest: { id: 'manifest' },
-  LiveClasses: { id: 'liveClasses' },
-  Classes: { id: 'classes', },
+  Index: {
+    id: 'index'
+  },
+  LiveClasses: {
+    id: 'liveClasses'
+  },
+  Classes: {
+    id: 'classes',
+  },
   Class: {
     id: 'class',
     Index: {
@@ -16,12 +22,64 @@ export const ProtocolEnum = {
   Functions: {
     id: 'functions',
   },
-  Schema: { id: 'schema' },
+  Lib: {
+    id: 'lib',
+  },
+  Schema: {
+    id: 'schema'
+  },
+  BeforeInit: {
+    id: 'beforeInit',
+    Index: {
+      id: 'index',
+      parents: ['beforeInit'],
+    }
+  },
+  AfterInit: {
+    id: 'afterInit',
+    Index: {
+      id: 'index',
+      parents: ['afterInit'],
+    }
+  },
+  System: {
+    id: 'system',
+    Docker: {
+      id: 'docker',
+      parents: ['system'],
+      DockerCompose: {
+        id: 'index',
+        parents: ['system', 'docker'],
+      }
+    },
+  },
+  Config: {
+    id: 'config',
+    Conditions: {
+      id: 'conditions',
+      parents: ['config']
+    },
+    Entries: {
+      id: 'entries',
+      parents: ['config']
+    },
+    Groups: {
+      id: 'groups',
+      parents: ['config']
+    },
+  },
+  Seed: {
+    id: 'seed',
+    Index: {
+      id: 'index',
+      parents: ['seed']
+    },
+  }
 }
 
 export const ClassEnum = {
-  Manifest: {
-    id: 'manifest',
+  Index: {
+    id: 'index'
   },
   Class: {
     id: 'class',
@@ -33,6 +91,9 @@ export const ClassEnum = {
       id: 'protocols',
       parents: ['class']
     },
+  },
+  Lib: {
+    id: 'lib',
   },
   Seed: {
     id: 'seed',
@@ -57,12 +118,18 @@ export const ClassEnum = {
       parents: ['seed']
     },
   },
-  Functions: { id: 'functions' },
+  Functions: {
+    id: 'functions'
+  },
 }
 
 export const SchemaEnum = {
-  Index: { id: 'index' },
-  ClassLevelPermissions: { id: 'classLevelPermissions' },
+  Index: {
+    id: 'index'
+  },
+  ClassLevelPermissions: {
+    id: 'classLevelPermissions'
+  },
   Migration: {
     id: 'migration',
     Index: {
@@ -93,31 +160,3 @@ export const DataTemplateType = {
   Class: 'class',
   Schema: 'schema',
 }
-
-
-// import Enum from 'keynum'
-
-// export const _ProtocolEnum = Enum([
-//   'Manifest',
-//   'Classes',
-//   'Class',
-//   'Schema'
-// ])
-
-// export const ClassEnum = Enum([
-//   'Manifest',
-//   'Classes',
-//   'Class',
-//   'Schema'
-// ])
-
-// export const ProtocolEnum = {
-//   Manifest: 'manifest',
-//   Classes: 'classes',
-//   Class: {
-//     Index: 'index',
-//     Protocols: 'protocols'
-//   },
-//   Functions: 'functions',
-//   Schema: 'schema',
-// }

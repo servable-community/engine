@@ -9,9 +9,9 @@ export default {
       priority: 0,
       children: [
         {
-          id: 'manifest',
-          name: 'Manifest',
-          description: 'Manifest',
+          id: 'index',
+          name: 'Index',
+          description: 'Index',
           routes: [
             {
               type: 'file',
@@ -59,6 +59,148 @@ export default {
           ],
         },
         {
+          id: 'afterInit',
+          routes: [
+            {
+              type: 'folder',
+              path: 'afterInit',
+              priority: 0,
+              children: [
+                {
+                  id: 'index',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['js'],
+                      path: 'index',
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+        },
+        {
+          id: 'beforeInit',
+          routes: [
+            {
+              type: 'folder',
+              path: 'beforeInit',
+              priority: 0,
+              children: [
+                {
+                  id: 'index',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['js'],
+                      path: 'index',
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+        },
+        {
+          id: 'config',
+          routes: [
+            {
+              type: 'folder',
+              path: 'config',
+              priority: 0,
+              children: [
+                {
+                  id: 'conditions',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['json'],
+                      path: 'conditions',
+                    }
+                  ]
+                },
+                {
+                  id: 'entries',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['json'],
+                      path: 'entries',
+                    }
+                  ]
+                },
+                {
+                  id: 'groups',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['json'],
+                      path: 'groups',
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+        },
+        {
+          id: 'system',
+          routes: [
+            {
+              type: 'folder',
+              path: 'system',
+              priority: 0,
+              children: [
+                {
+                  id: 'docker',
+                  routes: [
+                    {
+                      type: 'folder',
+                      path: 'docker',
+                      priority: 0,
+                      children: [
+                        {
+                          id: 'docker-compose',
+                          routes: [
+                            {
+                              type: 'file',
+                              extensionTypes: ['yaml'],
+                              path: 'docker-compose',
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                },
+              ]
+            }
+          ],
+        },
+        {
+          id: 'seed',
+          routes: [
+            {
+              type: 'folder',
+              path: 'seed',
+              priority: 0,
+              children: [
+                {
+                  id: 'index',
+                  routes: [
+                    {
+                      type: 'file',
+                      extensionTypes: ['js'],
+                      path: 'index',
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+        },
+        {
           id: 'liveClasses',
           name: 'Live classes',
           description: 'Live classes',
@@ -85,16 +227,16 @@ export default {
             }
           ]
         },
-        // {
-        //   id: 'lib',
-        //   routes: [
-        //     {
-        //       type: 'filesCollection',
-        //       path: 'lib',
-        //       priority: 0,
-        //     }
-        //   ]
-        // },
+        {
+          id: 'lib',
+          routes: [
+            {
+              type: 'filesCollection',
+              path: 'lib',
+              priority: 0,
+            }
+          ]
+        },
         {
           id: 'classes',
           routes: [

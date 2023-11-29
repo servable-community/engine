@@ -9,9 +9,9 @@ export default {
       priority: 0,
       children: [
         {
-          id: 'manifest',
-          name: 'Manifest',
-          description: 'Manifest',
+          id: 'index',
+          name: 'Index',
+          description: 'Index',
           routes: [
             {
               type: 'file',
@@ -146,6 +146,16 @@ export default {
               ]
             }
           ],
+        },
+        {
+          id: 'lib',
+          routes: [
+            {
+              type: 'filesCollection',
+              path: 'lib',
+              priority: 0,
+            }
+          ]
         },
         {
           id: 'triggers',

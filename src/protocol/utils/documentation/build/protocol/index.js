@@ -14,7 +14,7 @@ export default async props => {
   }
   let extraction = null
   let manifest = await access({
-    item: ProtocolEnum.Manifest,
+    item: ProtocolEnum.Index,
     extraction,
     path
   })
