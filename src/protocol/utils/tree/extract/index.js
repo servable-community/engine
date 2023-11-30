@@ -1,12 +1,16 @@
 import templateDataForId from './templateDataForId.js'
 import performItem from './performItem.js'
 import { DataTemplateType } from '../enums.js'
+import ServableClass from "../../../../servable/index.js"
 
 export default async ({
   path,
   dataTemplateType = DataTemplateType.Protocol
 }) => {
   const reference = {}
+  if (!global.Servable) {
+    global.Servable = new ServableClass()
+  }
 
   const item = templateDataForId(dataTemplateType)
   const tree = await performItem({
