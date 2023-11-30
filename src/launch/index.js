@@ -13,7 +13,7 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-import documentProtocol from '../protocol/utils/documentation/index.js'
+import documentProtocol from '../document/index.js'
 
 export default async props => {
   const { servableEngineConfig } = props
