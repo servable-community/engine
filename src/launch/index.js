@@ -13,7 +13,7 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-import documentProtocol from '../protocol/utils/documentation/index.js'
+// import documentProtocol from '../protocol/utils/documentation/index.js'
 
 export default async props => {
   const { servableEngineConfig } = props
@@ -41,17 +41,17 @@ export default async props => {
       console.log("[Servable]", `Launch > failed creating the parse server`)
       return
     }
-    const ccs = []
-    // await Promise.all([_schema.protocols[0]].map(async schema => {
-    await Promise.all(_schema.protocols.map(async (schema, index) => {
-      if (index === 17) {
-        const dic = await documentProtocol({
-          path: schema.loader.path,
-          write: true
-        })
-        console.log(dic)
-      }
-    }))
+
+    // // await Promise.all([_schema.protocols[0]].map(async schema => {
+    // await Promise.all(_schema.protocols.map(async (schema, index) => {
+    //   if (index === 17) {
+    //     const dic = await documentProtocol({
+    //       path: schema.loader.path,
+    //       write: true
+    //     })
+    //     console.log(dic)
+    //   }
+    // }))
 
     console.log("[Servable]", `Launch > started the parse server`)
 
