@@ -47,7 +47,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['svg', 'png', 'jpeg'],
+                      extensionTypes: ['png', 'jpeg'],
                       path: 'thumbnail',
                     }
                   ]

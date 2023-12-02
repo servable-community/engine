@@ -80,6 +80,15 @@ export default async (props) => {
 
           switch (extensionType) {
             default:
+              break
+            case 'svg': {
+              files = [{
+                path: _fullPath,
+                module: await import(_fullPath),
+                documentation
+              }]
+              break
+            }
             case 'js': {
               files = [{
                 path: _fullPath,
@@ -114,7 +123,7 @@ export default async (props) => {
       }
     }
   } catch (e) {
-    console.error(e)
+    console.error('[SERVABLE]', 'performRoute', item, e)
   }
   return result
 }
