@@ -9,6 +9,7 @@ export default async (props) => {
   const { item, route, parentLeafPath } = props
   const { type,
     mimeTypes,
+    variants = ['']
   }
     = route
 
@@ -60,9 +61,19 @@ export default async (props) => {
 
       } break
       case 'file': {
+        let _variants = variants
+        if (!_variants.includes('')) {
+          _variants = ['', ..._variants]
+        }
+        _variants = _variants.sort()
         for (var i = 0; i < mimeTypes.length; i++) {
-          const mimeType = mimeTypes[0]
-          files = await extractFiles({ mimeType, fullPath })
+          const mimeType = mimeTypes[i]
+
+          files = await extractFiles({
+            mimeType,
+            fullPath,
+            variants: _variants
+          })
           if (files && files.length) {
             break
           }
