@@ -26,6 +26,16 @@ export default {
           ]
         },
         {
+          id: 'README',
+          routes: [
+            {
+              type: 'file',
+              mimeTypes: ['text/markdown'],
+              path: 'README',
+            }
+          ]
+        },
+        {
           id: 'assets',
           routes: [
             {

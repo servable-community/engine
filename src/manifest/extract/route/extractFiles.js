@@ -83,6 +83,15 @@ export default async (props) => {
       }]
       break
     }
+    case 'text/markdown': {
+      files = [{
+        path: _fullPath,
+        mimeType,
+        module: await fse.readFile(_fullPath, 'utf8'),
+        documentation
+      }]
+      break
+    }
   }
   return files
 }
