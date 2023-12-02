@@ -47,7 +47,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      mimeTypes: ['image/png', 'image/svg+xml', 'image/jpeg', 'image/gif', 'image/webp'],
+                      mimeTypes: ['image/svg+xml', 'image/png', 'image/jpeg', 'image/gif', 'image/webp'],
                       path: 'icon',
                       variants: ['@2x', '@3x'],
                     }
@@ -63,7 +63,8 @@ export default {
                       params: {
                         quality: 80,
                         maxWidth: 2048,
-                      }
+                      },
+                      variants: ['@2x', '@3x'],
                     }
                   ]
                 },
@@ -74,6 +75,7 @@ export default {
                       type: 'file',
                       mimeTypes: ['image/png', 'image/jpeg'],
                       path: 'cover',
+                      variants: ['@2x', '@3x'],
                     }
                   ]
                 },

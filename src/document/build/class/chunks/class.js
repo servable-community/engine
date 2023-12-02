@@ -4,7 +4,6 @@ import access from '../../../../manifest/access/index.js'
 export default async props => {
   const { path, extraction } = props
   const payload = []
-
   const target = await access({
     item: ProtocolEnum.Class.Index,
     type: DataTemplateType.Class,

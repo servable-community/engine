@@ -7,14 +7,26 @@ export const ProtocolEnum = {
     Icon: {
       id: 'icon',
       parents: ['assets'],
+      variants: {
+        x2: '@2x',
+        x3: '@3x'
+      },
     },
     Thumbnail: {
       id: 'thumbnail',
       parents: ['assets'],
+      variants: {
+        x2: '@2x',
+        x3: '@3x'
+      },
     },
     Cover: {
       id: 'cover',
       parents: ['assets'],
+      variants: {
+        x2: '@2x',
+        x3: '@3x'
+      },
     },
   },
   LiveClasses: {
