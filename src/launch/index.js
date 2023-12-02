@@ -13,7 +13,9 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-import documentProtocol from '../document/index.js'
+// import { documentProtocol } from '../../../manifest/src/index.js'
+// import documentProtocol from '../document/index.js'
+import { documentProtocol } from 'servable-manifest'
 
 export default async props => {
   const { servableEngineConfig } = props

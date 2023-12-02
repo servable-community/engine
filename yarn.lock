@@ -12586,6 +12586,32 @@ serialize-javascript@^4.0.0:
   dependencies:
     randombytes "^2.1.0"
 
+servable-manifest@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/servable-manifest/-/servable-manifest-1.1.1.tgz#9bfe1f37cff7472fde82e081e851b40220f593b9"
+  integrity sha512-3L3E8jYd2kaQ9jXiW0z0RbbvNLOc4hIBo/Y3djmh8yGFQTvr+tAuUq4fFSG/Y/Ylz+n220gSLp0+LMxnhkUoow==
+  dependencies:
+    bluebird "^3.7.2"
+    fs-extra "^11.2.0"
+    inspirational-quotes "^2.0.1"
+    js-sha256 "^0.9.0"
+    json-diff "^1.0.6"
+    json2md "^2.0.0"
+    keynum "*"
+    mime "^4.0.0"
+    mime-types "^2.1.35"
+    moment "*"
+    parse "^3.5.1"
+    parse-comments "^1.0.0"
+    parse-server "^5.4.0"
+    path-sanitizer "^2.0.0"
+    semver "*"
+    sharp "0.30.7"
+    underscore "^1.13.3"
+    url-parse "*"
+    winston "^3.7.2"
+    yaml "^2.3.0"
+
 serve-static@1.15.0:
   version "1.15.0"
   resolved "https://registry.npmjs.org/serve-static/-/serve-static-1.15.0.tgz"
