@@ -10,15 +10,18 @@ export default async (props) => {
     input,
     width = 600,
     height = 200,
-    maxWidth,
-    maxHeight,
+    maxWidth = 2048,
+    maxHeight = 1024,
     quality = 90,
     mimeType
   } = props
 
   try {
     const buffer = await sharp(input ? input : path)
-      .resize(width, height)
+      // .resize(width, height, {
+      .resize(maxWidth, maxHeight, {
+        fit: 'inside',
+      })
       .webp({ quality })
       .toBuffer({ resolveWithObject: true })
 
