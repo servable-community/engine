@@ -214,6 +214,16 @@ export default {
                               path: 'docker-compose',
                             }
                           ]
+                        },
+                        {
+                          id: 'adaptPayload',
+                          routes: [
+                            {
+                              type: 'file',
+                              mimeTypes: ['text/javascript'],
+                              path: 'adaptPayload',
+                            }
+                          ]
                         }
                       ]
                     }

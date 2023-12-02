@@ -78,7 +78,7 @@ export default async (props) => {
       files = [{
         path: _fullPath,
         mimeType,
-        module: await import(_fullPath),
+        module: await fse.readFile(_fullPath, 'utf8'),
         documentation
       }]
       break
