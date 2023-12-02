@@ -16,12 +16,12 @@ export default {
             {
               type: 'file',
               path: 'index',
-              extensionTypes: ['json']
+              mimeTypes: ['application/json']
             },
             {
               type: 'file',
               path: 'manifest',
-              extensionTypes: ['json']
+              mimeTypes: ['application/json']
             },
           ]
         },
@@ -55,7 +55,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'index',
                     }
                   ]
@@ -65,7 +65,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'protocols',
                     }
                   ]
@@ -88,7 +88,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'index',
                     }
                   ]
@@ -98,7 +98,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'ref',
                     }
                   ]
@@ -108,7 +108,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'transformer',
                     }
                   ]
@@ -118,7 +118,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['json'],
+                      mimeTypes: ['application/json'],
                       path: 'executor',
                     }
                   ]
@@ -128,7 +128,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['json'],
+                      mimeTypes: ['application/json'],
                       path: 'data',
                     }
                   ]
@@ -138,7 +138,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'validator',
                     }
                   ]
@@ -171,7 +171,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'beforeSave',
                     }
                   ]
@@ -181,7 +181,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'afterSave',
                     }
                   ]

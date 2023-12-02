@@ -1,19 +1,15 @@
-import checkFileExists from "../../utils/checkFileExists.js"
-import importJSONAsync from "../../utils/importJSONAsync.js"
-import directoryFilesRecursive from '../../utils/directoryFilesRecursive.js'
-import formatFile from './formatFile.js'
-import foldersInFolder from '../../utils/foldersInFolder.js'
+import checkFileExists from "../../../utils/checkFileExists.js"
+import directoryFilesRecursive from '../../../utils/directoryFilesRecursive.js'
+import formatFile from '../formatFile.js'
+import foldersInFolder from '../../../utils/foldersInFolder.js'
 import sanitizePath from 'path-sanitizer'
-import fs from "fs"
-
+import extractFiles from './extractFiles.js'
 
 export default async (props) => {
   const { item, route, parentLeafPath } = props
   const { type,
-    extensionTypes,
-    // path,
-    priority,
-    children }
+    mimeTypes,
+  }
     = route
 
   let fullPath = `/${sanitizePath(`${parentLeafPath}/${route.path}`)}`
@@ -21,7 +17,7 @@ export default async (props) => {
   const result = {
     ...route,
     type,
-    extensionTypes,
+    mimeTypes,
     fullPath,
     leafPath: parentLeafPath
   }
@@ -57,49 +53,20 @@ export default async (props) => {
         if (files && files.length) {
           files = files.map(file => ({
             path: file.path,
-            module: file.module
+            module: file.module,
+            //TODO: extensionType,
           }))
         }
 
       } break
       case 'file': {
-        for (var i = 0; i < extensionTypes.length; i++) {
-          const extensionType = extensionTypes[0]
-          const md = `/${sanitizePath(`${fullPath}.md`)}`
-          const _fullPath = `/${sanitizePath(`${fullPath}.${extensionType}`)}`
-
-          if (!(await checkFileExists(_fullPath))) {
-            continue
+        for (var i = 0; i < mimeTypes.length; i++) {
+          const mimeType = mimeTypes[0]
+          files = await extractFiles({ mimeType, fullPath })
+          if (files && files.length) {
+            break
           }
-
-          let documentation = null
-          if (await checkFileExists(md)) {
-            documentation = await fs.promises.readFile(md, 'utf8')
-            console.log(documentation)
-          }
-
-          switch (extensionType) {
-            default:
-            case 'js': {
-              files = [{
-                path: _fullPath,
-                module: await import(_fullPath),
-                documentation
-              }]
-              break
-            }
-            case 'json': {
-              files = [{
-                path: _fullPath,
-                module: await importJSONAsync(_fullPath),
-                documentation
-              }]
-              break
-            }
-          }
-          break
         }
-
       } break
       default: break
     }
@@ -114,7 +81,7 @@ export default async (props) => {
       }
     }
   } catch (e) {
-    console.error(e)
+    console.error('[SERVABLE]', 'performRoute', item, e)
   }
   return result
 }

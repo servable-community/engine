@@ -1,4 +1,4 @@
-import performRoute from './performRoute.js'
+import performRoute from './route/index.js'
 import templateDataForId from './templateDataForId.js'
 
 const performItem = async (props) => {

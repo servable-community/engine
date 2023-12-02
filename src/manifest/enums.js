@@ -12,6 +12,10 @@ export const ProtocolEnum = {
       id: 'thumbnail',
       parents: ['assets'],
     },
+    Cover: {
+      id: 'cover',
+      parents: ['assets'],
+    },
   },
   LiveClasses: {
     id: 'liveClasses'

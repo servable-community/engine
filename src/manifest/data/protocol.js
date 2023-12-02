@@ -16,12 +16,12 @@ export default {
             {
               type: 'file',
               path: 'index',
-              extensionTypes: ['json']
+              mimeTypes: ['application/json']
             },
             {
               type: 'file',
               path: 'manifest',
-              extensionTypes: ['json']
+              mimeTypes: ['application/json']
             },
           ]
         },
@@ -37,7 +37,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['svg', 'png', 'jpeg'],
+                      mimeTypes: ['image/svg+xml', 'image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp'],
                       path: 'icon',
                     }
                   ]
@@ -47,8 +47,22 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['png', 'jpeg'],
+                      mimeTypes: ['image/svg+xml', 'image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/webp'],
                       path: 'thumbnail',
+                      params: {
+                        quality: 80,
+                        maxWidth: 2048,
+                      }
+                    }
+                  ]
+                },
+                {
+                  id: 'cover',
+                  routes: [
+                    {
+                      type: 'file',
+                      mimeTypes: ['image/png', 'image/jpeg'],
+                      path: 'cover',
                     }
                   ]
                 },
@@ -70,7 +84,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'index',
                     }
                   ]
@@ -80,7 +94,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'protocols',
                     }
                   ]
@@ -102,7 +116,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'index',
                     }
                   ]
@@ -124,7 +138,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'index',
                     }
                   ]
@@ -146,7 +160,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['json'],
+                      mimeTypes: ['application/json'],
                       path: 'conditions',
                     }
                   ]
@@ -156,7 +170,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['json'],
+                      mimeTypes: ['application/json'],
                       path: 'entries',
                     }
                   ]
@@ -166,7 +180,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['json'],
+                      mimeTypes: ['application/json'],
                       path: 'groups',
                     }
                   ]
@@ -196,7 +210,7 @@ export default {
                           routes: [
                             {
                               type: 'file',
-                              extensionTypes: ['yaml'],
+                              mimeTypes: ['text/yaml'],
                               path: 'docker-compose',
                             }
                           ]
@@ -222,7 +236,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'index',
                     }
                   ]
@@ -239,7 +253,7 @@ export default {
             {
               type: 'file',
               path: 'liveClasses',
-              extensionTypes: ['js'],
+              mimeTypes: ['text/javascript'],
             },
           ]
         },
@@ -302,7 +316,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'beforeSave',
                     }
                   ]
@@ -312,7 +326,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'afterSave',
                     }
                   ]
@@ -322,7 +336,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'beforeFind',
                     }
                   ]
@@ -332,7 +346,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'afterFind',
                     }
                   ]
@@ -342,7 +356,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'beforeDelete',
                     }
                   ]
@@ -352,7 +366,7 @@ export default {
                   routes: [
                     {
                       type: 'file',
-                      extensionTypes: ['js'],
+                      mimeTypes: ['text/javascript'],
                       path: 'afterDelete',
                     }
                   ]

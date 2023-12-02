@@ -14,13 +14,13 @@ export default {
             {
               type: 'file',
               path: 'index',
-              extensionTypes: ['json'],
+              mimeTypes: ['application/json'],
               priority: 0,
             },
             {
               type: 'file',
               path: 'index',
-              extensionTypes: 'js',
+              mimeTypes: ['text/javascript'],
               priority: 0,
             },
           ]
@@ -31,7 +31,7 @@ export default {
             {
               type: 'file',
               path: 'classes',
-              extensionTypes: ['json'],
+              mimeTypes: ['application/json'],
               priority: 0,
             }
           ]
@@ -42,7 +42,7 @@ export default {
             {
               type: 'file',
               path: 'classLevelPermission',
-              extensionTypes: ['json'],
+              mimeTypes: ['application/json'],
               priority: 0,
             }
           ]
@@ -53,7 +53,7 @@ export default {
             {
               type: 'file',
               path: 'fields',
-              extensionTypes: ['json'],
+              mimeTypes: ['application/json'],
               priority: 0,
             }
           ]
@@ -64,7 +64,7 @@ export default {
             {
               type: 'file',
               path: 'indexes',
-              extensionTypes: ['json'],
+              mimeTypes: ['application/json'],
               priority: 0,
             }
           ]
@@ -90,7 +90,7 @@ export default {
                             {
                               type: 'file',
                               path: 'index',
-                              extensionTypes: 'js',
+                              mimeTypes: ['text/javascript'],
                             }
                           ]
                         },
@@ -111,7 +111,7 @@ export default {
                             {
                               type: 'file',
                               path: 'index',
-                              extensionTypes: 'js',
+                              mimeTypes: ['text/javascript'],
                             }
                           ]
                         },

@@ -1,5 +1,5 @@
 import templateDataForId from './templateDataForId.js'
-import performItem from './performItem.js'
+import extractItem from './extractItem.js'
 import { DataTemplateType } from '../enums.js'
 import ServableClass from "../../servable/index.js"
 
@@ -13,7 +13,7 @@ export default async ({
   }
 
   const item = templateDataForId(dataTemplateType)
-  const tree = await performItem({
+  const tree = await extractItem({
     item,
     reference,
     parentLeafPath: path
