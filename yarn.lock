@@ -12586,10 +12586,10 @@ serialize-javascript@^4.0.0:
   dependencies:
     randombytes "^2.1.0"
 
-servable-manifest@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/servable-manifest/-/servable-manifest-1.1.1.tgz#9bfe1f37cff7472fde82e081e851b40220f593b9"
-  integrity sha512-3L3E8jYd2kaQ9jXiW0z0RbbvNLOc4hIBo/Y3djmh8yGFQTvr+tAuUq4fFSG/Y/Ylz+n220gSLp0+LMxnhkUoow==
+servable-manifest@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/servable-manifest/-/servable-manifest-1.5.1.tgz#4110a6e278cbe197d57dad2e37c7d76ce1d522b3"
+  integrity sha512-bOve3I3faTj8flrscW43VVAjRc/z6r1yFI/COEStxeibXBvt9wH+xgMW+M6cT8WCoUcV6XoyP4q/Sw/9aFOV/Q==
   dependencies:
     bluebird "^3.7.2"
     fs-extra "^11.2.0"

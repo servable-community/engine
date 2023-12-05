@@ -100,7 +100,7 @@
     "url-parse": "*",
     "winston": "^3.7.2",
     "yaml": "^2.3.0",
-    "servable-manifest": "^1.1.1"
+    "servable-manifest": "^1.5.1"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^4.10.2",

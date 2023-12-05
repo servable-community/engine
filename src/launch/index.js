@@ -15,7 +15,7 @@ import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
 // import { documentProtocol } from '../../../manifest/src/index.js'
 // import documentProtocol from '../document/index.js'
-import { documentProtocol } from 'servable-manifest'
+// import { documentProtocol } from 'servable-manifest'
 
 export default async props => {
   const { servableEngineConfig } = props
@@ -45,19 +45,21 @@ export default async props => {
     }
 
     // await Promise.all([_schema.protocols[0]].map(async schema => {
-    await Promise.all(_schema.protocols.map(async (schema, index) => {
-      if (index === 17) {
-        const dic = await documentProtocol({
-          path: schema.loader.path,
-          write: true
-        })
-        console.log(dic)
-      }
-    }))
+    // await Promise.all(_schema.protocols.map(async (schema, index) => {
+    //   if (index === 17) {
+    //     const dic = await documentProtocol({
+    //       path: schema.loader.path,
+    //       write: true
+    //     })
+    //     console.log(dic)
+    //   }
+    // }))
 
     console.log("[Servable]", `Launch > started the parse server`)
 
+
     const { schema, server, configuration } = serverStruct
+    console.log(schema, server, configuration)
     if (configuration.params.skipWiring) {
       console.log("[Servable]", "Finished launching a configuration that doesnt require wiring")
       return
