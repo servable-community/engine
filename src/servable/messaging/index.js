@@ -8,8 +8,8 @@ export default class Messaging {
   get sender() { return this._sender }
   set sender(value) { this._sender = value }
 
-  constructor(props) {
-    const { app, httpServer, servableEngineConfig } = props
+  constructor() {
+
     // this._app = app
     // this._httpServer = httpServer
     // this._servableEngineConfig = servableEngineConfig

@@ -33,14 +33,11 @@ export default class Servable {
     }
   }
 
-  hydrate(props) {
-    const { app, httpServer, servableEngineConfig } = props
-    this._express = app
-    this._httpServer = httpServer
+  async hydrate({ servableEngineConfig }) {
     this._servableEngineConfig = servableEngineConfig
-    this._messaging = new Messaging(props)
-    this._agenda = new Agenda(props)
-    this._express = new Express(props)
+    this._messaging = new Messaging()
+    this._agenda = new Agenda()
+    this._express = new Express()
   }
 
   toString() {

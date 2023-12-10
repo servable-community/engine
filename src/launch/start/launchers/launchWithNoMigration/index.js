@@ -1,7 +1,7 @@
 import doLaunch from "../doLaunch/index.js"
 
 export default async ({ schema, configuration, app }) => {
-
+  console.log('[SERVABLE]', '[DEBUG]', 'launchwithnomigration> ', schema, configuration)
   const { liveClasses } = schema
   let config = { ...configuration.config }
   config = {

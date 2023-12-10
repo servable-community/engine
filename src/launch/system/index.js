@@ -1,10 +1,9 @@
 import adaptConfig from "../../utils/adaptConfig/index.js"
 import adaptSystemPayloads from "./adaptPayloads/index.js"
-import docker from "./launchDocker/index.js"
+import launchDocker from "./launchDocker/index.js"
 
-export default async (props) => {
-  const { schema, servableEngineConfig } = props
-  const dockerSystems = await docker(props)
+export default async ({ schema, servableEngineConfig }) => {
+  const dockerSystems = await launchDocker({ schema, servableEngineConfig })
   // return [...dockerSystems]
 
   await adaptSystemPayloads({ schema, servableEngineConfig })

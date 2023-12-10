@@ -44,4 +44,4 @@ export default ({ servableEngineConfig }) => {
       type: "app"
     };
   }
-}
+};

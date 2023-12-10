@@ -1,6 +1,7 @@
 import handleProtocol from "./handleProtocol/index.js"
 
 export default async (props) => {
+
   console.log("[Servable]", `Launch > After init > Start`)
   // try {
   const { schema } = props

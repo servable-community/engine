@@ -1,4 +1,3 @@
-import Bluebird from "bluebird"
 import doPerform from './doSeed.js'
 
 const perform = async (props) => {
@@ -14,6 +13,7 @@ const perform = async (props) => {
         return
     }
 
+    const Bluebird = (await import("bluebird")).default
     const { dependencies = [] } = metadata
     await Bluebird.Promise.mapSeries(
         dependencies,

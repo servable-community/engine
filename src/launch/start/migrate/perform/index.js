@@ -1,7 +1,7 @@
 import didMigrateStepSuccessfully from '../../launchers/auxiliary/didMigrateStepSuccessfully/index.js'
 import launchWithMigration from '../../launchers/launchWithMigration/index.js'
 import extractSchema from '../../../../lib/schema/compute/index.js'
-import Bluebird from 'bluebird'
+
 import handleTask from './handleTask.js'
 
 export default async (props) => {
@@ -17,6 +17,7 @@ export default async (props) => {
       operations
     } = migrationPayload[i]
 
+    const Bluebird = (await import("bluebird")).default
     await Bluebird.Promise.mapSeries(operations, async operation => {
       const { protocolsExcerpt } = schema
       await handleTask({

@@ -1,5 +1,5 @@
 import handleProtocol from './handleProtocol/index.js'
-import Bluebird from "bluebird"
+
 import candidates from '../../lib/config/candidates/index.js'
 
 export default async (props) => {
@@ -8,6 +8,7 @@ export default async (props) => {
   const items = await candidates({ schema })
 
   const cache = {}
+  const Bluebird = (await import("bluebird")).default
   await Bluebird.Promise.mapSeries(
     items,
     async candidate => {

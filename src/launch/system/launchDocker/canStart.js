@@ -1,5 +1,5 @@
 
-import dockerUtils from 'mydockerjs/lib/docker-utils.js'
+
 
 export default async (props) => {
 
@@ -15,6 +15,7 @@ export default async (props) => {
 const systemStatus = async () => {
   let shouldStart = true
   let message = ''
+  const dockerUtils = (await import('mydockerjs/lib/docker-utils.js')).default
   await new Promise((resolve, reject) => {
     dockerUtils.isDockerEngineRunning((err, isRunning) => {
       if (!isRunning) {

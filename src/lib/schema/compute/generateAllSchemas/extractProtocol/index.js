@@ -1,6 +1,6 @@
 import handleClassFields from './handleClassFields/index.js'
 import _ from 'underscore'
-import Bluebird from "bluebird"
+
 import adaptAppClasses from './adaptAppClasses/index.js'
 
 const perform = async (props) => {
@@ -69,6 +69,7 @@ const perform = async (props) => {
       return [protocol]
     }
 
+    const Bluebird = (await import("bluebird")).default
     let classesProtocols = await Bluebird.Promise.mapSeries(
       protocolsPayloads,
       async protocolPayload => {

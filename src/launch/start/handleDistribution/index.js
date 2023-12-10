@@ -1,5 +1,5 @@
-import pingPeriodically from '../../../utils/utilsDatabase/classes/parseServerInstance/functions/pingPeriodically.js'
-import watchServer from './watch/index.js'
+// import pingPeriodically from '../../../utils/utilsDatabase/classes/parseServerInstance/functions/pingPeriodically.js'
+// import watchServer from './watch/index.js'
 
 
 export default async (props) => {
@@ -10,6 +10,6 @@ export default async (props) => {
     return
   }
 
-  await pingPeriodically({ configuration })
-  await watchServer({ performProps: props, configuration })
+  // await pingPeriodically({ configuration })
+  // await watchServer({ performProps: props, configuration })
 }

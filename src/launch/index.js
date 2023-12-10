@@ -13,54 +13,59 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-// import { documentProtocol } from '../../../manifest/src/index.js'
-// import documentProtocol from '../document/index.js'
-// import { documentProtocol } from 'servable-manifest'
+
+// import mockDocumentation from "./mockDocumentation.js"
+// import memwatch from 'node-memwatch-x'
+// import mockmemwatch from "./mockmemwatch.js"
+// mockmemwatch()
 
 export default async props => {
-  const { servableEngineConfig } = props
-  adaptConfig({ servableEngineConfig, })
-
-  global.Servable = new ServableClass()
-  global.Servable.hydrate(props)
-
-  const _schema = await compute({ servableEngineConfig })
-  await launchSystem({ schema: _schema, servableEngineConfig })
+  // const heapDiff = new memwatch.HeapDiff()
+  console.log("[Servable]", '[DEBUG]', `launch > entry`,)
+  const app = expressApp()
 
   try {
 
-    console.log("[Servable]", `Launch > Start`)
-    const app = expressApp()
+    const { servableEngineConfig } = props
+    adaptConfig({ servableEngineConfig, })
+
+    global.Servable = new ServableClass()
+    await global.Servable.hydrate({ servableEngineConfig })
+
+    console.log("[Servable]", '[DEBUG]', `Launch > Start`,)
+
+
+
     Servable.Express.app = app
-    console.log("[Servable]", `Launch > created an expres app`)
+    console.log("[Servable]", '[DEBUG]', `Launch > created an expres app`, Servable.Express.app)
+
+    const _schema = await compute({ servableEngineConfig })
+    await launchSystem({ schema: _schema, servableEngineConfig })
+
+    console.log("[Servable]", '[DEBUG]', `servableEngineConfig`, servableEngineConfig)
+
+
     const httpServer = await createHttpServer({ app })
     Servable.httpServer = httpServer
-    console.log("[Servable]", `Launch > created a http server`)
+    console.log("[Servable]", '[DEBUG]', `Launch > created a http server`)
 
-    console.log("[Servable]", `Launch > starting the parse server`)
+
+
+    console.log("[Servable]", '[DEBUG]', `Launch > starting the parse server`)
     const serverStruct = await start({ app, servableEngineConfig, schema: _schema })
     if (!serverStruct) {
-      console.log("[Servable]", `Launch > failed creating the parse server`)
+      console.log("[Servable]", '[DEBUG]', `Launch > failed creating the parse server`)
       return
     }
 
-    // await Promise.all([_schema.protocols[0]].map(async schema => {
-    // await Promise.all(_schema.protocols.map(async (schema, index) => {
-    //   if (index === 17) {
-    //     const dic = await documentProtocol({
-    //       path: schema.loader.path,
-    //       write: true
-    //     })
-    //     console.log(dic)
-    //   }
-    // }))
+    // await mockDocumentation({ schema: _schema })
 
     console.log("[Servable]", `Launch > started the parse server`)
 
 
     const { schema, server, configuration } = serverStruct
     // console.log('servableEngineConfig', servableEngineConfig, 'serverStruct', serverStruct,)
-    console.log('protocols.length', schema.protocols.length,)
+    console.log('protocols.length>>', schema.protocols.length,)
     // console.log('protocols _schema', _schema.protocols.length, _schema.protocols)
 
     if (configuration.params.skipWiring) {
@@ -81,11 +86,25 @@ export default async props => {
     await afterInit({ app, schema, configuration, server, servableEngineConfig })
     /////////////////////////////
 
+
     // const i = await Servable.Config.get('defaultLocale', { locale: "en_US" })
     // const a = await Servable.Config.get('defaultLocale', { locale: "en_US", object: null, protocol: { id: 'countryable' } })
     // console.log("[Servable]", '--------Config:', i)
     printEnd()
+
+
+    app.get('/health-check', (req, res) => {
+      res.send("Health check passed");
+    })
+
   } catch (e) {
-    console.error(e)
+    console.error('[SERVABLE]', 'launch', e)
+    app.get('/health-check', (req, res) => {
+      res.status(500).send('Server failed')
+    })
+  }
+  finally {
+    // const diff = heapDiff.end()
+    // console.log('[SERVABLE]', '[DEBUG]', 'launch>heapdiff', diff)
   }
 }

@@ -1,5 +1,5 @@
 import _ from 'underscore'
-import Bluebird from "bluebird"
+
 
 const perform = async (props) => {
     const {
@@ -34,6 +34,7 @@ const perform = async (props) => {
     }
 
     const { dependencies = [] } = metadata
+    const Bluebird = (await import("bluebird")).default
     await Bluebird.Promise.mapSeries(
         dependencies,
         async dependency => {

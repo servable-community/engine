@@ -1,4 +1,3 @@
-import Bluebird from "bluebird"
 import performItem from './performItem.js'
 import adaptProtocolPayload from '../../../../../../utils/adaptProtocolPayload.js'
 
@@ -27,6 +26,7 @@ export default async (props) => {
   //     : []
 
   const cache = {}
+  const Bluebird = (await import("bluebird")).default
   await Bluebird.Promise.mapSeries(
     items,
     async item => {

@@ -8,13 +8,13 @@ export default async ({ app }) => {
 
       httpServer.listen(port, async () => {
         console.info(
-          `-- 🚀 😇  ${process.env.SERVABLE_APP_NAME} is running on port " + ${process.env.SERVER_PORT} + " 😍 🚀 .`
+          `-- 🚀 😇  ${process.env.SERVABLE_APP_NAME} http server is running on port " + ${process.env.SERVER_PORT} + " 😍 🚀 .`
         )
         console.info("---------------------------------------------------")
         resolve(httpServer)
       })
     } catch (e) {
-      console.error(e)
+      console.error("[Servable]", '[DEBUG]', 'createHttpServer', e)
       reject(e)
     }
   })

@@ -1,9 +1,10 @@
 import protocolCandidates from "./protocolCandidates/index.js"
 import handleProtocol from './handleProtocol/index.js'
-import Bluebird from "bluebird"
+
 import _ from 'underscore'
 
 export default async (props) => {
+
   const { schema } = props
   const {
     protocols
@@ -18,6 +19,7 @@ export default async (props) => {
   ))).filter(a => a)
 
   const cache = {}
+  const Bluebird = (await import("bluebird")).default
   await Bluebird.Promise.mapSeries(
     items,
     async item => {

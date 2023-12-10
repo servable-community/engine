@@ -20,6 +20,8 @@ export default async (props) => {
     migrations: stagingMigrations
   } = await qualifyStaging({ ...props, schema })
 
+  console.log('[SERVABLE]', '[DEBUG]', 'boot>staging params', stagingStateItem)
+
   const {
     stateItem: productionStateItem,
     configuration: productionConfiguration,
@@ -30,12 +32,15 @@ export default async (props) => {
     migrations: productionMigrations
   } = await qualifyProduction({ ...props, schema, stagingStateItem })
 
+  console.log('[SERVABLE]', '[DEBUG]', 'boot>production params', productionStateItem)
+
   const hasBeenInitialized = productionStateItem.lastMigrationEndedAt
   let result
 
   /* #region STAGING */
 
   if (stagingShouldQuit) {
+    console.log('[SERVABLE]', '[DEBUG]', 'boot>staging should quit')
     quit({
       delay: stagingWaitBeforeQuit,
       error: stagingShouldQuitError
@@ -44,6 +49,7 @@ export default async (props) => {
   }
 
   if (stagingShouldMigrate) {
+    console.log('[SERVABLE]', '[DEBUG]', 'boot>staging should migrate')
     result = await migrate({
       app,
       hasBeenInitialized,
@@ -54,6 +60,7 @@ export default async (props) => {
     })
 
     if (result.error) {
+      console.log('[SERVABLE]', '[DEBUG]', 'boot>staging result error', result.error)
       quit(result)
       return null
     }
@@ -66,6 +73,7 @@ export default async (props) => {
   }
 
   if (stagingShouldRun) {
+    console.log('[SERVABLE]', '[DEBUG]', 'boot>staging should run')
     result = await launchWithNoMigration({
       app,
       schema,
@@ -83,6 +91,7 @@ export default async (props) => {
 
   /* #region PRODUCTION */
   if (productionShouldQuit) {
+    console.log('[SERVABLE]', '[DEBUG]', 'boot>production should quit')
     quit({
       delay: productionWaitBeforeQuit,
       error: productionShouldQuitError
@@ -101,6 +110,7 @@ export default async (props) => {
   // }
 
   if (productionShouldMigrate) {
+    console.log('[SERVABLE]', '[DEBUG]', 'boot>production should migrate')
     result = await migrate({
       app,
       hasBeenInitialized,
@@ -111,11 +121,13 @@ export default async (props) => {
     })
 
     if (result.error) {
+      console.log('[SERVABLE]', '[DEBUG]', 'boot>production result error', result.error)
       quit(result)
       return null
     }
 
     if (stagingStateItem) {
+      console.log('[SERVABLE]', '[DEBUG]', 'boot>production & staging decoy setup')
       await tearDownDecoydatabase({ configuration: stagingConfiguration })
       await didConsumeValidation({ configuration: stagingConfiguration })
     }
@@ -127,6 +139,7 @@ export default async (props) => {
     }
   }
 
+  console.log('[SERVABLE]', '[DEBUG]', 'boot>launch with no migration')
   result = await launchWithNoMigration({
     app,
     schema,
