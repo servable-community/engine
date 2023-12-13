@@ -518,8 +518,8 @@ export default class ProtocolLoaderLocal extends Base {
     // }
 
     const schema = await this.schema(props)
-    if (schema && schema.own) {
-      return schema.own.classes
+    if (schema && schema.managed) {
+      return schema.managed.classes
     }
 
     const schemaPath = await this._schemaPath()

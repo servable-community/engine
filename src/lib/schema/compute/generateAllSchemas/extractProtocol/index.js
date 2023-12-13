@@ -61,7 +61,7 @@ const perform = async (props) => {
       protocol.schema = {
         ...protocol.schema,
         classes: {
-          own: ownClasses,
+          managed: ownClasses,
           all: ownClasses
         },
         jsClasses
@@ -98,7 +98,7 @@ const perform = async (props) => {
 
     let all = [...ownClasses]
     classesProtocols.forEach(element => {
-      const { classes: { own: _own = [], all: _all = [] } = {} } = element.schema
+      const { classes: { managed: _own = [], all: _all = [] } = {} } = element.schema
       all = [...all, ..._all]
       all = _.uniq(all, 'className')
     })
@@ -106,7 +106,7 @@ const perform = async (props) => {
     protocol.schema = {
       ...protocol.schema,
       classes: {
-        own: ownClasses,
+        managed: ownClasses,
         all
       },
       jsClasses

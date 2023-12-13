@@ -48,7 +48,7 @@ export default class Servable {
     const { appProtocol } = this.schema
     const {
       jsClasses,
-      classes: { own },
+      classes: { managed },
     } = appProtocol.schema
     const appClass = jsClasses.filter(a => a.name === 'App')
     return appClass[0]

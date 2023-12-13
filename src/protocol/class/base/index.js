@@ -13,7 +13,7 @@ export default class Protocol {
   _module = {}
   _schema = {
     classes: {
-      own: [],
+      managed: [],
       all: []
     }
   }

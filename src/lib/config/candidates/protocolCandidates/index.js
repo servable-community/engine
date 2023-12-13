@@ -1,6 +1,6 @@
 
 export default async (props) => {
-    const { classes: { own }, } = props.item.schema
+    const { classes: { managed }, } = props.item.schema
     const id = props.item.id
 
     let items = []
@@ -22,7 +22,7 @@ export default async (props) => {
         items.push(_i)
     }
 
-    await Promise.all(own.map(async item => {
+    await Promise.all(managed.map(async item => {
         const { className } = item
 
         let path = props.item.loader.classConfigFolder({ className })

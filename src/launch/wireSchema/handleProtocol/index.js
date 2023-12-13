@@ -7,7 +7,7 @@ export default async (props) => {
     item
   } = props
 
-  const { classes: { own }, } = item.schema
+  const { classes: { managed }, } = item.schema
   const prefix = item.id === 'app' ? null : item.id
 
   const functions = await item.loader.functions()
@@ -19,6 +19,6 @@ export default async (props) => {
   await registerClasses({
     ...props,
     protocol: item,
-    items: own,
+    items: managed,
   })
 }

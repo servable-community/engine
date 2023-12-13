@@ -1,6 +1,6 @@
 
 export default async (props) => {
-    const { classes: { own }, } = props.item.schema
+    const { classes: { managed }, } = props.item.schema
     const id = props.item.id
 
     let items = []
@@ -38,7 +38,7 @@ export default async (props) => {
         default: break
     }
 
-    await Promise.all(own.map(async item => {
+    await Promise.all(managed.map(async item => {
         const { className } = item
         let classMode = await props.item.loader.classSeedMode({ className })
         switch (classMode) {
