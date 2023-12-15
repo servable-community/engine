@@ -11,9 +11,11 @@ import start from "./start/index.js"
 import adaptConfig from "../utils/adaptConfig/index.js"
 import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
-import { compute } from "../lib/schema/index.js"
+// import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-
+// import {computeSchema } from 'servable-manifest'
+import { computeSchema } from '../../../../../manifest/src/index.js'
+import mockDocumentation from "./mockDocumentation.js"
 // import mockDocumentation from "./mockDocumentation.js"
 // import memwatch from 'node-memwatch-x'
 // import mockmemwatch from "./mockmemwatch.js"
@@ -39,8 +41,9 @@ export default async props => {
     Servable.Express.app = app
     console.log("[Servable]", '[DEBUG]', `Launch > created an expres app`, Servable.Express.app)
 
-    const _schema = await compute({ servableEngineConfig })
-    await launchSystem({ schema: _schema, servableEngineConfig })
+    const staticSchema = await computeSchema({ servableEngineConfig })
+    await mockDocumentation({ schema: staticSchema })
+    await launchSystem({ schema: staticSchema, servableEngineConfig })
 
     console.log("[Servable]", '[DEBUG]', `servableEngineConfig`, servableEngineConfig)
 
@@ -52,7 +55,7 @@ export default async props => {
 
 
     console.log("[Servable]", '[DEBUG]', `Launch > starting the parse server`)
-    const serverStruct = await start({ app, servableEngineConfig, schema: _schema })
+    const serverStruct = await start({ app, servableEngineConfig, schema: staticSchema })
     if (!serverStruct) {
       console.log("[Servable]", '[DEBUG]', `Launch > failed creating the parse server`)
       return

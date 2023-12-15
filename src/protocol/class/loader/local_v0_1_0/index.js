@@ -96,7 +96,7 @@ export default class ProtocolLoaderLocal extends Base {
 
     let path = `${this.path}/classes/${className.toLowerCase()}/functions`
     if (!(await checkFileExists(path))) {
-      path = `${this.path}/classes/${className.toLowerCase()}/cloudCode`
+      path = `${this.path}/classes/${className.toLowerCase()}/cloudcode`
       if (!(await checkFileExists(path))) {
         return null
       }
@@ -265,12 +265,12 @@ export default class ProtocolLoaderLocal extends Base {
   }
 
   async afterInit() {
-    const cacheKey = 'afterInit'
+    const cacheKey = 'afterinit'
     if (this._valueInCache(cacheKey)) {
       return this._valueInCache(cacheKey)
     }
 
-    const path = `${this.path}/afterInit/index.js`
+    const path = `${this.path}/afterinit/index.js`
     if (!(await checkFileExists(path))) {
       return null
     }
@@ -279,12 +279,12 @@ export default class ProtocolLoaderLocal extends Base {
   }
 
   async beforeInit() {
-    const cacheKey = 'beforeInit'
+    const cacheKey = 'beforeinit'
     if (this._valueInCache(cacheKey)) {
       return this._valueInCache(cacheKey)
     }
 
-    const path = `${this.path}/beforeInit/index.js`
+    const path = `${this.path}/beforeinit/index.js`
     if (!(await checkFileExists(path))) {
       return null
     }

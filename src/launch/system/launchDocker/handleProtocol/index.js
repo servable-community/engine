@@ -7,6 +7,7 @@ import targetDockerPath from './utils/targetDockerPath.js'
 import existingCompose from './utils/existingCompose.js'
 import adaptForConsumption from './attachToProtocol/index.js'
 import copyDataIfNeeded from './utils/copyDataIfNeeded.js'
+import sanitizePath from 'path-sanitizer'
 
 export default async (props) => {
   const {
@@ -28,7 +29,7 @@ export default async (props) => {
 
     let services = config.data.config.services
 
-    const projectName = `${servableEngineConfig.id}-${item.id}`
+    const projectName = sanitizePath(`${servableEngineConfig.id}-${item.id}`).replaceAll('/', '-')
     // const networkName = projectName
 
     // let network
