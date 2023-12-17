@@ -8,9 +8,9 @@
   "author": "Servable Community",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/servable-community/servable-engine/issues"
+    "url": "https://github.com/servable-community/engine/issues"
   },
-  "homepage": "https://github.com/servable-community/servable-engine#readme",
+  "homepage": "https://github.com/servable-community/engine#readme",
   "files": [
     "dist",
     "src"
@@ -44,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/servable-community/servable-engine.git"
+    "url": "https://github.com/servable-community/engine.git"
   },
   "keywords": [
     "parse",

@@ -43,6 +43,7 @@ export default class Servable {
       Installation: this._frameworkAdapter.appInstallation({ servableEngineConfig: this.servableEngineConfig }),
       Config: this._frameworkAdapter.appConfig({ servableEngineConfig: this.servableEngineConfig }),
     }
+    this.AppNative = this._frameworkAdapter.appNative({ servableEngineConfig: this.servableEngineConfig })
   }
 
   constructor() {
