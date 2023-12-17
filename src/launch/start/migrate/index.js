@@ -1,6 +1,5 @@
 import staging from "./configuration/staging/index.js"
 import production from "./configuration/production/index.js"
-import launchWithMigration from "../launchers/launchWithMigration/index.js"
 import didMigrateSuccessfully from "../launchers/auxiliary/didMigrateSuccessfully/index.js"
 import willMigrate from '../launchers/auxiliary/willMigrate/index.js'
 import didNotMigrateError from '../launchers/auxiliary/didNotMigrateError/index.js'
@@ -10,13 +9,14 @@ export default async (props) => {
     configuration,
     hasBeenInitialized,
     schema,
-    app
+    app,
+    frameworkAdapter
   } = props
 
   try {
     let result
     if (!hasBeenInitialized) {
-      result = await launchWithMigration({
+      result = await frameworkAdapter.launchWithMigration({
         schema,
         configuration,
         app

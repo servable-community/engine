@@ -2,7 +2,7 @@ import adaptConfig from "../../utils/adaptConfig/index.js"
 import adaptSystemPayloads from "./adaptPayloads/index.js"
 import launchDocker from "./launchDocker/index.js"
 
-export default async ({ schema, servableEngineConfig }) => {
+export default async ({ schema, servableEngineConfig, frameworkAdapter }) => {
   const dockerSystems = await launchDocker({ schema, servableEngineConfig })
   // return [...dockerSystems]
 
@@ -16,6 +16,7 @@ export default async ({ schema, servableEngineConfig }) => {
   adaptConfig({
     servableEngineConfig,
     payload,
-    live: true
+    live: true,
+    frameworkAdapter
   })
 }

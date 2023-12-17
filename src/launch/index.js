@@ -1,6 +1,4 @@
 import ServableClass from "../servable/index.js"
-import createHttpServer from "./httpServer/index.js"
-import expressApp from "./express/index.js"
 import seed from "./seed/index.js"
 import liveServer from "./liveServer/index.js"
 import registerClasses from "./registerParseSubClasses/index.js"
@@ -13,49 +11,45 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 // import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-// import {computeSchema } from 'servable-manifest'
-import { computeSchema } from '../../../../../manifest/src/index.js'
+import { computeSchema } from 'servable-manifest'
+// import { computeSchema } from '../../../../../manifest/src/index.js'
 import mockDocumentation from "./mockDocumentation.js"
-// import mockDocumentation from "./mockDocumentation.js"
-// import memwatch from 'node-memwatch-x'
-// import mockmemwatch from "./mockmemwatch.js"
-// mockmemwatch()
 
 export default async props => {
   // const heapDiff = new memwatch.HeapDiff()
   console.log("[Servable]", '[DEBUG]', `launch > entry`,)
-  const app = expressApp()
+
 
   try {
 
-    const { servableEngineConfig } = props
-    adaptConfig({ servableEngineConfig, })
+    const { servableEngineConfig, adapter: frameworkAdapter } = props
+    adaptConfig({ servableEngineConfig, frameworkAdapter })
 
     global.Servable = new ServableClass()
     await global.Servable.hydrate({ servableEngineConfig })
 
     console.log("[Servable]", '[DEBUG]', `Launch > Start`,)
 
+    const app = await frameworkAdapter.createApp({ servableEngineConfig })
 
-
-    Servable.Express.app = app
+    // Servable.Express.app = app
     console.log("[Servable]", '[DEBUG]', `Launch > created an expres app`, Servable.Express.app)
 
     const staticSchema = await computeSchema({ servableEngineConfig })
     await mockDocumentation({ schema: staticSchema })
-    await launchSystem({ schema: staticSchema, servableEngineConfig })
+    await launchSystem({ schema: staticSchema, servableEngineConfig, frameworkAdapter })
 
     console.log("[Servable]", '[DEBUG]', `servableEngineConfig`, servableEngineConfig)
 
 
-    const httpServer = await createHttpServer({ app })
+    const httpServer = await frameworkAdapter.createHttpServer({ app })
     Servable.httpServer = httpServer
     console.log("[Servable]", '[DEBUG]', `Launch > created a http server`)
 
 
 
     console.log("[Servable]", '[DEBUG]', `Launch > starting the parse server`)
-    const serverStruct = await start({ app, servableEngineConfig, schema: staticSchema })
+    const serverStruct = await start({ app, servableEngineConfig, schema: staticSchema, frameworkAdapter })
     if (!serverStruct) {
       console.log("[Servable]", '[DEBUG]', `Launch > failed creating the parse server`)
       return
@@ -80,13 +74,13 @@ export default async props => {
     console.log("[Servable]", `Launch > set public server url (with mount)`, Servable.publicServerURL)
     /////////////////////////////
 
-    await beforeInit({ app, schema, configuration, server, servableEngineConfig })
-    await registerClasses({ app, schema })
-    await wireSchema({ app, schema })
-    await liveServer({ app, httpServer, servableEngineConfig })
-    await seed({ server, schema, app, httpServer, configuration })
-    await config({ server, schema, app, httpServer, configuration })
-    await afterInit({ app, schema, configuration, server, servableEngineConfig })
+    await beforeInit({ app, schema, configuration, server, servableEngineConfig, frameworkAdapter })
+    await registerClasses({ app, schema, frameworkAdapter })
+    await wireSchema({ app, schema, frameworkAdapter })
+    await liveServer({ app, httpServer, servableEngineConfig, frameworkAdapter })
+    await seed({ server, schema, app, httpServer, configuration, frameworkAdapter })
+    await config({ server, schema, app, httpServer, configuration, frameworkAdapter })
+    await afterInit({ app, schema, configuration, server, servableEngineConfig, frameworkAdapter })
     /////////////////////////////
 
 

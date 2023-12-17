@@ -3,6 +3,7 @@ import _parse from './parse/index.js'
 import Agenda from "agenda"
 import Express from './express/index.js'
 
+
 export default class Servable {
   _express = null
   _schema = null
@@ -25,6 +26,8 @@ export default class Servable {
 
   get Config() { return this._config }
   set Config(value) { this._config = value }
+
+
 
   constructor() {
     this.App = {

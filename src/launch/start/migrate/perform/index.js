@@ -1,11 +1,13 @@
 import didMigrateStepSuccessfully from '../../launchers/auxiliary/didMigrateStepSuccessfully/index.js'
-import launchWithMigration from '../../launchers/launchWithMigration/index.js'
-import extractSchema from '../../../../lib/schema/compute/index.js'
-
+import { computeSchema } from 'servable-manifest'
 import handleTask from './handleTask.js'
 
 export default async (props) => {
-  const { servableEngineConfig, migrationPayload, configuration, app } = props
+  const { servableEngineConfig,
+    migrationPayload,
+    configuration,
+    app,
+    frameworkAdapter } = props
 
   let schema = props.schema
   let i = 0
@@ -31,12 +33,12 @@ export default async (props) => {
 
       let _servableEngineConfig = { ...servableEngineConfig, versions: {} }
       _servableEngineConfig.versions[protocol.id] = operation.version
-      schema = await extractSchema({ servableEngineConfig: _servableEngineConfig })
+      schema = await computeSchema({ servableEngineConfig: _servableEngineConfig })
       if (!schema) {
         return null
       }
 
-      result = await launchWithMigration({ schema, configuration, app })
+      result = await frameworkAdapter.launchWithMigration({ schema, configuration, app })
       await didMigrateStepSuccessfully({
         configuration,
         schema

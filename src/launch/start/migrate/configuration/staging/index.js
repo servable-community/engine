@@ -1,16 +1,17 @@
 import perform from '../../perform/index.js'
 import setupDecoydatabase from '../utils/decoyDatabase/setup/subset/index.js'
 // import tearDownDecoydatabase from '../utils/decoyDatabase/tearDown'
-import doLaunch from '../../../launchers/doLaunch/index.js'
+
 // import adaptConfigToConfiguration from './adaptConfigToConfiguration'
-import launchWithMigration from '../../../launchers/launchWithMigration/index.js'
+
 
 export default async (props) => {
   const {
     configuration,
     app,
     schema,
-    migrationPayload
+    migrationPayload,
+    frameworkAdapter
   } = props
 
   let result
@@ -20,7 +21,7 @@ export default async (props) => {
   await setupDecoydatabase({ configuration, })
 
   if (!migrationPayload || !migrationPayload.length) {
-    result = await launchWithMigration({
+    result = await frameworkAdapter.launchWithMigration({
       schema,
       configuration,
       app
@@ -29,7 +30,7 @@ export default async (props) => {
   else {
     const bootConfig = { ...configuration.config }
     delete bootConfig.parse.schema
-    await doLaunch({
+    await frameworkAdapter.doLaunch({
       config: bootConfig,
       app
     })

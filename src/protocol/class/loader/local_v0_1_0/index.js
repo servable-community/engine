@@ -64,7 +64,7 @@ export default class ProtocolLoaderLocal extends Base {
     // const path = `${this.path}/classes/${className.toLowerCase()}/class/index.js`
 
     if (!(await checkFileExists(path))) {
-      console.log('class>', className, 'file does not exist', path)
+      //console.log('class>', className, 'file does not exist', path)
       const externalClassesPath = `${this.path}/classes/external`
       if (!(await checkFileExists(externalClassesPath))) {
         return null
@@ -72,19 +72,19 @@ export default class ProtocolLoaderLocal extends Base {
       try {
         const data = (await import(externalClassesPath)).default
         if (!data) {
-          console.log('class>', className, 'data null')
+          //console.log('class>', className, 'data null')
           return null
         }
-        // console.log('class>', className, 'dataff', data)
+        // //console.log('class>', className, 'dataff', data)
         return data[className]
       } catch (e) {
         console.error(e)
         return null
       }
     }
-    // console.log('class>', className, 'file exists')
+    // //console.log('class>', className, 'file exists')
     const dd = await this._importJSDefault({ path, })
-    // console.log('class>', className, 'file exists', dd)
+    // //console.log('class>', className, 'file exists', dd)
     return dd
   }
 

@@ -1,18 +1,18 @@
 import perform from '../../perform/index.js'
-import doLaunch from '../../../launchers/doLaunch/index.js'
 
 export default async (props) => {
   const {
     configuration,
     app,
-    schema
+    schema,
+    frameworkAdapter
   } = props
 
   let result
 
   const bootConfig = { ...configuration.config }
   delete bootConfig.parse.schema
-  await doLaunch({
+  await frameworkAdapter.doLaunch({
     config: bootConfig,
     app
   })
