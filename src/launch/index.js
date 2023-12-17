@@ -19,6 +19,7 @@ export default async props => {
   // const heapDiff = new memwatch.HeapDiff()
   console.log("[Servable]", '[DEBUG]', `launch > entry`,)
 
+  //https://parseplatform.org/Parse-SDK-JS/api/4.3.1/
 
   try {
 
@@ -26,7 +27,7 @@ export default async props => {
     adaptConfig({ servableEngineConfig, frameworkAdapter })
 
     global.Servable = new ServableClass()
-    await global.Servable.hydrate({ servableEngineConfig })
+    await global.Servable.hydrate({ servableEngineConfig, frameworkAdapter })
 
     console.log("[Servable]", '[DEBUG]', `Launch > Start`,)
 
