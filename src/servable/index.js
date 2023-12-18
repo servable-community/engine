@@ -30,20 +30,6 @@ export default class Servable {
   get frameworkAdapter() { return this._frameworkAdapter }
   set frameworkAdapter(value) {
     this._frameworkAdapter = value
-    this.App = {
-      ...this._frameworkAdapter.appUtils({ servableEngineConfig: this.servableEngineConfig }),
-      Object: this._frameworkAdapter.appObject({ servableEngineConfig: this.servableEngineConfig }),
-      Query: this._frameworkAdapter.appQuery({ servableEngineConfig: this.servableEngineConfig }),
-      Cloud: this._frameworkAdapter.appCloud({ servableEngineConfig: this.servableEngineConfig }),
-      User: this._frameworkAdapter.appUser({ servableEngineConfig: this.servableEngineConfig }),
-      Role: this._frameworkAdapter.appRole({ servableEngineConfig: this.servableEngineConfig }),
-      Session: this._frameworkAdapter.appSession({ servableEngineConfig: this.servableEngineConfig }),
-      Schema: this._frameworkAdapter.appSchema({ servableEngineConfig: this.servableEngineConfig }),
-      LiveQuery: this._frameworkAdapter.appLiveQuery({ servableEngineConfig: this.servableEngineConfig }),
-      Installation: this._frameworkAdapter.appInstallation({ servableEngineConfig: this.servableEngineConfig }),
-      Config: this._frameworkAdapter.appConfig({ servableEngineConfig: this.servableEngineConfig }),
-    }
-    this.AppNative = this._frameworkAdapter.appNative({ servableEngineConfig: this.servableEngineConfig })
   }
 
   constructor() {
@@ -56,6 +42,8 @@ export default class Servable {
     this._agenda = new Agenda()
     this._express = new Express()
     this.frameworkAdapter = frameworkAdapter
+    this.App = await this._frameworkAdapter.adaptApp({ servableEngineConfig: this.servableEngineConfig })
+    this.AppNative = await this._frameworkAdapter.adaptAppNative({ servableEngineConfig: this.servableEngineConfig })
   }
 
   toString() {
@@ -74,3 +62,20 @@ export default class Servable {
 
   set appClass(value) { }
 }
+
+
+
+// this.App = {
+//   ...this._frameworkAdapter.appUtils({ servableEngineConfig: this.servableEngineConfig }),
+//   Object: this._frameworkAdapter.appObject({ servableEngineConfig: this.servableEngineConfig }),
+//   Query: this._frameworkAdapter.appQuery({ servableEngineConfig: this.servableEngineConfig }),
+//   Cloud: this._frameworkAdapter.appCloud({ servableEngineConfig: this.servableEngineConfig }),
+//   User: this._frameworkAdapter.appUser({ servableEngineConfig: this.servableEngineConfig }),
+//   Role: this._frameworkAdapter.appRole({ servableEngineConfig: this.servableEngineConfig }),
+//   Session: this._frameworkAdapter.appSession({ servableEngineConfig: this.servableEngineConfig }),
+//   // Schema: this._frameworkAdapter.appSchema({ servableEngineConfig: this.servableEngineConfig }),
+//   // LiveQuery: this._frameworkAdapter.appLiveQuery({ servableEngineConfig: this.servableEngineConfig }),
+//   Installation: this._frameworkAdapter.appInstallation({ servableEngineConfig: this.servableEngineConfig }),
+//   Config: this._frameworkAdapter.appConfig({ servableEngineConfig: this.servableEngineConfig }),
+// }
+// this.AppNative = this._frameworkAdapter.appNative({ servableEngineConfig: this.servableEngineConfig })
