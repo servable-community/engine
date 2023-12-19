@@ -36,14 +36,33 @@ export default class Servable {
     this.App = {}
   }
 
-  async hydrate({ servableEngineConfig, frameworkAdapter }) {
+  async hydrate({ servableEngineConfig, frameworkAdapter, app }) {
     this._servableEngineConfig = servableEngineConfig
     this._messaging = new Messaging()
     this._agenda = new Agenda()
     this._express = new Express()
     this.frameworkAdapter = frameworkAdapter
     this.App = await this._frameworkAdapter.adaptApp({ servableEngineConfig: this.servableEngineConfig })
-    this.AppNative = await this._frameworkAdapter.adaptAppNative({ servableEngineConfig: this.servableEngineConfig })
+    if (this.App.Route) {
+      this.App.Route.Constants = {
+        Methods: {
+          GET: 'get',
+          POST: 'post'
+        },
+        RateLimiting: {
+          Type: {
+            FixedByIp: 'fixed-by-ip'
+          }
+        },
+        Cache: {
+          Type: {
+            InMemory: 'memory'
+          }
+        }
+      }
+    }
+    // this.AppNative = await this._frameworkAdapter.adaptAppNative({ servableEngineConfig: this.servableEngineConfig })
+    this.AppNative = app
   }
 
   toString() {

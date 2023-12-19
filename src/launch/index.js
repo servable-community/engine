@@ -27,12 +27,12 @@ export default async props => {
     adaptConfig({ servableEngineConfig, frameworkAdapter })
 
     global.Servable = new ServableClass()
-    await global.Servable.hydrate({ servableEngineConfig, frameworkAdapter })
+
 
     console.log("[Servable]", '[DEBUG]', `Launch > Start`,)
 
     const app = await frameworkAdapter.createApp({ servableEngineConfig })
-
+    await global.Servable.hydrate({ servableEngineConfig, frameworkAdapter, app })
     // Servable.Express.app = app
     console.log("[Servable]", '[DEBUG]', `Launch > created an expres app`, Servable.Express.app)
 
