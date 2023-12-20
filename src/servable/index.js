@@ -1,7 +1,7 @@
 import Messaging from "./messaging/index.js"
 import Agenda from "agenda"
 import Express from './express/index.js'
-
+import Intercom from './intercom/index.js'
 
 export default class Servable {
   _express = null
@@ -11,6 +11,9 @@ export default class Servable {
   _messaging = null
   _config = {}
   _frameworkAdapter = null
+
+  get Intercom() { return this._intercom }
+  set Intercom(value) { this._intercom = value }
 
   get Messaging() { return this._messaging }
   set Messaging(value) { this._messaging = value }
@@ -28,9 +31,7 @@ export default class Servable {
   set Config(value) { this._config = value }
 
   get frameworkAdapter() { return this._frameworkAdapter }
-  set frameworkAdapter(value) {
-    this._frameworkAdapter = value
-  }
+  set frameworkAdapter(value) { this._frameworkAdapter = value }
 
   constructor() {
     this.App = {}
@@ -39,6 +40,7 @@ export default class Servable {
   async hydrate({ servableEngineConfig, frameworkAdapter, app }) {
     this._servableEngineConfig = servableEngineConfig
     this._messaging = new Messaging()
+    this._intercom = new Intercom()
     this._agenda = new Agenda()
     this._express = new Express()
     this.frameworkAdapter = frameworkAdapter
