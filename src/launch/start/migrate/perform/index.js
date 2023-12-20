@@ -1,5 +1,5 @@
 import didMigrateStepSuccessfully from '../../launchers/auxiliary/didMigrateStepSuccessfully/index.js'
-import { computeSchema } from 'servable-manifest'
+import { computeSchema } from '@servable/manifest'
 import handleTask from './handleTask.js'
 
 export default async (props) => {

@@ -1,8 +1,8 @@
 // import { documentProtocol } from '../../../manifest/src/index.js'
 // import documentProtocol from '../document/index.js'
-// import { documentProtocol } from 'servable-manifest'
+// import { documentProtocol } from '@servable/manifest'
 // import { generateGithubReadme } from '../../../../../manifest/src/index.js'
-import { generateGithubReadme } from 'servable-manifest'
+import { generateGithubReadme } from '@servable/manifest'
 
 export default async (props) => {
 

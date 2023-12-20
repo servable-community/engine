@@ -11,7 +11,7 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 // import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-import { computeSchema } from 'servable-manifest'
+import { computeSchema } from '@servable/manifest'
 // import { computeSchema } from '../../../../../manifest/src/index.js'
 import mockDocumentation from "./mockDocumentation.js"
 

@@ -82,7 +82,6 @@
     "js-sha256": "^0.9.0",
     "json-diff": "^1.0.6",
     "keynum": "*",
-    "memory-cache": "^0.2.0",
     "moment": "*",
     "mongodb": "^4.13.0",
     "mongodb-snapshot": "^1.4.1",
@@ -92,10 +91,9 @@
     "path-sanitizer": "^2.0.0",
     "semver": "*",
     "underscore": "^1.13.3",
-    "url-parse": "*",
-    "winston": "^3.7.2",
     "yaml": "^2.3.0",
-    "servable-manifest": "^1.14.1"
+    "@servable/manifest": "^1.17.1",
+    "memory-cache": "^0.2.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^4.10.2",
