@@ -118,6 +118,7 @@ export default async (props) => {
       migrationPayload: productionMigrations,
       servableEngineConfig,
       configuration: productionConfiguration,
+      frameworkAdapter
     })
 
     if (result.error) {
