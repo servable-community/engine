@@ -90,15 +90,19 @@ export default async props => {
     // console.log("[Servable]", '--------Config:', i)
     printEnd()
 
-
-    app.get('/health-check', (req, res) => {
-      res.send("Health check passed");
+    Servable.App.Route.define({
+      method: Servable.App.Route.Constants.Methods.GET,
+      url: '/health-check',
+      handler: async () => "Health check passed"
     })
-
   } catch (e) {
     console.error('[SERVABLE]', 'launch', e)
-    app.get('/health-check', (req, res) => {
-      res.status(500).send('Server failed')
+    Servable.App.Route.define({
+      method: Servable.App.Route.Constants.Methods.GET,
+      url: '/health-check',
+      handler: async (_, response) => {
+        response.status(500).send('Server failed')
+      }
     })
   }
   finally {
