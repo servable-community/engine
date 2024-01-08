@@ -1795,10 +1795,10 @@
     lodash-es "^4.17.21"
     read-pkg-up "^10.0.0"
 
-"@servable/manifest@^1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@servable/manifest/-/manifest-1.17.1.tgz#e26f52fc0fc63ec6b173f1d4d9e1717c671afc53"
-  integrity sha512-cmV2ILPF88VD5v8fgztNRyCPkBR+e8M2Rd/I5sf+ztUrBRleRckXpo9ASBGjulaCB8KMQ4R2iXCDUv17WcVqlQ==
+"@servable/manifest@^1.20.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@servable/manifest/-/manifest-1.20.0.tgz#d21b8116bc1660efa39b4e1fa235b0d209b8afd3"
+  integrity sha512-vSbBxWuP528E27jBm/FAg7kwkKtI1JDWA30+xQ0kSmvnlJwBSjy4k43IGyBOSPWioaaFVHTFTtLbMql17FNPgg==
   dependencies:
     bluebird "^3.7.2"
     fs-extra "^11.2.0"

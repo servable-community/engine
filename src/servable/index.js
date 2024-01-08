@@ -10,7 +10,7 @@ export default class Servable {
   _servableEngineConfig = null
   _messaging = null
   _config = {}
-  _frameworkAdapter = null
+  _frameworkBridge = null
 
   get Intercom() { return this._intercom }
   set Intercom(value) { this._intercom = value }
@@ -30,21 +30,21 @@ export default class Servable {
   get Config() { return this._config }
   set Config(value) { this._config = value }
 
-  get frameworkAdapter() { return this._frameworkAdapter }
-  set frameworkAdapter(value) { this._frameworkAdapter = value }
+  get frameworkBridge() { return this._frameworkBridge }
+  set frameworkBridge(value) { this._frameworkBridge = value }
 
   constructor() {
     this.App = {}
   }
 
-  async hydrate({ servableEngineConfig, frameworkAdapter, app }) {
+  async hydrate({ servableEngineConfig, frameworkBridge, app }) {
     this._servableEngineConfig = servableEngineConfig
     this._messaging = new Messaging()
     this._intercom = new Intercom()
     this._agenda = new Agenda()
     this._express = new Express()
-    this.frameworkAdapter = frameworkAdapter
-    this.App = await this._frameworkAdapter.adaptApp({ servableEngineConfig: this.servableEngineConfig })
+    this.frameworkBridge = frameworkBridge
+    this.App = await this._frameworkBridge.adaptApp({ servableEngineConfig })
     if (this.App.Route) {
       this.App.Route.Constants = {
         Methods: {
@@ -63,7 +63,7 @@ export default class Servable {
         }
       }
     }
-    // this.AppNative = await this._frameworkAdapter.adaptAppNative({ servableEngineConfig: this.servableEngineConfig })
+    // this.AppNative = await this._frameworkBridge.adaptAppNative({ servableEngineConfig: this.servableEngineConfig })
     this.AppNative = app
   }
 
@@ -87,16 +87,16 @@ export default class Servable {
 
 
 // this.App = {
-//   ...this._frameworkAdapter.appUtils({ servableEngineConfig: this.servableEngineConfig }),
-//   Object: this._frameworkAdapter.appObject({ servableEngineConfig: this.servableEngineConfig }),
-//   Query: this._frameworkAdapter.appQuery({ servableEngineConfig: this.servableEngineConfig }),
-//   Cloud: this._frameworkAdapter.appCloud({ servableEngineConfig: this.servableEngineConfig }),
-//   User: this._frameworkAdapter.appUser({ servableEngineConfig: this.servableEngineConfig }),
-//   Role: this._frameworkAdapter.appRole({ servableEngineConfig: this.servableEngineConfig }),
-//   Session: this._frameworkAdapter.appSession({ servableEngineConfig: this.servableEngineConfig }),
-//   // Schema: this._frameworkAdapter.appSchema({ servableEngineConfig: this.servableEngineConfig }),
-//   // LiveQuery: this._frameworkAdapter.appLiveQuery({ servableEngineConfig: this.servableEngineConfig }),
-//   Installation: this._frameworkAdapter.appInstallation({ servableEngineConfig: this.servableEngineConfig }),
-//   Config: this._frameworkAdapter.appConfig({ servableEngineConfig: this.servableEngineConfig }),
+//   ...this._frameworkBridge.appUtils({ servableEngineConfig: this.servableEngineConfig }),
+//   Object: this._frameworkBridge.appObject({ servableEngineConfig: this.servableEngineConfig }),
+//   Query: this._frameworkBridge.appQuery({ servableEngineConfig: this.servableEngineConfig }),
+//   Cloud: this._frameworkBridge.appCloud({ servableEngineConfig: this.servableEngineConfig }),
+//   User: this._frameworkBridge.appUser({ servableEngineConfig: this.servableEngineConfig }),
+//   Role: this._frameworkBridge.appRole({ servableEngineConfig: this.servableEngineConfig }),
+//   Session: this._frameworkBridge.appSession({ servableEngineConfig: this.servableEngineConfig }),
+//   // Schema: this._frameworkBridge.appSchema({ servableEngineConfig: this.servableEngineConfig }),
+//   // LiveQuery: this._frameworkBridge.appLiveQuery({ servableEngineConfig: this.servableEngineConfig }),
+//   Installation: this._frameworkBridge.appInstallation({ servableEngineConfig: this.servableEngineConfig }),
+//   Config: this._frameworkBridge.appConfig({ servableEngineConfig: this.servableEngineConfig }),
 // }
-// this.AppNative = this._frameworkAdapter.appNative({ servableEngineConfig: this.servableEngineConfig })
+// this.AppNative = this._frameworkBridge.appNative({ servableEngineConfig: this.servableEngineConfig })

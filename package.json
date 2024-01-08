@@ -47,9 +47,8 @@
     "url": "https://github.com/servable-community/engine.git"
   },
   "keywords": [
-    "parse",
-    "server",
-    "servable"
+    "servable",
+    "adapter"
   ],
   "prettier": {
     "printWidth": 80,
@@ -92,7 +91,7 @@
     "semver": "*",
     "underscore": "^1.13.3",
     "yaml": "^2.3.0",
-    "@servable/manifest": "^1.17.1",
+    "@servable/manifest": "^1.20.0",
     "memory-cache": "^0.2.0"
   },
   "devDependencies": {

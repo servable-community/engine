@@ -5,14 +5,14 @@ export default async (props) => {
     configuration,
     app,
     schema,
-    frameworkAdapter
+    frameworkBridge
   } = props
 
   let result
 
   const bootConfig = { ...configuration.config }
   delete bootConfig.parse.schema
-  await frameworkAdapter.doLaunch({
+  await frameworkBridge.doLaunch({
     config: bootConfig,
     app
   })

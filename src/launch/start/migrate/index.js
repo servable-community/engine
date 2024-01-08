@@ -10,13 +10,13 @@ export default async (props) => {
     hasBeenInitialized,
     schema,
     app,
-    frameworkAdapter
+    frameworkBridge
   } = props
 
   try {
     let result
     if (!hasBeenInitialized) {
-      result = await frameworkAdapter.launchWithMigration({
+      result = await frameworkBridge.launchWithMigration({
         schema,
         configuration,
         app

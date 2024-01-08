@@ -1,5 +1,5 @@
 
 export default async (props) => {
 
-  return props.frameworkAdapter.launchLiveServer(props)
+  return props.frameworkBridge.launchLiveServer(props)
 }

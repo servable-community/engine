@@ -11,8 +11,8 @@ import printEnd from './_messages/end.js'
 import launchSystem from "./system/index.js"
 // import { compute } from "../lib/schema/index.js"
 import config from "./config/index.js"
-import { computeSchema } from '@servable/manifest'
-// import { computeSchema } from '../../../../../manifest/src/index.js'
+// import { computeSchema } from '@servable/manifest'
+import { computeSchema } from '../../../manifest/src/index.js'
 import mockDocumentation from "./mockDocumentation.js"
 
 export default async props => {
@@ -23,34 +23,34 @@ export default async props => {
 
   try {
 
-    const { servableEngineConfig, adapter: frameworkAdapter } = props
-    adaptConfig({ servableEngineConfig, frameworkAdapter })
+    const { servableEngineConfig, adapter: frameworkBridge } = props
+    adaptConfig({ servableEngineConfig, frameworkBridge })
 
     global.Servable = new ServableClass()
 
 
     console.log("[Servable]", '[DEBUG]', `Launch > Start`,)
 
-    const app = await frameworkAdapter.createApp({ servableEngineConfig })
-    await global.Servable.hydrate({ servableEngineConfig, frameworkAdapter, app })
+    const app = await frameworkBridge.createApp({ servableEngineConfig })
+    await global.Servable.hydrate({ servableEngineConfig, frameworkBridge, app })
     // Servable.Express.app = app
     console.log("[Servable]", '[DEBUG]', `Launch > created an expres app`, Servable.Express.app)
 
     const staticSchema = await computeSchema({ servableEngineConfig })
     await mockDocumentation({ schema: staticSchema })
-    await launchSystem({ schema: staticSchema, servableEngineConfig, frameworkAdapter })
+    await launchSystem({ schema: staticSchema, servableEngineConfig, frameworkBridge })
 
     console.log("[Servable]", '[DEBUG]', `servableEngineConfig`, servableEngineConfig)
 
 
-    const httpServer = await frameworkAdapter.createHttpServer({ app })
+    const httpServer = await frameworkBridge.createHttpServer({ app })
     Servable.httpServer = httpServer
     console.log("[Servable]", '[DEBUG]', `Launch > created a http server`)
 
 
 
     console.log("[Servable]", '[DEBUG]', `Launch > starting the parse server`)
-    const serverStruct = await start({ app, servableEngineConfig, schema: staticSchema, frameworkAdapter })
+    const serverStruct = await start({ app, servableEngineConfig, schema: staticSchema, frameworkBridge })
     if (!serverStruct) {
       console.log("[Servable]", '[DEBUG]', `Launch > failed creating the parse server`)
       return
@@ -75,13 +75,13 @@ export default async props => {
     console.log("[Servable]", `Launch > set public server url (with mount)`, Servable.publicServerURL)
     /////////////////////////////
 
-    await beforeInit({ app, schema, configuration, server, servableEngineConfig, frameworkAdapter })
-    await registerClasses({ app, schema, frameworkAdapter })
-    await wireSchema({ app, schema, frameworkAdapter })
-    await liveServer({ app, httpServer, servableEngineConfig, frameworkAdapter })
-    await seed({ server, schema, app, httpServer, configuration, frameworkAdapter })
-    await config({ server, schema, app, httpServer, configuration, frameworkAdapter })
-    await afterInit({ app, schema, configuration, server, servableEngineConfig, frameworkAdapter })
+    await beforeInit({ app, schema, configuration, server, servableEngineConfig, frameworkBridge })
+    await registerClasses({ app, schema, frameworkBridge })
+    await wireSchema({ app, schema, frameworkBridge })
+    await liveServer({ app, httpServer, servableEngineConfig, frameworkBridge })
+    await seed({ server, schema, app, httpServer, configuration, frameworkBridge })
+    await config({ server, schema, app, httpServer, configuration, frameworkBridge })
+    await afterInit({ app, schema, configuration, server, servableEngineConfig, frameworkBridge })
     /////////////////////////////
 
 

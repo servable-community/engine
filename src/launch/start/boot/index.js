@@ -6,7 +6,7 @@ import didConsumeValidation from '../launchers/auxiliary/didConsumeValidation/in
 import tearDownDecoydatabase from "../migrate/configuration/utils/decoyDatabase/tearDown/index.js"
 
 export default async (props) => {
-  const { servableEngineConfig, app, schema, frameworkAdapter } = props
+  const { servableEngineConfig, app, schema, frameworkBridge } = props
 
   const {
     stateItem: stagingStateItem,
@@ -56,7 +56,7 @@ export default async (props) => {
       migrationPayload: stagingMigrations,
       servableEngineConfig,
       configuration: stagingConfiguration,
-      frameworkAdapter
+      frameworkBridge
     })
 
     if (result.error) {
@@ -74,7 +74,7 @@ export default async (props) => {
 
   if (stagingShouldRun) {
     console.log('[SERVABLE]', '[DEBUG]', 'boot>staging should run')
-    result = await frameworkAdapter.launchWithNoMigration({
+    result = await frameworkBridge.launchWithNoMigration({
       app,
       schema,
       configuration: stagingConfiguration
@@ -118,7 +118,7 @@ export default async (props) => {
       migrationPayload: productionMigrations,
       servableEngineConfig,
       configuration: productionConfiguration,
-      frameworkAdapter
+      frameworkBridge
     })
 
     if (result.error) {
@@ -141,7 +141,7 @@ export default async (props) => {
   }
 
   console.log('[SERVABLE]', '[DEBUG]', 'boot>launch with no migration')
-  result = await frameworkAdapter.launchWithNoMigration({
+  result = await frameworkBridge.launchWithNoMigration({
     app,
     schema,
     configuration: productionConfiguration

@@ -7,7 +7,7 @@ const operation = async filePath => {
   if (!(await checkFileExists(dirname))) {
     return true
   }
-  ensureDirectoryExistence(dirname)
+  operation(dirname)
   fs.promises.mkdir(dirname)
 }
 

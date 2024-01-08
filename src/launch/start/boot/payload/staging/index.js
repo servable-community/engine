@@ -11,7 +11,7 @@ const MAX_ATTEMPTS = 15
 const MAX_DURATION = 10
 
 export default async (props) => {
-  const { servableEngineConfig: { configurations }, schema, frameworkAdapter } = props
+  const { servableEngineConfig: { configurations }, schema, frameworkBridge } = props
 
   let configuration = _.findWhere(configurations, { key: 'staging' })
   if (!configuration || !configuration.enabled) {

@@ -16,7 +16,7 @@ It orchestrates the server deployment, the protocols registration and execution 
 Servable engine is used by the Servable CLI to generate new projects.
 
 ## Documentation
-You can find here the complete [servable documentation](https://documentation.servable.app/) with guides and api reference.
+You can find here the complete [servable documentation](https://docs.servable.app/) with guides and api reference.
 
 ## Install
 ```bash

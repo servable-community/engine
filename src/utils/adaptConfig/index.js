@@ -5,5 +5,5 @@ import basic from "./basic.js"
 export default (props) => {
   // const { servableEngineConfig, live = false } = props
   basic(props)
-  props.frameworkAdapter.setConfigurations(props)
+  props.frameworkBridge.setConfigurations(props)
 }

@@ -4,7 +4,7 @@ import handleDistribution from './handleDistribution/index.js'
 
 export default async (props) => {
   console.log('[SERVABLE]', '[DEBUG]', 'launch>start> ff ')
-  const { servableEngineConfig, frameworkAdapter } = props
+  const { servableEngineConfig, frameworkBridge } = props
   let hd = null
   let launchedServer = null
 
@@ -13,7 +13,7 @@ export default async (props) => {
     console.log('[SERVABLE]', '[DEBUG]', 'launch>start> ')
     launchedServer = await boot(props)
     if (launchedServer) {
-      await handleDistribution({ launchedServer, servableEngineConfig, frameworkAdapter })
+      await handleDistribution({ launchedServer, servableEngineConfig, frameworkBridge })
     }
 
   } catch (e) {
